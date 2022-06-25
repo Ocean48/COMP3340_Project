@@ -29,7 +29,7 @@ if(is_post_request()) {
       if(password_verify_own($password, $admin['password'])) {
         // echo password_verify_own($password, $admin['password']);
         // password matches
-        log_in_user($admin);
+        log_in_admin($admin);
         redirect_to(url_for('/index.php'));
       } else {
         // username found, but password does not match
