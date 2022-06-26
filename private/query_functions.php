@@ -5,7 +5,7 @@
   function find_all_products($options=[]) {
     global $db;
 
-    $sql = "SELECT * FROM products ";
+    $sql = "SELECT * FROM `products` ";
     // if($visible) {
     //   $sql .= "WHERE visible = true ";
     // }
@@ -21,7 +21,7 @@
 
     //$visible = $options['visible'] ?? false;
 
-    $sql = "SELECT * FROM products ";
+    $sql = "SELECT * FROM `products` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     // if($visible) {
     //   $sql .= "AND visible = true";
@@ -72,7 +72,7 @@
       return $errors;
     }
 
-    $sql = "INSERT INTO products ";
+    $sql = "INSERT INTO `products` ";
     $sql .= "(menu_name, position, visible) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $product['menu_name']) . "',";
@@ -99,7 +99,7 @@
       return $errors;
     }
 
-    $sql = "UPDATE products SET ";
+    $sql = "UPDATE `products` SET ";
     $sql .= "menu_name='" . db_escape($db, $product['menu_name']) . "', ";
     $sql .= "position='" . db_escape($db, $product['position']) . "', ";
     $sql .= "visible='" . db_escape($db, $product['visible']) . "' ";
@@ -122,7 +122,7 @@
   function delete_product($id) {
     global $db;
 
-    $sql = "DELETE FROM products ";
+    $sql = "DELETE FROM `products` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -155,7 +155,7 @@
 
     $visible = $options['visible'] ?? false;
 
-    $sql = "SELECT * FROM pages ";
+    $sql = "SELECT * FROM `pages` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     if($visible) {
       $sql .= "AND visible = true";
@@ -220,7 +220,7 @@
       return $errors;
     }
 
-    $sql = "INSERT INTO pages ";
+    $sql = "INSERT INTO `pages` ";
     $sql .= "(product_id, menu_name, position, visible, content) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $page['product_id']) . "',";
@@ -274,7 +274,7 @@
   function delete_page($id) {
     global $db;
 
-    $sql = "DELETE FROM pages ";
+    $sql = "DELETE FROM `pages` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -321,7 +321,7 @@
   function find_all_users() {
     global $db;
 
-    $sql = "SELECT * FROM users ";
+    $sql = "SELECT * FROM `users` ";
     $sql .= "ORDER BY username ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -331,7 +331,7 @@
   function find_admin_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM admins ";
+    $sql = "SELECT * FROM `admins` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -344,7 +344,7 @@
   function find_user_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM users ";
+    $sql = "SELECT * FROM `users` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -357,7 +357,7 @@
   function find_admin_by_username($username) {
     global $db;
 
-    $sql = "SELECT * FROM admins ";
+    $sql = "SELECT * FROM `admins` ";
     $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -370,7 +370,7 @@
   function find_user_by_username($username) {
     global $db;
 
-    $sql = "SELECT * FROM admins ";
+    $sql = "SELECT * FROM `admins` ";
     $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
@@ -421,7 +421,7 @@
 
     $password = ($admin['password']);
 
-    $sql = "INSERT INTO admins ";
+    $sql = "INSERT INTO `admins` ";
     $sql .= "(username, password) ";
     $sql .= "VALUES (";
     // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
@@ -452,7 +452,7 @@
 
     $password = ($admin['password']);
 
-    $sql = "INSERT INTO users ";
+    $sql = "INSERT INTO `users` ";
     $sql .= "(username, password) ";
     $sql .= "VALUES (";
     // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
@@ -516,7 +516,7 @@
 
     $password = $admin['password'];
 
-    $sql = "UPDATE users SET ";
+    $sql = "UPDATE `users` SET ";
     // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
     // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
     // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
@@ -540,7 +540,7 @@
   function delete_admin($admin) {
     global $db;
 
-    $sql = "DELETE FROM admins ";
+    $sql = "DELETE FROM `admins` ";
     $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
     $sql .= "LIMIT 1;";
     $result = mysqli_query($db, $sql);
@@ -559,7 +559,7 @@
   function delete_user($admin) {
     global $db;
 
-    $sql = "DELETE FROM users ";
+    $sql = "DELETE FROM `users` ";
     $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
     $sql .= "LIMIT 1;";
     $result = mysqli_query($db, $sql);
