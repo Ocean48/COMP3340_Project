@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2022 at 01:19 AM
+-- Generation Time: Jun 26, 2022 at 06:38 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -75,7 +75,7 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `email` varchar(40) CHARACTER SET utf8 NOT NULL,
   `product_id` int(10) NOT NULL,
-  `product` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `product_name` varchar(200) CHARACTER SET utf8 NOT NULL,
   `price` double NOT NULL,
   `quantity` int(10) NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`email`, `product_id`, `product`, `price`, `quantity`) VALUES
+INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) VALUES
 ('sirayno2@gmail.com', 0, 'Test Product 3', 880, 0),
 ('sirayno2@gmail.com', 0, 'Test Product 2', 680, 0);
 

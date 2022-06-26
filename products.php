@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Products</title>
     <style>
-        .products {
+        .cart {
             background: #f8f8f8;
             border: none;
             width: 200px;
@@ -26,7 +26,7 @@
             <nav>
                 <ul>
                     <li><a href="home.html">Home</a></li>
-                    <li><a href="products.php">Products</a></li>
+                    <li><a href="cart.php">Products</a></li>
                     <li><a href="news.php">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="sign_in.php">Account</a></li>
@@ -37,7 +37,7 @@
 
     <h1 style="color: #af0000; text-align: center; font-size: 40px;">Products</h1>
 
-    <form action="products.php" method="post">
+    <form action="cart.php" method="post">
         <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 45%; height: 30px; cursor: pointer; margin-left: 24%;" type="text" name="comments">
         <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
         <br><br>
@@ -51,7 +51,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `name`, `price`, `key_word`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
+        $sql = "SELECT `name`, `price`, `key_word`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `cart`";
 
         $result = $conn->query($sql);
         
@@ -99,8 +99,8 @@
 
                 echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
                     <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
-                        <input class="products" name="t" type="hidden" value="'.$t[0].'">    
-                        <input class="products" style="background-image: url('.$t[1].');" type="submit" value=" ">  
+                        <input class="cart" name="t" type="hidden" value="'.$t[0].'">    
+                        <input class="cart" style="background-image: url('.$t[1].');" type="submit" value=" ">  
                         <p style="font-size: 20px; text-align: center;">'.$t[0].'<br>$'.$t[2].'</p>
                         
                         
@@ -114,8 +114,8 @@
             while ($row = $result->fetch_assoc()) {
                 echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
                     <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
-                        <input class="products" name="t" type="hidden" value="'.$row['name'].'">    
-                        <input class="products" style="background-image: url('.$row['image_url'].');" type="submit" value=" ">  
+                        <input class="cart" name="t" type="hidden" value="'.$row['name'].'">    
+                        <input class="cart" style="background-image: url('.$row['image_url'].');" type="submit" value=" ">  
                         <p style="font-size: 20px; text-align: center;">'.$row['name'].'<br>$'.$row['price'].'</p>
                         
                         

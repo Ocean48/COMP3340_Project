@@ -1,11 +1,11 @@
 <?php
 
-  // products
+  // cart
 
-  function find_all_products($options=[]) {
+  function find_all_cart($options=[]) {
     global $db;
 
-    $sql = "SELECT * FROM `products` ";
+    $sql = "SELECT * FROM `cart` ";
     // if($visible) {
     //   $sql .= "WHERE visible = true ";
     // }
@@ -21,7 +21,7 @@
 
     //$visible = $options['visible'] ?? false;
 
-    $sql = "SELECT * FROM `products` ";
+    $sql = "SELECT * FROM `cart` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     // if($visible) {
     //   $sql .= "AND visible = true";
@@ -72,7 +72,7 @@
       return $errors;
     }
 
-    $sql = "INSERT INTO `products` ";
+    $sql = "INSERT INTO `cart` ";
     $sql .= "(menu_name, position, visible) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $product['menu_name']) . "',";
@@ -99,7 +99,7 @@
       return $errors;
     }
 
-    $sql = "UPDATE `products` SET ";
+    $sql = "UPDATE `cart` SET ";
     $sql .= "menu_name='" . db_escape($db, $product['menu_name']) . "', ";
     $sql .= "position='" . db_escape($db, $product['position']) . "', ";
     $sql .= "visible='" . db_escape($db, $product['visible']) . "' ";
@@ -122,7 +122,7 @@
   function delete_product($id) {
     global $db;
 
-    $sql = "DELETE FROM `products` ";
+    $sql = "DELETE FROM `cart` ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
