@@ -21,7 +21,7 @@
             <nav>
                 <ul>
                     <li><a href="home.html">Home</a></li>
-                    <li><a href="cart.php">Products</a></li>
+                    <li><a href="products.php">Products</a></li>
                     <li><a href="news.php">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="sign_in.php">Account</a></li>
@@ -30,7 +30,7 @@
         </div>
     </header> -->
 
-    <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='cart.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
+    <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
     <?php
         session_start();
@@ -43,7 +43,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `cart`";
+        $sql = "SELECT * FROM `products`";
 
         $result = $conn->query($sql);
 
