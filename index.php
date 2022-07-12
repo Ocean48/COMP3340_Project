@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="X">
-    <link rel="stylesheet" href="">
-    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Onsale</title>
 </head>
+
 <body>
-    
+    <header>
+        <div class="topnav" id="myTopnav">
+            <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
+            <a href="index.php" class="htext htext2">HOME</a>
+            <a href="" class="htext">About</a>
+            <a href="" class="htext">CART</a>
+            <a href="" class="htext">ACCOUNT</a>
+            
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
+        </div>
+        <script src="js/script.js"></script>
+    </header>
+
 </body>
+
 </html>

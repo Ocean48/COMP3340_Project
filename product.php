@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>
         <?php
-            $t = $_POST['t'];
-            echo $t;
+        $t = $_POST['t'];
+        echo $t;
         ?>
     </title>
 
 </head>
+
 <body>
     <!-- <header>
         <div class="container_header">
@@ -33,78 +35,75 @@
     <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
     <?php
-        session_start();
+    session_start();
 
-        $t = $_POST['t'];
+    $t = $_POST['t'];
 
-        $conn = mysqli_connect("localhost", "root", "123456", "web");
+    $conn = mysqli_connect("localhost", "root", "123456", "web");
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM `products`";
 
-        }
-        $sql = "SELECT * FROM `products`";
+    $result = $conn->query($sql);
 
-        $result = $conn->query($sql);
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        $go = FALSE;
+        $e = $_SESSION['email'];
 
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-            $go = FALSE;
-            $e = $_SESSION['email'];
-
-            while ($row = $result->fetch_assoc()) {
-                if ($t == $row['name']) {
-                    echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                    if($row['image_url2'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url2'].'">';
-                    }
-                    if($row['image_url3'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url3'].'">';
-                    }
-                    if($row['image_url4'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url4'].'">';
-                    }
-                    if($row['image_url5'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url5'].'">';
-                    }
-                    if($row['image_url6'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url6'].'">';
-                    }
-                    if($row['image_url7'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url7'].'">';
-                    }
-                    echo '<form action = "product_.php" method="POST">   
-                    <input name="t" type="hidden" value="'.$t.'">
+        while ($row = $result->fetch_assoc()) {
+            if ($t == $row['name']) {
+                echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">' . $row['name'] . '</h1><br>';
+                if ($row['image_url2'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url2'] . '">';
+                }
+                if ($row['image_url3'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url3'] . '">';
+                }
+                if ($row['image_url4'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url4'] . '">';
+                }
+                if ($row['image_url5'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url5'] . '">';
+                }
+                if ($row['image_url6'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url6'] . '">';
+                }
+                if ($row['image_url7'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url7'] . '">';
+                }
+                echo '<form action = "product_.php" method="POST">   
+                    <input name="t" type="hidden" value="' . $t . '">
                     <input style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;" type="submit" value="Add to Cart"></form>';
-                }
             }
-            $conn->close();
         }
+        $conn->close();
+    } else {
 
-        else {
-
-            while ($row = $result->fetch_assoc()) {
-                if ($t == $row['name']) {
-                    echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                    if($row['image_url2'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url2'].'">';
-                    }
-                    if($row['image_url3'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url3'].'">';
-                    }
-                    if($row['image_url4'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url4'].'">';
-                    }
-                    if($row['image_url5'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url5'].'">';
-                    }
-                    if($row['image_url6'] != '') {
-                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url6'].'">';
-                    }
-                    echo '<br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to add to cart!</b></p>';
+        while ($row = $result->fetch_assoc()) {
+            if ($t == $row['name']) {
+                echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">' . $row['name'] . '</h1><br>';
+                if ($row['image_url2'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url2'] . '">';
                 }
+                if ($row['image_url3'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url3'] . '">';
+                }
+                if ($row['image_url4'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url4'] . '">';
+                }
+                if ($row['image_url5'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url5'] . '">';
+                }
+                if ($row['image_url6'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url6'] . '">';
+                }
+                echo '<br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to add to cart!</b></p>';
             }
-            $conn->close();
         }
+        $conn->close();
+    }
 
 
     ?>
@@ -129,4 +128,5 @@
         <p class="copyright">Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
     </footer> -->
 </body>
-</html> 
+
+</html>
