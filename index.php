@@ -19,11 +19,32 @@
             <a href="" class="htext">About</a>
             <a href="" class="htext">CART</a>
             <a href="" class="htext">ACCOUNT</a>
-            
+
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
         </div>
-        <script src="js/script.js"></script>
+
     </header>
+
+
+
+    <p>body</p>
+
+
+
+
+    <footer>
+        <div class="container_footer">
+            <p>fudhu</p>
+            <br>
+            <p class="copyright">Copyright &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> WEB | All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
 

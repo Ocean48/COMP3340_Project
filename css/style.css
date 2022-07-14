@@ -105,3 +105,20 @@ body {
         padding: 10px 20px;
     }
 }
+
+/* Footer */
+.container_footer{
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #444755;
+    color:#ffffff;
+}
+.copyright {
+    position: relative;
+    color:#ffffff;
+    text-align: center;
+    font-size: small;
+    padding-bottom: 0.25%;
+}
