@@ -1,5 +1,5 @@
 
-        <footer>
+        <footer style="clear: both; position: relative;">
             &copy; <?php echo date('Y'); ?> Shopper Site
         </footer>
 

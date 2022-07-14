@@ -2,10 +2,10 @@
 
   // cart
 
-  function find_all_cart($options=[]) {
+  function find_all_product($options=[]) {
     global $db;
 
-    $sql = "SELECT * FROM `cart` ";
+    $sql = "SELECT * FROM `products` ";
     // if($visible) {
     //   $sql .= "WHERE visible = true ";
     // }
@@ -64,21 +64,22 @@
     return $errors;
   }
 
-  function insert_product($product) {
+  function insert_product($product_id, $product_name, $product_img) {
     global $db;
 
-    $errors = validate_product($product);
-    if(!empty($errors)) {
-      return $errors;
-    }
-
-    $sql = "INSERT INTO `cart` ";
-    $sql .= "(menu_name, position, visible) ";
-    $sql .= "VALUES (";
-    $sql .= "'" . db_escape($db, $product['menu_name']) . "',";
-    $sql .= "'" . db_escape($db, $product['position']) . "',";
-    $sql .= "'" . db_escape($db, $product['visible']) . "'";
-    $sql .= ")";
+    // To check does product exist
+    // $errors = validate_product($product);
+    // if(!empty($errors)) {
+    //   return $errors;
+    // }
+    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`) VALUES ('".$product_id."','".$product_name."','".$product_img."')";
+    // $sql = "INSERT INTO `cart` ";
+    // $sql .= "(menu_name, position, visible) ";
+    // $sql .= "VALUES (";
+    // $sql .= "'" . db_escape($db, $product['menu_name']) . "',";
+    // $sql .= "'" . db_escape($db, $product['position']) . "',";
+    // $sql .= "'" . db_escape($db, $product['visible']) . "'";
+    // $sql .= ")";
     $result = mysqli_query($db, $sql);
     // For INSERT statements, $result is true/false
     if($result) {
