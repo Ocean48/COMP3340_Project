@@ -1,11 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php
-
-    $product = [];
-    $product["product_name"] = "";
-
-?>
 
 <?php $page_title = 'Create Product'; ?>
 <?php include(SHARED_PATH. '/header.php'); ?>
@@ -24,10 +18,16 @@
 
             <h1>Create Subject</h1>
 
-            <form action="<?php echo url_for('/staff/subjects/new.php'); ?>" method="post">
+            <form action="<?php echo url_for('/product/upload.php'); ?>" method="post" enctype="multipart/form-data">
                 <dl>
                     <dt>Product Name</dt>
-                    <dd><input type="text" name="product_name" value="<?php echo h($product['product_name']); ?>" /></dd>
+                    <dd><input type="text" name="product_name" placeholder="Product Name" /></dd>
+                    <br><br>
+                    <dt>Product Image name</dt>
+                    <dd><input type="text" name="product_img" placeholder="Enter name of image with extension image.png" /></dd>
+                    <br><br>
+                    <dt>Upload Image</dt>
+                    <dd><input type="file" id="fileToUpload" name="fileToUpload" accept="image/*"></dd>
                 </dl>
 
                 <div>
