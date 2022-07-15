@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 26, 2022 at 06:38 PM
+-- Generation Time: Jul 15, 2022 at 06:58 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -31,16 +31,16 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `email` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf16;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`email`, `password`) VALUES
-('test2@gmail.com', '123456'),
-('sirayno2@gmail.com', 'siray123'),
-('admin', '123456');
+('\0t\0e\0s\0t\02\0@\0g\0m\0a\0i\0l\0.\0c\0o\0m', '\01\02\03\04\05\06'),
+('\0s\0i\0r\0a\0y\0n\0o\02\0@\0g\0m\0a\0i\0l\0.\0c\0o\0m', '\0s\0i\0r\0a\0y\01\02\03'),
+('\0a\0d\0m\0i\0n', '\01\02\03\04\05\06');
 
 -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admins`
@@ -63,7 +63,9 @@ CREATE TABLE IF NOT EXISTS `admins` (
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, 'admin', '123456'),
 (2, 'test', '123456'),
-(3, 'guest', '123456');
+(3, 'guest', '123456'),
+(4, 'ttt', '123456'),
+(5, '1', '123');
 
 -- --------------------------------------------------------
 
@@ -73,12 +75,12 @@ INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
-  `email` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(40) NOT NULL,
   `product_id` int(10) NOT NULL,
-  `product_name` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `product_name` varchar(200) NOT NULL,
   `price` double NOT NULL,
   `quantity` int(10) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf16;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cart`
@@ -96,28 +98,22 @@ INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) 
 
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `price` float NOT NULL,
-  `key_word` text CHARACTER SET utf8 NOT NULL,
-  `image_url` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url2` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url3` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url4` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url5` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url6` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `image_url7` varchar(200) CHARACTER SET utf8 NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf16;
+  `product_id` int(10) NOT NULL AUTO_INCREMENT,
+  `product_name` text NOT NULL,
+  `product_img` varchar(50) NOT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`name`, `price`, `key_word`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7`) VALUES
-('Test Product', 1299, '', 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 2', 680, '', 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 3', 880, '', 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 4', 1680, '', 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('HDH82', 311, 'easy setup ', '', '', '', '', '', '', '');
+INSERT INTO `products` (`product_id`, `product_name`, `product_img`) VALUES
+(1, 'f', ''),
+(2, 'Uploaded Product 1', 'image1.jpg'),
+(3, 'Uploaded Product 2', 'image2.jpg'),
+(4, 's', 'image2.jpg'),
+(5, 'test', 'index.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
