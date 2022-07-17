@@ -64,7 +64,7 @@
     return $errors;
   }
 
-  function insert_product($product_id, $product_name, $product_img) {
+  function insert_product($product_id, $product_name, $product_img, $product_description) {
     global $db;
 
     // To check does product exist
@@ -72,7 +72,7 @@
     // if(!empty($errors)) {
     //   return $errors;
     // }
-    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`) VALUES ('".$product_id."','".$product_name."','".$product_img."')";
+    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`, `product_description`) VALUES ('".$product_id."','".$product_name."','".$product_img."','".$product_description."')";
     // $sql = "INSERT INTO `cart` ";
     // $sql .= "(menu_name, position, visible) ";
     // $sql .= "VALUES (";
@@ -123,12 +123,24 @@
   function delete_product($id) {
     global $db;
 
-    $sql = "DELETE FROM `cart` ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-    $sql .= "LIMIT 1";
+    $sql = "DELETE FROM `products` WHERE `product_id` = ".$id."";
     $result = mysqli_query($db, $sql);
 
     // For DELETE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // DELETE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function reset_product_id() {
+    global $db;
+    $sql = "ALTER TABLE `products` AUTO_INCREMENT = 1;";
+    $result = mysqli_query($db, $sql);
     if($result) {
       return true;
     } else {
@@ -575,6 +587,3 @@
       exit;
     }
   }
-
-
-?>

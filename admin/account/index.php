@@ -49,6 +49,7 @@
                         <td><?php echo h($admin['username']); ?></td>
   	                    <td><?php echo h($admin['password']); ?></td>
   	                    <td><a class="action" href="<?php echo url_for('/account/index.php?id=' . h(u($admin['id']))); ?>">Edit</a></td>
+                        <!-- After delecting a product run this mysql code "ALTER TABLE `admins` AUTO_INCREMENT = 1" to reset the id auto increment -->
                         <td><a class="action" href="<?php echo url_for('/account/index.php?id=' . h(u($admin['id']))); ?>">delete</a></td>
   	                </tr>
                     <?php } ?>

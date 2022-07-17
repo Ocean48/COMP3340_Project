@@ -5,6 +5,7 @@
 $product_id = 0;
 $product_name = $_POST['product_name'];
 $product_img= $_POST['product_img'];
+$product_description= $_POST['product_description'];
 
 ?>
 
@@ -19,7 +20,7 @@ $product_img= $_POST['product_img'];
 
     <div id="content">
 
-        <h1>P</h1>
+        <h1>Product Uploading</h1>
 
         <?php
         $target_dir = "images/";
@@ -67,7 +68,7 @@ $product_img= $_POST['product_img'];
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                insert_product($product_id, $product_name, $product_img);
+                insert_product($product_id, $product_name, $product_img, $product_description);
                 ?>
                 <a class="back-link" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
                 <?php

@@ -28,6 +28,9 @@
                     <br><br>
                     <dt>Upload Image</dt>
                     <dd><input type="file" id="fileToUpload" name="fileToUpload" accept="image/*"></dd>
+                    <br><br>
+                    <dt>Product Description</dt>
+                    <dd><textarea name="product_description"> </textarea></dd>
                 </dl>
 
                 <div>
