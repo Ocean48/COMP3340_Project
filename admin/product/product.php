@@ -43,6 +43,7 @@ $id = $_GET['id'];
                     <th>product_id</th>
                     <th>product_name</th>
                     <th>Product Image</th>
+                    <th>Product Description</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -53,9 +54,10 @@ $id = $_GET['id'];
                             <td><?php echo h($product['product_id']); ?></td>
                             <td><?php echo h($product['product_name']); ?></td>
                             <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
+                            <td><?php echo h($product['product_description']); ?></td>
                             <td><a class="action" href="<?php echo url_for('/product/index.php?id=' . h(u($product['product_id']))); ?>">Edit</a></td>
                             <!-- After delecting a product run this mysql code "ALTER TABLE `products` AUTO_INCREMENT = 1" to reset the product_id auto increment -->
-                            <td><a class="action" href="<?php echo url_for('/product/index.php?id=' . h(u($product['product_id']))); ?>">delete</a></td>
+                            <td><a class="action" href="<?php echo url_for('/product/deleted.php?id=' . h(u($product['product_id']))); ?>">delete</a></td>
                         </tr>
                 <?php }
                 } ?>
