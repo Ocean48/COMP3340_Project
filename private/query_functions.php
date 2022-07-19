@@ -92,20 +92,21 @@
     }
   }
 
-  function update_product($product) {
+  function update_product($product_id, $product_name, $product_img, $product_description) {
     global $db;
 
-    $errors = validate_product($product);
-    if(!empty($errors)) {
-      return $errors;
-    }
+    // $errors = validate_product($product);
+    // if(!empty($errors)) {
+    //   return $errors;
+    // }
 
-    $sql = "UPDATE `cart` SET ";
-    $sql .= "menu_name='" . db_escape($db, $product['menu_name']) . "', ";
-    $sql .= "position='" . db_escape($db, $product['position']) . "', ";
-    $sql .= "visible='" . db_escape($db, $product['visible']) . "' ";
-    $sql .= "WHERE id='" . db_escape($db, $product['id']) . "' ";
-    $sql .= "LIMIT 1";
+    $sql = "UPDATE `products` SET `product_name`='".$product_name."',`product_img`='".$product_img."',`product_description`='".$product_description."' WHERE `product_id` = ".$product_id.";";
+    // $sql = "UPDATE `cart` SET ";
+    // $sql .= "menu_name='" . db_escape($db, $product['menu_name']) . "', ";
+    // $sql .= "position='" . db_escape($db, $product['position']) . "', ";
+    // $sql .= "visible='" . db_escape($db, $product['visible']) . "' ";
+    // $sql .= "WHERE id='" . db_escape($db, $product['id']) . "' ";
+    // $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
     // For UPDATE statements, $result is true/false
