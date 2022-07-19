@@ -334,8 +334,8 @@
   function find_all_users() {
     global $db;
 
-    $sql = "SELECT * FROM `users` ";
-    $sql .= "ORDER BY username ASC";
+    $sql = "SELECT * FROM `account` ";
+    $sql .= "ORDER BY email ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -391,6 +391,18 @@
     $admin = mysqli_fetch_assoc($result); // find first
     mysqli_free_result($result);
     return $admin; // returns an assoc. array
+  }
+  function find_user_by_email($email) {
+    global $db;
+
+    $sql = "SELECT * FROM `account` ";
+    $sql .= "WHERE email='" . db_escape($db, $email) . "' ";
+    $sql .= "LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $account = mysqli_fetch_assoc($result); // find first
+    mysqli_free_result($result);
+    return $account; // returns an assoc. array
   }
   // function validate_admin($admin) {
 
@@ -455,7 +467,7 @@
       exit;
     }
   }
-  function insert_user($admin) {
+  function insert_user($account) {
     global $db;
 
     // $errors = validate_admin($admin);
@@ -463,15 +475,15 @@
     //   return $errors;
     // }
 
-    $password = ($admin['password']);
+    $password = ($account['password']);
 
-    $sql = "INSERT INTO `users` ";
-    $sql .= "(username, password) ";
+    $sql = "INSERT INTO `account` ";
+    $sql .= "(email, password) ";
     $sql .= "VALUES (";
     // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
     // $sql .= "'" . db_escape($db, $admin['last_name']) . "',";
     // $sql .= "'" . db_escape($db, $admin['email']) . "',";
-    $sql .= "'" . db_escape($db, $admin['username']) . "',";
+    $sql .= "'" . db_escape($db, $account['email']) . "',";
     $sql .= "'" . db_escape($db, $password) . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
@@ -519,7 +531,7 @@
       exit;
     }
   }
-  function update_user($admin) {
+  function update_user($account) {
     global $db;
 
     // $errors = validate_admin($admin);
@@ -527,15 +539,15 @@
     //   return $errors;
     // }
 
-    $password = $admin['password'];
+    $password = $account['password'];
 
-    $sql = "UPDATE `users` SET ";
+    $sql = "UPDATE account SET ";
     // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
     // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
     // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
-    $sql .= "password='" . db_escape($db, $password) . "', ";
-    $sql .= "username='" . db_escape($db, $admin['username']) . "' ";
-    $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
+    //$sql .= "WHERE id='" . db_escape($db, $account['id']) . "' ";
+    $sql .= "password='" . db_escape($db, $password) . "' ";
+    $sql .= "WHERE email='" . db_escape($db, $account['email']) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
 
@@ -569,11 +581,11 @@
     }
   }
 
-  function delete_user($admin) {
+  function delete_user($email) {
     global $db;
 
-    $sql = "DELETE FROM `users` ";
-    $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
+    $sql = "DELETE FROM `account` ";
+    $sql .= "WHERE email='" . db_escape($db, $email) . "' ";
     $sql .= "LIMIT 1;";
     $result = mysqli_query($db, $sql);
 

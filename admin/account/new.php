@@ -5,11 +5,11 @@ require_once('../../private/initialize.php');
 require_login();
 
 if(is_post_request()) { //if post request process the form
-  $admin = [];
-  $admin['username'] = $_POST['username'] ?? '';
-  $admin['password'] = $_POST['password'] ?? '';
+  $account = [];
+  $account['email'] = $_POST['email'] ?? '';
+  $account['password'] = $_POST['password'] ?? '';
 
-  $result = insert_admin($admin);
+  $result = insert_user($account);
   if($result === true) {
     $new_id = mysqli_insert_id($db);
     //$_SESSION['message'] = 'Admin created.';
@@ -20,18 +20,18 @@ if(is_post_request()) { //if post request process the form
 
 } else {
   // display the blank form
-  $admin = [];
-  $admin["username"] = '';
-  $admin['password'] = '';
+  $account = [];
+  $account["email"] = '';
+  $account['password'] = '';
 }
 ?>
 
-<?php $page_title = 'Register Admin'; ?>
+<?php $page_title = 'Register User Account'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>
         <header>
-        <h1>Product Menu</h1>
+        <h1>Account Menu</h1>
         </header>
 
 
@@ -40,13 +40,13 @@ if(is_post_request()) { //if post request process the form
             <a class="back-link" href="<?php echo url_for('/account/index.php'); ?>">&laquo; Back to List</a>
 
             <div class="admin new">
-                <h1>Register Admin</h1>
+                <h1>Register User Account</h1>
 
                 <form action="<?php echo url_for('/account/new.php'); ?>" method="post">
     
                 <dl>
-                    <dt>Username</dt>
-                    <dd><input type="text" name="username" value="<?php echo h($admin['username']); ?>" /></dd>
+                    <dt>Email</dt>
+                    <dd><input type="text" name="email" value="<?php echo h($account['email']); ?>" /></dd>
                 </dl>
 
                 <dl>
@@ -56,7 +56,7 @@ if(is_post_request()) { //if post request process the form
             <br/>
 
             <div id="operations">
-            <input type="submit" value="Register User" />
+            <input type="submit" value="Register User Account" />
             </div>
         </form>
 
