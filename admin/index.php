@@ -13,7 +13,7 @@
 
         <nav>
             <ul>
-                <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
+                <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
                 <li><a href="<?php echo url_for('/index.php'); ?>"> Main Menu</a> </li>
                 <li><a href="<?php echo url_for('/account/index.php'); ?>"> Admin Accounts</a> </li>
                 <li><a href="<?php echo url_for('/product/index.php'); ?>"> Product Menu</a> </li>

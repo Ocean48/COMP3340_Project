@@ -2,7 +2,7 @@
 
 <?php require_login(); 
 
-    $admin_set = find_all_admins();
+    $account_set = find_all_users();
 
 ?>
 
@@ -18,7 +18,7 @@
 
         <nav>
             <ul>
-                <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
+                <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
                 <li><a href="<?php echo url_for('/index.php'); ?>"> Main Menu</a> </li>
                 <li><a href="<?php echo url_for('/account/index.php'); ?>"> Account Menu</a> </li>
                 <li><a href="<?php echo url_for('/product/index.php'); ?>"> Product Menu</a> </li>
@@ -31,26 +31,26 @@
                 <h1>Users in Database</h1>
 
                 <div class="actions">
-                    <a class="action" href="<?php echo url_for('/account/new.php'); ?>">Create New Product</a>
+                    <a class="action" href="<?php echo url_for('/account/new.php'); ?>">Create New User Account</a>
                 </div>
 
                 <table class="list">
                     <tr>
-                        <th>id</th>
+                        
                         <th>username</th>
   	                    <th>password</th>
   	                    <th>&nbsp;</th>
   	                    <th>&nbsp;</th>
   	                </tr>
 
-                    <?php while($admin = mysqli_fetch_assoc($admin_set)) {?>
+                    <?php while($account = mysqli_fetch_assoc($account_set)) {?>
                     <tr>
-                        <td><?php echo h($admin['id']); ?></td>
-                        <td><?php echo h($admin['username']); ?></td>
-  	                    <td><?php echo h($admin['password']); ?></td>
-  	                    <td><a class="action" href="<?php echo url_for('/account/index.php?id=' . h(u($admin['id']))); ?>">Edit</a></td>
+                        <!-- <td><?php echo h($admin['id']); ?></td> -->
+                        <td><?php echo h($account['email']); ?></td>
+  	                    <td><?php echo h($account['password']); ?></td>
+  	                    <td><a class="action" href="<?php echo url_for('/account/edit.php?email=' . h(u($account['email']))); ?>">Edit</a></td>
                         <!-- After delecting a product run this mysql code "ALTER TABLE `admins` AUTO_INCREMENT = 1" to reset the id auto increment -->
-                        <td><a class="action" href="<?php echo url_for('/account/index.php?id=' . h(u($admin['id']))); ?>">delete</a></td>
+                        <td><a class="action" href="<?php echo url_for('/account/delete.php?email=' . h(u($account['email']))); ?>">delete</a></td>
   	                </tr>
                     <?php } ?>
                 </table>
