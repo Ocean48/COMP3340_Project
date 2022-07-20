@@ -15,9 +15,10 @@
             <ul>
                 <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
                 <li><a href="<?php echo url_for('/index.php'); ?>"> Main Menu</a> </li>
-                <li><a href="<?php echo url_for('/account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('/admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('/user_account/index.php'); ?>"> User Accounts</a> </li>
                 <li><a href="<?php echo url_for('/product/index.php'); ?>"> Product Menu</a> </li>
-                <li><a href="<?php echo url_for('/account/logout.php'); ?>"> Logout</a> </li>
+                <li><a href="<?php echo url_for('/admin_account/logout.php'); ?>"> Logout</a> </li>
             </ul>
         </nav>
 

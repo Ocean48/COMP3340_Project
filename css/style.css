@@ -308,3 +308,9 @@ body {
     }
 
 }
+
+/* Other */
+/* Class to bold text */
+.bold {
+    font-weight: bold;
+}

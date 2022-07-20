@@ -6,14 +6,14 @@ require_login();
 
 if(is_post_request()) { //if post request process the form
   $account = [];
-  $account['email'] = $_POST['email'] ?? '';
+  $account['username'] = $_POST['username'] ?? '';
   $account['password'] = $_POST['password'] ?? '';
 
-  $result = insert_user($account);
+  $result = insert_admin($account);
   if($result === true) {
     $new_id = mysqli_insert_id($db);
     //$_SESSION['message'] = 'Admin created.';
-    redirect_to(url_for('/account/index.php'));
+    redirect_to(url_for('/admin_account/index.php'));
   } else {
     $errors = $result;
   }
@@ -21,7 +21,7 @@ if(is_post_request()) { //if post request process the form
 } else {
   // display the blank form
   $account = [];
-  $account["email"] = '';
+  $account["username"] = '';
   $account['password'] = '';
 }
 ?>
@@ -37,26 +37,26 @@ if(is_post_request()) { //if post request process the form
 
         <div id="content">
 
-            <a class="back-link" href="<?php echo url_for('/account/index.php'); ?>">&laquo; Back to List</a>
+            <a class="action" href="<?php echo url_for('/admin_account/index.php'); ?>">&laquo; Back to List</a>
 
             <div class="admin new">
                 <h1>Register User Account</h1>
 
-                <form action="<?php echo url_for('/account/new.php'); ?>" method="post">
+                <form action="<?php echo url_for('/admin_account/new.php'); ?>" method="post">
     
                 <dl>
-                    <dt>Email</dt>
-                    <dd><input type="text" name="email" value="<?php echo h($account['email']); ?>" /></dd>
+                    <dt>Username</dt>
+                    <dd><input type="text" name="username" placeholder="username" /></dd>
                 </dl>
 
                 <dl>
                     <dt>Password</dt>
-                    <dd><input type="password" name="password" value="" /></dd>
+                    <dd><input type="password" name="password" placeholder="password" /></dd>
                 </dl>
             <br/>
 
             <div id="operations">
-            <input type="submit" value="Register User Account" />
+            <input type="submit" value="Create Admin" />
             </div>
         </form>
 

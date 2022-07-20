@@ -1,23 +1,25 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php');
+require_login();
 
 
-<?php $page_title = 'Create Product'; ?>
-<?php include(SHARED_PATH. '/header.php'); ?>
+$page_title = 'Create Product';
+include(SHARED_PATH . '/header.php'); ?>
 
 <body>
-        <header>
+    <header>
         <h1>Create Product</h1>
-        </header>
+    </header>
 
 
     <div id="content">
 
-        <a class="back-link" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
+        <a class="action" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
 
         <div class="subject new">
 
-            <h1>Create Subject</h1>
+            <h1>Create Product</h1>
 
+            <!-- Product info input fileds -->
             <form action="<?php echo url_for('/product/upload.php'); ?>" method="post" enctype="multipart/form-data">
                 <dl>
                     <dt>Product Name</dt>
@@ -37,11 +39,10 @@
                     <input type="submit" value="Create Product" />
                 </div>
             </form>
-
-
+            <br><br>
         </div>
-
-
     </div>
 
-<?php include(SHARED_PATH . '/footer.php'); ?>
+    <br><br>
+
+    <?php include(SHARED_PATH . '/footer.php'); ?>
