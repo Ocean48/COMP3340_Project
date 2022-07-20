@@ -36,7 +36,6 @@ footer {
 }
 
 
-
 nav{
     display: inline-block;
     text-align: center;
@@ -50,6 +49,7 @@ nav ul li {
     margin-right: 2em;
 }
 
+/* Table for display list of accounts and products */
 table {
     border-collapse: collapse;
 }
@@ -58,12 +58,19 @@ table.list {
 }
 table.list tr td {
     border: 1px solid #999999;
+    text-align: center;
 }
 table.list tr th {
-    border: 1px solid #D7650C;
+    border: 1px solid #999999;
     background: #D7650C;
     color: white;
-    text-align: left;
+}
+table.list td a {
+    text-decoration: none;
+    color: #101010;
+}
+table.list td a:hover {
+    color: #04bcf9;
 }
 
 #content {
@@ -91,4 +98,11 @@ dd {
     clear: both;
     margin: 1em 0 1em 0;
 }
-  
+
+/* actions links on top of table/form like create, back */
+.actions {
+    margin-bottom: 5px;
+}
+.action {
+    text-decoration: none;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 17, 2022 at 05:08 AM
+-- Generation Time: Jul 20, 2022 at 05:07 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`email`, `password`) VALUES
-('\0t\0e\0s\0t\02\0@\0g\0m\0a\0i\0l\0.\0c\0o\0m', '\01\02\03\04\05\06'),
-('\0s\0i\0r\0a\0y\0n\0o\02\0@\0g\0m\0a\0i\0l\0.\0c\0o\0m', '\0s\0i\0r\0a\0y\01\02\03'),
-('\0a\0d\0m\0i\0n', '\01\02\03\04\05\06');
+('test2@gmail.com', '123456'),
+('test@gmail.com', '123456'),
+('admin@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admins`
@@ -62,10 +62,9 @@ CREATE TABLE IF NOT EXISTS `admins` (
 
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, 'admin', '123456'),
-(2, 'test', '123456'),
 (3, 'guest', '123456'),
-(4, 'ttt', '123456'),
-(5, '1', '123');
+(6, 'admin2', '123456'),
+(7, 'test', '1234567');
 
 -- --------------------------------------------------------
 
@@ -103,18 +102,19 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_img` varchar(50) NOT NULL,
   `product_description` text NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_img`, `product_description`) VALUES
-(2, 'Uploaded Product 1', 'image1.jpg', ''),
 (3, 'Uploaded Product 2', 'image2.jpg', ''),
-(4, 'dsfgh', 'index.jpg', 'dsf'),
 (5, 'dfs', 'index.jpg', 'dsa'),
-(6, 's', 'index.jpg', 'index.jpg');
+(6, 's', 'index.jpg', 'index.jpg'),
+(7, '3', 'index.jpg', 'r'),
+(8, 'r', 'index.jpg', 'i'),
+(10, 'eee', 'index.jpg', ' ');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

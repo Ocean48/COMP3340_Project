@@ -40,7 +40,7 @@
   // require a valid login before granting acccess to the page.
   function require_login() {
     if(!is_logged_in()) {
-      redirect_to(url_for('/account/login.php'));
+      redirect_to(url_for('/admin_account/login.php'));
     } else {
       // Do nothing, let the rest of the page proceed
     }

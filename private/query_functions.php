@@ -327,7 +327,7 @@
     global $db;
 
     $sql = "SELECT * FROM admins ";
-    $sql .= "ORDER BY username ASC";
+    $sql .= "ORDER BY id ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -501,7 +501,7 @@
   }
 
 
-  function update_admin($admin) {
+  function update_admin($account_id, $new_usrname, $account_password) {
     global $db;
 
     // $errors = validate_admin($admin);
@@ -509,16 +509,15 @@
     //   return $errors;
     // }
 
-    $password = $admin['password'];
-
-    $sql = "UPDATE admins SET ";
-    // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
-    // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
-    // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
-    // $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "',";
-    $sql .= "password='" . db_escape($db, $password) . "', ";
-    $sql .= "username='" . db_escape($db, $admin['username']) . "' ";
-    $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
+    $sql = "UPDATE `admins` SET `username`='".$new_usrname."',`password`='".$account_password."' WHERE `id` = ".$account_id.";";
+    // $sql = "UPDATE admins SET ";
+    // // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
+    // // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
+    // // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
+    // // $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "',";
+    // $sql .= "password='" . db_escape($db, $password) . "', ";
+    // $sql .= "username='" . db_escape($db, $admin['username']) . "' ";
+    // $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
   
     $result = mysqli_query($db, $sql);
 
@@ -532,7 +531,7 @@
       exit;
     }
   }
-  function update_user($account) {
+  function update_user($account_email, $new_email, $account_password) {
     global $db;
 
     // $errors = validate_admin($admin);
@@ -540,15 +539,14 @@
     //   return $errors;
     // }
 
-    $password = $account['password'];
-
     $sql = "UPDATE account SET ";
     // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
     // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
     // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
     //$sql .= "WHERE id='" . db_escape($db, $account['id']) . "' ";
-    $sql .= "password='" . db_escape($db, $password) . "' ";
-    $sql .= "WHERE email='" . db_escape($db, $account['email']) . "' ";
+    $sql .= "email='" . db_escape($db, $new_email) . "', ";
+    $sql .= "password='" . db_escape($db, $account_password) . "' ";
+    $sql .= "WHERE email='" . db_escape($db, $account_email) . "' ";
     $sql .= "LIMIT 1";
     $result = mysqli_query($db, $sql);
 
@@ -563,15 +561,30 @@
     }
   }
 
-  function delete_admin($admin) {
+  function delete_admin($id) {
     global $db;
 
-    $sql = "DELETE FROM `admins` ";
-    $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
-    $sql .= "LIMIT 1;";
+    $sql = "DELETE FROM `admins` WHERE `id` = ".$id."";
+    // $sql = "DELETE FROM `admins` ";
+    // $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
+    // $sql .= "LIMIT 1;";
     $result = mysqli_query($db, $sql);
 
     // For DELETE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // DELETE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function reset_admin_id() {
+    global $db;
+    $sql = "ALTER TABLE `admins` AUTO_INCREMENT = 1;";
+    $result = mysqli_query($db, $sql);
     if($result) {
       return true;
     } else {
