@@ -19,13 +19,13 @@ if (is_post_request()) {
     // Old info will be used if field is left empty
     while ($product = mysqli_fetch_assoc($product_set)) {
         if ($product['product_id'] == $product_id) {
-            if ($_POST['product_name'] == null) {
+            if (empty($_POST['product_name'])) {
                 $product_name = $product['product_name'];
             }
-            if ($_POST['product_img'] == null) {
+            if (empty($_POST['product_img'])) {
                 $product_img = $product['product_img'];
             }
-            if ($_POST['product_description'] == null) {
+            if (empty($_POST['product_description'])) {
                 $product_description = $product['product_description'];
             }
             break;

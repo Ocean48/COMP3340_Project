@@ -19,10 +19,10 @@ if (is_post_request()) {
   $account_set = find_all_admins();
   while ($account = mysqli_fetch_assoc($account_set)) {
     if ($account['id'] == $account_id) {
-      if ($_POST['username'] == null) {
+      if (empty($_POST['username'])) {
         $new_usrname = $account['username'];
       }
-      if ($_POST['password'] == null) {
+      if (empty($_POST['password'])) {
         $account_password = $account['password'];
       }
       break;
