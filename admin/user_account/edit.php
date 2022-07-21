@@ -18,10 +18,10 @@ if (is_post_request()) {
   $account_set = find_all_users();
   while ($account = mysqli_fetch_assoc($account_set)) {
     if ($account['email'] == $account_email) {
-      if ($_POST['email'] == null) {
+      if (empty($_POST['email'])) {
         $new_email = $email;
       }
-      if ($_POST['password'] == null) {
+      if (empty($_POST['password'])) {
         $account_password = $account['password'];
       }
       break;
