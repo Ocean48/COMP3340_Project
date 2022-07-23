@@ -613,3 +613,12 @@
       exit;
     }
   }
+
+  function get_style() {
+    global $db;
+
+    $sql = "SELECT * FROM `layout` WHERE 1";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
