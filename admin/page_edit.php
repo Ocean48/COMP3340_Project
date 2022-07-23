@@ -29,7 +29,7 @@ if (is_post_request()) {
 
     <nav>
         <ul>
-            <<li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
+            <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
             <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
             <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
             <li><a href="<?php echo url_for('user_account/index.php'); ?>"> User Accounts</a> </li>
