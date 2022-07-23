@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 20, 2022 at 05:07 AM
+-- Generation Time: Jul 23, 2022 at 04:32 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -64,7 +64,7 @@ INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 (1, 'admin', '123456'),
 (3, 'guest', '123456'),
 (6, 'admin2', '123456'),
-(7, 'test', '1234567');
+(7, 'admin3', '1234');
 
 -- --------------------------------------------------------
 
@@ -88,6 +88,24 @@ CREATE TABLE IF NOT EXISTS `cart` (
 INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) VALUES
 ('sirayno2@gmail.com', 0, 'Test Product 3', 880, 0),
 ('sirayno2@gmail.com', 0, 'Test Product 2', 680, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `layout`
+--
+
+DROP TABLE IF EXISTS `layout`;
+CREATE TABLE IF NOT EXISTS `layout` (
+  `background_color` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `layout`
+--
+
+INSERT INTO `layout` (`background_color`) VALUES
+('#c4ffc4');
 
 -- --------------------------------------------------------
 

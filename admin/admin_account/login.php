@@ -30,7 +30,7 @@ if(is_post_request()) {
         // echo password_verify_own($password, $admin['password']);
         // password matches
         log_in_admin($admin);
-        redirect_to(url_for('/index.php'));
+        redirect_to(url_for('index.php'));
       } else {
         // username found, but password does not match
         $errors[] = $login_failure_msg;

@@ -1,3 +1,11 @@
+<?php
+
+require_once('private/initialize.php');
+
+$layout = mysqli_fetch_assoc(get_style());
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +19,7 @@
     <title>Onsale</title>
 </head>
 
-<body>
+<body style="background-color: <?php echo $layout['background_color'] ?>;">
     <header>
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
@@ -28,6 +36,7 @@
 
 
     <p>Main</p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
