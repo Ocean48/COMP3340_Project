@@ -10,14 +10,18 @@ if (is_post_request()) {
     // If pre view is clicked
     if (isset($_POST["pre-view"])) {
         $bc = $_POST["bc"];
-        update_style($bc, 0);
+        $mc = $_POST["mc"];
+        $mtc = $_POST["mtc"];
+        update_style($bc, $mc, $mtc, 0);
         $layout = get_style_by_view(0);
     }
 
     // If save is clicked
     else if (isset($_POST["save"])) {
         $bc = $_POST["bc"];
-        update_style($bc, 1);
+        $mc = $_POST["mc"];
+        $mtc = $_POST["mtc"];
+        update_style($bc, $mc, $mtc, 1);
         $layout = get_style_by_view(1);
     }
 }
@@ -50,7 +54,11 @@ if (is_post_request()) {
     <div>
 
         <form action="page_edit.php" method="POST">
-            Color for background color<input type="color" name="bc" value="<?php echo $layout['background_color'] ?>">
+            Background color:<input type="color" name="bc" value="<?php echo $layout['background_color'] ?>">
+            <br><br>
+            Header and Footer background color:<input type="color" name="mc" value="<?php echo $layout['margin_color'] ?>">
+            <br><br>
+            Header and Footer Text background color:<input type="color" name="mtc" value="<?php echo $layout['margin_text_color'] ?>">
             <input type="submit" name="pre-view" value="Pre View">
             <input type="submit" name="save" value="Save">
         </form>
@@ -58,7 +66,6 @@ if (is_post_request()) {
         <br><br>
         <p>Pre View: </p>
 
-        <br>
         <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe> -->
         <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe>
     </div>

@@ -625,13 +625,10 @@
     return $style; // returns an assoc. array
   }
 
-  function update_style($bc, $n) {
+  function update_style($bc, $mc, $mtc, $n) {
     global $db;
 
-   
-
-    $sql = "UPDATE `layout` SET `background_color`='$bc' WHERE `view` = $n";
-
+    $sql = "UPDATE `layout` SET `background_color`='$bc',`margin_color`='$mc',`margin_text_color`='$mtc' WHERE `view` = $n";
   
     $result = mysqli_query($db, $sql);
 

@@ -7,7 +7,7 @@ body {
 
 /* header */
 .topnav {
-    background-color: #1c232f;
+    background-color: #ff8d14;
     overflow: hidden;
 }
 
@@ -34,7 +34,6 @@ body {
 }
 
 .topnav .htext {
-    text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF;
     margin-top: 80px;
     font-size: 35px;
 }

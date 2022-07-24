@@ -17,9 +17,29 @@ $layout = get_style_by_view(1);
     <meta name="author" content="X">
     <link rel="stylesheet" href="css/style.css">
     <title>Onsale</title>
+
+    <!-- load style from database -->
+    <style>
+        body {
+            background-color: <?php echo $layout["background_color"]; ?>;
+        }
+
+        .topnav {
+            background-color: <?php echo $layout["margin_color"]; ?>;
+        }
+
+        .topnav a {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .container_footer {
+            background-color: <?php echo $layout["margin_color"]; ?>;
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+    </style>
 </head>
 
-<body style="background-color: <?php echo $layout["background_color"] ?>;">
+<body>
     <header>
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
