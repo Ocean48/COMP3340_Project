@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php require_login(); 
+<?php admin_require_login(); 
 
     $account_set = find_all_admins();
 

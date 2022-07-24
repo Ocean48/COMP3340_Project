@@ -1,3 +1,11 @@
+<?php
+
+require_once('private/initialize.php');
+
+$product_set = find_all_product();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,79 +40,43 @@
         </div>
     </header> -->
 
-    <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
+    <div id="content">
+        <div id="productlisting">
+            <h1>Products</h1>
 
-    <?php
-    session_start();
+            <div class="actions">
+                <a class="action" href="<?php echo url_for('/product/new.php'); ?>">Create New Product</a>
+            </div>
 
-    $t = $_POST['t'];
+            <table class="list">
+                <tr>
+                    <!-- <th>product_id</th> -->
+                    <th>product_name</th>
+                    <th>Product Image</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
 
-    $conn = mysqli_connect("localhost", "root", "123456", "web");
+                <!-- Display all product -->
+                <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
+                    <tr>
+                        <!-- <td><?//php echo h($product['product_id']); ?></td> -->
+                        <td><?php echo h($product['product_name']); ?></td>
+                        <td><img width="100px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
+                        <td><a class="action" href="<?php echo url_for('/product/product.php?id=' . h(u($product['product_id']))); ?>">More</a></td>
+                        <td><a class="action" href="<?php echo url_for('/product/edit.php?id=' . h(u($product['product_id']))); ?>">Edit</a></td>
+                        <!-- After delecting a product run this mysql code "ALTER TABLE `products` AUTO_INCREMENT = 1" to reset the product_id auto increment -->
+                        <td><a class="action" href="<?php echo url_for('/product/deleted.php?id=' . h(u($product['product_id']))); ?>">Delete</a></td>
+                    </tr>
+                <?php } ?>
+            </table>
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT * FROM `products`";
 
-    $result = $conn->query($sql);
+        </div>
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        $go = FALSE;
-        $e = $_SESSION['email'];
 
-        while ($row = $result->fetch_assoc()) {
-            if ($t == $row['name']) {
-                echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">' . $row['name'] . '</h1><br>';
-                if ($row['image_url2'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url2'] . '">';
-                }
-                if ($row['image_url3'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url3'] . '">';
-                }
-                if ($row['image_url4'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url4'] . '">';
-                }
-                if ($row['image_url5'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url5'] . '">';
-                }
-                if ($row['image_url6'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url6'] . '">';
-                }
-                if ($row['image_url7'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url7'] . '">';
-                }
-                echo '<form action = "product_.php" method="POST">   
-                    <input name="t" type="hidden" value="' . $t . '">
-                    <input style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;" type="submit" value="Add to Cart"></form>';
-            }
-        }
-        $conn->close();
-    } else {
-
-        while ($row = $result->fetch_assoc()) {
-            if ($t == $row['name']) {
-                echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">' . $row['name'] . '</h1><br>';
-                if ($row['image_url2'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url2'] . '">';
-                }
-                if ($row['image_url3'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url3'] . '">';
-                }
-                if ($row['image_url4'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url4'] . '">';
-                }
-                if ($row['image_url5'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url5'] . '">';
-                }
-                if ($row['image_url6'] != '') {
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="' . $row['image_url6'] . '">';
-                }
-                echo '<br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to add to cart!</b></p>';
-            }
-        }
-        $conn->close();
-    }
-
+    </div>
 
     ?>
 
@@ -130,3 +102,5 @@
 </body>
 
 </html>
+
+<?php db_disconnect($db); ?>

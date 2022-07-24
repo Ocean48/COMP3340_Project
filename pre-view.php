@@ -63,7 +63,7 @@ $layout = get_style_by_view(0);
 
     <footer>
         <div class="container_footer">
-            <p>fudhu</p>
+            <p>Thw Web</p>
             <br>
             <p class="copyright">Copyright &copy;
                 <script>
@@ -78,3 +78,5 @@ $layout = get_style_by_view(0);
 </body>
 
 </html>
+
+<?php db_disconnect($db); ?>

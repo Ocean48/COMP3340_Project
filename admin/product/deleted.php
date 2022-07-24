@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php');
 
-require_login();
+admin_require_login();
 
 $id = $_GET['id'];
 

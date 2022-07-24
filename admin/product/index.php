@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php require_login();
+<?php admin_require_login();
 
 $product_set = find_all_product();
 

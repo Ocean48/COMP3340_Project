@@ -40,14 +40,14 @@ $layout = get_style_by_view(1);
 </head>
 
 <body>
+
+    <!-- Haader -->
     <header>
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
             <a href="index.php" class="htext htext2">HOME</a>
-            <a href="" class="htext">About</a>
-            <a href="" class="htext">CART</a>
-            <a href="" class="htext">ACCOUNT</a>
-
+            <a href="products.php" class="htext">Shop</a>
+            <a href="account/account.php" class="htext">Account</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
         </div>
 
@@ -63,7 +63,7 @@ $layout = get_style_by_view(1);
 
     <footer>
         <div class="container_footer">
-            <p>fudhu</p>
+            <p>Thw Web</p>
             <br>
             <p class="copyright">Copyright &copy;
                 <script>
@@ -78,3 +78,5 @@ $layout = get_style_by_view(1);
 </body>
 
 </html>
+
+<?php db_disconnect($db); ?>

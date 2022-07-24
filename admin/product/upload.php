@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php');
 
-require_login();
+admin_require_login();
 $product_id = 0;
 $product_name = $_POST['product_name'];
 $product_img= $_POST['product_img'];
