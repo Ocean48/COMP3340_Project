@@ -614,11 +614,34 @@
     }
   }
 
-  function get_style() {
+  function get_style_by_view($view) {
     global $db;
 
-    $sql = "SELECT * FROM `layout` WHERE 1";
+    $sql = "SELECT * FROM `layout` WHERE `view` = $view";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
-    return $result;
+    $style = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $style; // returns an assoc. array
+  }
+
+  function update_style($bc, $n) {
+    global $db;
+
+   
+
+    $sql = "UPDATE `layout` SET `background_color`='" . $bc . "' WHERE `view` = " . $n . "";
+
+  
+    $result = mysqli_query($db, $sql);
+
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
   }
