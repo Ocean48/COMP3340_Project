@@ -5,8 +5,6 @@ require_login();
 $page_title = 'Edit';
 include(SHARED_PATH . '/header.php');
 
-$product_set = find_all_product();
-
 $product_id = $_GET['id'];
 
 // Check is form posted
@@ -14,31 +12,23 @@ if (is_post_request()) {
     $product_name = $_POST['product_name'];
     $product_img = $_POST['product_img'];
     $product_description = $_POST['product_description'];
-    $product_set = find_all_product();
 
-    // Old info will be used if field is left empty
-    while ($product = mysqli_fetch_assoc($product_set)) {
-        if ($product['product_id'] == $product_id) {
-            if (empty($_POST['product_name'])) {
-                $product_name = $product['product_name'];
-            }
-            if (empty($_POST['product_img'])) {
-                $product_img = $product['product_img'];
-            }
-            if (empty($_POST['product_description'])) {
-                $product_description = $product['product_description'];
-            }
-            break;
-        }
+    // Get old product info is field is empty
+    $product = find_product_by_id($product_id);
+    if (empty($_POST['product_name'])) {
+        $product_name = $product['product_name'];
+    }
+    if (empty($_POST['product_img'])) {
+        $product_img = $product['product_img'];
+    }
+    if (empty($_POST['product_description'])) {
+        $product_description = $product['product_description'];
     }
 
     // update product
     $result = update_product($product_id, $product_name, $product_img, $product_description);
     if ($result) {
-?>
-        <!-- redirect -->
-        <meta http-equiv="Refresh" content="0.5;url=index.php">
-<?php
+        redirect_to(url_for('product/index.php'));
     }
 }
 
@@ -63,7 +53,7 @@ if (is_post_request()) {
 
                 <h1>Edit Product</h1>
 
-                <br><br><br>    
+                <br><br><br>
 
                 <!-- Display product info -->
                 <table class="list">
@@ -74,15 +64,14 @@ if (is_post_request()) {
                     </tr>
 
                     <!-- Look for product using id -->
-                    <?php while ($product = mysqli_fetch_assoc($product_set)) {
-                        if ($product_id == $product['product_id']) { ?>
+                    <?php 
+                    $product = find_product_by_id($product_id);
+                    ?>
                             <tr>
                                 <td><?php echo h($product['product_name']); ?></td>
                                 <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
                                 <td><?php echo h($product['product_description']); ?></td>
                             </tr>
-                    <?php }
-                    } ?>
                 </table>
 
                 <br><br><br>

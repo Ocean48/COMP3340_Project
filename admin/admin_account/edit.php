@@ -10,32 +10,27 @@ $id = $_GET['id'];
 if (is_post_request()) {
   $new_usrname = $_POST['username'];
   $account = [];
-  //$account['id'] = $id;
   $account_id = $id;
   $account_username = $_POST["username"];
   $account_password = $_POST['password'];
   $confirm_password = $_POST['confirm_password'];
 
-  $account_set = find_all_admins();
-  while ($account = mysqli_fetch_assoc($account_set)) {
-    if ($account['id'] == $account_id) {
-      if (empty($_POST['username'])) {
-        $new_usrname = $account['username'];
-      }
-      if (empty($_POST['password'])) {
-        $account_password = $account['password'];
-      }
-      break;
-    }
+
+  $account = find_admin_by_id($id);
+  if (empty($_POST['username'])) {
+    $new_usrname = $account['username'];
   }
+  if (empty($_POST['password'])) {
+    $account_password = $account['password'];
+  }
+
+
+
 
   $result = update_admin($account_id, $new_usrname, $account_password);
   if ($result === true) {
     $_SESSION['message'] = 'User account updated.';
-?>
-    <meta http-equiv="Refresh" content="0.5;url=index.php">
-<?php
-    //redirect_to(url_for('/staff/admins/show.php?id=' . $id));
+    redirect_to(url_for('/admin_account/index.php'));
   } else {
     $errors = $result;
   }

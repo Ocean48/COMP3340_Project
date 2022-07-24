@@ -4,17 +4,12 @@ require_login();
 
 $id = $_GET['id'];
 
-$product_set = find_all_product();
-
 // check is the form is posted
-if(is_post_request()) {
+if (is_post_request()) {
     if (delete_product($id)) {  // if is product is deleted
-    ?>
-        <!-- Redirect back to list of product -->
-        <meta http-equiv="Refresh" content="0.5;url=index.php">  
-    <?php
+        redirect_to(url_for('product/index.php'));
     }
-  }
+}
 ?>
 
 <?php $page_title = 'Delete'; ?>
@@ -40,16 +35,14 @@ if(is_post_request()) {
                 <th>Product Description</th>
             </tr>
 
-            <?php while ($product = mysqli_fetch_assoc($product_set)) {
-                if ($id == $product['product_id']) { ?>
-                    <tr>
-                        <!-- <td><?php //echo h($product['product_id']); ?></td> -->
-                        <td><?php echo h($product['product_name']); ?></td>
-                        <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
-                        <td><?php echo h($product['product_description']); ?></td>
-                    </tr>
-            <?php }
-            } ?>
+            <?php
+            $product = find_product_by_id($id);
+            ?>
+            <tr>
+                <td><?php echo h($product['product_name']); ?></td>
+                <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
+                <td><?php echo h($product['product_description']); ?></td>
+            </tr>
         </table>
 
         <!-- Confirm delete -->
