@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 23, 2022 at 04:32 AM
+-- Generation Time: Jul 24, 2022 at 04:13 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -97,6 +97,7 @@ INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) 
 
 DROP TABLE IF EXISTS `layout`;
 CREATE TABLE IF NOT EXISTS `layout` (
+  `view` int(10) NOT NULL,
   `background_color` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -104,8 +105,9 @@ CREATE TABLE IF NOT EXISTS `layout` (
 -- Dumping data for table `layout`
 --
 
-INSERT INTO `layout` (`background_color`) VALUES
-('#c4ffc4');
+INSERT INTO `layout` (`view`, `background_color`) VALUES
+(0, '#c4ffc4'),
+(1, '#c4ffc4');
 
 -- --------------------------------------------------------
 
