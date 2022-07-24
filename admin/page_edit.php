@@ -59,8 +59,8 @@ if (is_post_request()) {
         <p>Pre View: </p>
 
         <br>
-        <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe>
-        <!-- <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe> -->
+        <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe> -->
+        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe>
     </div>
 
 

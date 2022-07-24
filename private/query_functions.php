@@ -16,13 +16,13 @@
     return $result;
   }
 
-  function find_product_by_id($id, $options=[]) {
+  function find_product_by_id($id) {
     global $db;
 
     //$visible = $options['visible'] ?? false;
 
-    $sql = "SELECT * FROM `cart` ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+    $sql = "SELECT * FROM `products` WHERE `product_id` = $id";
+    // $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     // if($visible) {
     //   $sql .= "AND visible = true";
     // }
@@ -630,7 +630,7 @@
 
    
 
-    $sql = "UPDATE `layout` SET `background_color`='" . $bc . "' WHERE `view` = " . $n . "";
+    $sql = "UPDATE `layout` SET `background_color`='$bc' WHERE `view` = $n";
 
   
     $result = mysqli_query($db, $sql);

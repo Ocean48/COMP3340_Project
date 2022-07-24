@@ -9,32 +9,25 @@ $email = $_GET['email'];
 
 if (is_post_request()) {
   $new_email = $_POST['email'];
+
   $account = [];
-  //$account['id'] = $id;
   $account_email = $email;
   $account_password = $_POST['password'];
   $confirm_password = $_POST['confirm_password'];
 
-  $account_set = find_all_users();
-  while ($account = mysqli_fetch_assoc($account_set)) {
-    if ($account['email'] == $account_email) {
-      if (empty($_POST['email'])) {
-        $new_email = $email;
-      }
-      if (empty($_POST['password'])) {
-        $account_password = $account['password'];
-      }
-      break;
-    }
+  $account = find_user_by_email($email);
+  if (empty($_POST['email'])) {
+    $new_email = $email;
   }
+  if (empty($_POST['password'])) {
+    $account_password = $account['password'];
+  }
+
 
   $result = update_user($account_email, $new_email, $account_password);
   if ($result === true) {
     $_SESSION['message'] = 'User account updated.';
-?>
-    <meta http-equiv="Refresh" content="0.5;url=index.php">
-<?php
-    //redirect_to(url_for('/staff/admins/show.php?id=' . $id));
+    redirect_to(url_for('/user_account/index.php'));
   } else {
     $errors = $result;
   }
