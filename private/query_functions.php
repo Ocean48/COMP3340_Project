@@ -181,148 +181,147 @@
     return $page; // returns an assoc. array
   }
 
-  function validate_page($page) {
-    $errors = [];
+  // function validate_page($page) {
+  //   $errors = [];
 
-    // product_id
-    if(is_blank($page['product_id'])) {
-      $errors[] = "product cannot be blank.";
-    }
+  //   // product_id
+  //   if(is_blank($page['product_id'])) {
+  //     $errors[] = "product cannot be blank.";
+  //   }
 
-    // menu_name
-    if(is_blank($page['product_name'])) {
-      $errors[] = "Name cannot be blank.";
-    } elseif(!has_length($page['product_name'], ['min' => 2, 'max' => 255])) {
-      $errors[] = "Name must be between 2 and 255 characters.";
-    }
-    $current_id = $page['id'] ?? '0';
-    if(!has_unique_page_menu_name($page['product_name'], $current_id)) {
-      $errors[] = "Menu name must be unique.";
-    }
+  //   // menu_name
+  //   if(is_blank($page['product_name'])) {
+  //     $errors[] = "Name cannot be blank.";
+  //   } elseif(!has_length($page['product_name'], ['min' => 2, 'max' => 255])) {
+  //     $errors[] = "Name must be between 2 and 255 characters.";
+  //   }
+  //   $current_id = $page['id'] ?? '0';
+  //   if(!has_unique_page_menu_name($page['product_name'], $current_id)) {
+  //     $errors[] = "Menu name must be unique.";
+  //   }
 
 
-    // position
-    // Make sure we are working with an integer
-    $postion_int = (int) $page['position'];
-    if($postion_int <= 0) {
-      $errors[] = "Position must be greater than zero.";
-    }
-    if($postion_int > 999) {
-      $errors[] = "Position must be less than 999.";
-    }
+  //   // position
+  //   // Make sure we are working with an integer
+  //   $postion_int = (int) $page['position'];
+  //   if($postion_int <= 0) {
+  //     $errors[] = "Position must be greater than zero.";
+  //   }
+  //   if($postion_int > 999) {
+  //     $errors[] = "Position must be less than 999.";
+  //   }
 
-    // visible
-    // Make sure we are working with a string
-    $visible_str = (string) $page['visible'];
-    if(!has_inclusion_of($visible_str, ["0","1"])) {
-      $errors[] = "Visible must be true or false.";
-    }
+  //   // visible
+  //   // Make sure we are working with a string
+  //   $visible_str = (string) $page['visible'];
+  //   if(!has_inclusion_of($visible_str, ["0","1"])) {
+  //     $errors[] = "Visible must be true or false.";
+  //   }
 
-    // content
-    if(is_blank($page['content'])) {
-      $errors[] = "Content cannot be blank.";
-    }
+  //   // content
+  //   if(is_blank($page['content'])) {
+  //     $errors[] = "Content cannot be blank.";
+  //   }
 
-    return $errors;
-  }
+  //   return $errors;
+  // }
 
-  function insert_page($page) {
-    global $db;
+  // function insert_page($page) {
+  //   global $db;
 
-    $errors = validate_page($page);
-    if(!empty($errors)) {
-      return $errors;
-    }
+  //   $errors = validate_page($page);
+  //   if(!empty($errors)) {
+  //     return $errors;
+  //   }
 
-    $sql = "INSERT INTO `pages` ";
-    $sql .= "(product_id, menu_name, position, visible, content) ";
-    $sql .= "VALUES (";
-    $sql .= "'" . db_escape($db, $page['product_id']) . "',";
-    $sql .= "'" . db_escape($db, $page['menu_name']) . "',";
-    $sql .= "'" . db_escape($db, $page['position']) . "',";
-    $sql .= "'" . db_escape($db, $page['visible']) . "',";
-    $sql .= "'" . db_escape($db, $page['content']) . "'";
-    $sql .= ")";
-    $result = mysqli_query($db, $sql);
-    // For INSERT statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // INSERT failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
+  //   $sql = "INSERT INTO `pages` ";
+  //   $sql .= "(product_id, menu_name, position, visible, content) ";
+  //   $sql .= "VALUES (";
+  //   $sql .= "'" . db_escape($db, $page['product_id']) . "',";
+  //   $sql .= "'" . db_escape($db, $page['menu_name']) . "',";
+  //   $sql .= "'" . db_escape($db, $page['position']) . "',";
+  //   $sql .= "'" . db_escape($db, $page['visible']) . "',";
+  //   $sql .= "'" . db_escape($db, $page['content']) . "'";
+  //   $sql .= ")";
+  //   $result = mysqli_query($db, $sql);
+  //   // For INSERT statements, $result is true/false
+  //   if($result) {
+  //     return true;
+  //   } else {
+  //     // INSERT failed
+  //     echo mysqli_error($db);
+  //     db_disconnect($db);
+  //     exit;
+  //   }
+  // }
 
-  function update_page($page) {
-    global $db;
+  // function update_page($page) {
+  //   global $db;
 
-    $errors = validate_page($page);
-    if(!empty($errors)) {
-      return $errors;
-    }
+  //   $errors = validate_page($page);
+  //   if(!empty($errors)) {
+  //     return $errors;
+  //   }
 
-    $sql = "UPDATE pages SET ";
-    $sql .= "product_id='" . db_escape($db, $page['product_id']) . "', ";
-    $sql .= "menu_name='" . db_escape($db, $page['menu_name']) . "', ";
-    $sql .= "position='" . db_escape($db, $page['position']) . "', ";
-    $sql .= "visible='" . db_escape($db, $page['visible']) . "', ";
-    $sql .= "content='" . db_escape($db, $page['content']) . "' ";
-    $sql .= "WHERE id='" . db_escape($db, $page['id']) . "' ";
-    $sql .= "LIMIT 1";
+  //   $sql = "UPDATE pages SET ";
+  //   $sql .= "product_id='" . db_escape($db, $page['product_id']) . "', ";
+  //   $sql .= "menu_name='" . db_escape($db, $page['menu_name']) . "', ";
+  //   $sql .= "position='" . db_escape($db, $page['position']) . "', ";
+  //   $sql .= "visible='" . db_escape($db, $page['visible']) . "', ";
+  //   $sql .= "content='" . db_escape($db, $page['content']) . "' ";
+  //   $sql .= "WHERE id='" . db_escape($db, $page['id']) . "' ";
+  //   $sql .= "LIMIT 1";
 
-    $result = mysqli_query($db, $sql);
-    // For UPDATE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // UPDATE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
+  //   $result = mysqli_query($db, $sql);
+  //   // For UPDATE statements, $result is true/false
+  //   if($result) {
+  //     return true;
+  //   } else {
+  //     // UPDATE failed
+  //     echo mysqli_error($db);
+  //     db_disconnect($db);
+  //     exit;
+  //   }
 
-  }
+  // }
 
-  function delete_page($id) {
-    global $db;
+  // function delete_page($id) {
+  //   global $db;
 
-    $sql = "DELETE FROM `pages` ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-    $sql .= "LIMIT 1";
-    $result = mysqli_query($db, $sql);
+  //   $sql = "DELETE FROM `pages` ";
+  //   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  //   $sql .= "LIMIT 1";
+  //   $result = mysqli_query($db, $sql);
 
-    // For DELETE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // DELETE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
+  //   // For DELETE statements, $result is true/false
+  //   if($result) {
+  //     return true;
+  //   } else {
+  //     // DELETE failed
+  //     echo mysqli_error($db);
+  //     db_disconnect($db);
+  //     exit;
+  //   }
+  // }
 
-  function find_pages_by_product_id($product_id, $options=[]) {
-    global $db;
+  // function find_pages_by_product_id($product_id, $options=[]) {
+  //   global $db;
 
-    $visible = $options['visible'] ?? false;
+  //   $visible = $options['visible'] ?? false;
 
-    $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE product_id='" . db_escape($db, $product_id) . "' ";
-    if($visible) {
-      $sql .= "AND visible = true ";
-    }
-    $sql .= "ORDER BY position ASC";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
-  }
+  //   $sql = "SELECT * FROM pages ";
+  //   $sql .= "WHERE product_id='" . db_escape($db, $product_id) . "' ";
+  //   if($visible) {
+  //     $sql .= "AND visible = true ";
+  //   }
+  //   $sql .= "ORDER BY position ASC";
+  //   $result = mysqli_query($db, $sql);
+  //   confirm_result_set($result);
+  //   return $result;
+  // }
 
   // Admins
-
-  // Find all admins, ordered last_name, first_name
+  // Find all admins, ordered by id
   function find_all_admins() {
     global $db;
 
@@ -332,6 +331,8 @@
     confirm_result_set($result);
     return $result;
   }
+
+  // Find all admins, ordered by email
   function find_all_users() {
     global $db;
 
@@ -342,6 +343,7 @@
     return $result;
   }
 
+  // Find an admin by id
   function find_admin_by_id($id) {
     global $db;
 
@@ -355,19 +357,21 @@
     return $admin; // returns an assoc. array
   }
 
-  function find_user_by_id($id) {
-    global $db;
 
-    $sql = "SELECT * FROM `users` ";
-    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-    $sql .= "LIMIT 1";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $admin = mysqli_fetch_assoc($result); // find first
-    mysqli_free_result($result);
-    return $admin; // returns an assoc. array
-  }
+  // function find_user_by_id($id) {
+  //   global $db;
 
+  //   $sql = "SELECT * FROM `users` ";
+  //   $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+  //   $sql .= "LIMIT 1";
+  //   $result = mysqli_query($db, $sql);
+  //   confirm_result_set($result);
+  //   $admin = mysqli_fetch_assoc($result); // find first
+  //   mysqli_free_result($result);
+  //   return $admin; // returns an assoc. array
+  // }
+
+  // Find an admin by username, used in admin login
   function find_admin_by_username($username) {
     global $db;
 
@@ -381,18 +385,109 @@
     return $admin; // returns an assoc. array
   }
 
-  function find_user_by_username($username) {
+  // Add a new admin
+  function insert_admin($admin) {
     global $db;
 
-    $sql = "SELECT * FROM `admins` ";
-    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
-    $sql .= "LIMIT 1";
+    // $errors = validate_admin($admin);
+    // if (!empty($errors)) {
+    //   return $errors;
+    // }
+
+    $password = ($admin['password']);
+
+    $sql = "INSERT INTO `admins` ";
+    $sql .= "(username, password) ";
+    $sql .= "VALUES (";
+    // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
+    // $sql .= "'" . db_escape($db, $admin['last_name']) . "',";
+    // $sql .= "'" . db_escape($db, $admin['email']) . "',";
+    $sql .= "'" . db_escape($db, $admin['username']) . "',";
+    $sql .= "'" . db_escape($db, $password) . "'";
+    $sql .= ")";
     $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $admin = mysqli_fetch_assoc($result); // find first
-    mysqli_free_result($result);
-    return $admin; // returns an assoc. array
+
+    // For INSERT statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // INSERT failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
   }
+
+  // Update an admin's info. i.e admin username and password
+  function update_admin($account_id, $new_usrname, $account_password) {
+    global $db;
+
+    // $errors = validate_admin($admin);
+    // if (!empty($errors)) {
+    //   return $errors;
+    // }
+
+    $sql = "UPDATE `admins` SET `username`='".$new_usrname."',`password`='".$account_password."' WHERE `id` = ".$account_id.";";
+    // $sql = "UPDATE admins SET ";
+    // // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
+    // // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
+    // // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
+    // // $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "',";
+    // $sql .= "password='" . db_escape($db, $password) . "', ";
+    // $sql .= "username='" . db_escape($db, $admin['username']) . "' ";
+    // $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
+  
+    $result = mysqli_query($db, $sql);
+
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  // Delete an admin from database
+  function delete_admin($id) {
+    global $db;
+
+    $sql = "DELETE FROM `admins` WHERE `id` = ".$id."";
+    // $sql = "DELETE FROM `admins` ";
+    // $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
+    // $sql .= "LIMIT 1;";
+    $result = mysqli_query($db, $sql);
+
+    // For DELETE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // DELETE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  // Try to reset admin id
+  function reset_admin_id() {
+    global $db;
+    $sql = "ALTER TABLE `admins` AUTO_INCREMENT = 1;";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+      return true;
+    } else {
+      // DELETE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+  
+  // User
+  // Find an user by email
   function find_user_by_email($email) {
     global $db;
 
@@ -437,37 +532,7 @@
   //   return $errors;
   // }
 
-  function insert_admin($admin) {
-    global $db;
-
-    // $errors = validate_admin($admin);
-    // if (!empty($errors)) {
-    //   return $errors;
-    // }
-
-    $password = ($admin['password']);
-
-    $sql = "INSERT INTO `admins` ";
-    $sql .= "(username, password) ";
-    $sql .= "VALUES (";
-    // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
-    // $sql .= "'" . db_escape($db, $admin['last_name']) . "',";
-    // $sql .= "'" . db_escape($db, $admin['email']) . "',";
-    $sql .= "'" . db_escape($db, $admin['username']) . "',";
-    $sql .= "'" . db_escape($db, $password) . "'";
-    $sql .= ")";
-    $result = mysqli_query($db, $sql);
-
-    // For INSERT statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // INSERT failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
+  // Add a new user
   function insert_user($account) {
     global $db;
 
@@ -479,12 +544,13 @@
     $password = ($account['password']);
 
     $sql = "INSERT INTO `account` ";
-    $sql .= "(email, password) ";
+    $sql .= "(email,username, password) ";
     $sql .= "VALUES (";
     // $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
     // $sql .= "'" . db_escape($db, $admin['last_name']) . "',";
     // $sql .= "'" . db_escape($db, $admin['email']) . "',";
     $sql .= "'" . db_escape($db, $account['email']) . "',";
+    $sql .= "'" . db_escape($db, $account['username']) . "',";
     $sql .= "'" . db_escape($db, $password) . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
@@ -500,38 +566,8 @@
     }
   }
 
-
-  function update_admin($account_id, $new_usrname, $account_password) {
-    global $db;
-
-    // $errors = validate_admin($admin);
-    // if (!empty($errors)) {
-    //   return $errors;
-    // }
-
-    $sql = "UPDATE `admins` SET `username`='".$new_usrname."',`password`='".$account_password."' WHERE `id` = ".$account_id.";";
-    // $sql = "UPDATE admins SET ";
-    // // $sql .= "first_name='" . db_escape($db, $admin['first_name']) . "', ";
-    // // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
-    // // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
-    // // $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "',";
-    // $sql .= "password='" . db_escape($db, $password) . "', ";
-    // $sql .= "username='" . db_escape($db, $admin['username']) . "' ";
-    // $sql .= "WHERE id='" . db_escape($db, $admin['id']) . "' ";
-  
-    $result = mysqli_query($db, $sql);
-
-    // For UPDATE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // UPDATE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
-  function update_user($account_email, $new_email, $account_password) {
+  // Update an user's info. i.e email, username, password
+  function update_user($account_email, $new_email, $account_username, $account_password) {
     global $db;
 
     // $errors = validate_admin($admin);
@@ -545,6 +581,7 @@
     // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
     //$sql .= "WHERE id='" . db_escape($db, $account['id']) . "' ";
     $sql .= "email='" . db_escape($db, $new_email) . "', ";
+    $sql .= "username='" . db_escape($db, $account_username) . "', ";
     $sql .= "password='" . db_escape($db, $account_password) . "' ";
     $sql .= "WHERE email='" . db_escape($db, $account_email) . "' ";
     $sql .= "LIMIT 1";
@@ -561,40 +598,7 @@
     }
   }
 
-  function delete_admin($id) {
-    global $db;
-
-    $sql = "DELETE FROM `admins` WHERE `id` = ".$id."";
-    // $sql = "DELETE FROM `admins` ";
-    // $sql .= "WHERE id='" . db_escape($db, $admin[0]) . "' ";
-    // $sql .= "LIMIT 1;";
-    $result = mysqli_query($db, $sql);
-
-    // For DELETE statements, $result is true/false
-    if($result) {
-      return true;
-    } else {
-      // DELETE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
-
-  function reset_admin_id() {
-    global $db;
-    $sql = "ALTER TABLE `admins` AUTO_INCREMENT = 1;";
-    $result = mysqli_query($db, $sql);
-    if($result) {
-      return true;
-    } else {
-      // DELETE failed
-      echo mysqli_error($db);
-      db_disconnect($db);
-      exit;
-    }
-  }
-
+  // Delete a user account, only in admin interface
   function delete_user($email) {
     global $db;
 
@@ -614,6 +618,7 @@
     }
   }
 
+  // Get page style by view mode. view mode 0 - for pre-view page.  view mode 1 - for real page 
   function get_style_by_view($view) {
     global $db;
 
@@ -625,6 +630,7 @@
     return $style; // returns an assoc. array
   }
 
+  // Update page style
   function update_style($bc, $mc, $mtc, $n) {
     global $db;
 

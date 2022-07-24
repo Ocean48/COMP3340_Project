@@ -2,7 +2,7 @@
 
 require_once('../../private/initialize.php');
 
-require_login();
+admin_require_login();
 
 if(is_post_request()) { //if post request process the form
   $account = [];
@@ -11,7 +11,6 @@ if(is_post_request()) { //if post request process the form
 
   $result = insert_admin($account);
   if($result === true) {
-    $new_id = mysqli_insert_id($db);
     //$_SESSION['message'] = 'Admin created.';
     redirect_to(url_for('/admin_account/index.php'));
   } else {

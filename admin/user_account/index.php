@@ -1,6 +1,6 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php require_login(); 
+<?php admin_require_login(); 
 
     $account_set = find_all_users();
 
@@ -39,7 +39,8 @@
                 <table class="list">
                     <tr>
                         
-                        <th style="text-align: center;vertical-align: middle;">username</th>
+                        <th>email</th>
+                        <th>username</th>
   	                    <th>password</th>
   	                    <th>&nbsp;</th>
   	                    <th>&nbsp;</th>
@@ -47,8 +48,8 @@
 
                     <?php while($account = mysqli_fetch_assoc($account_set)) {?>
                     <tr>
-                        <!-- <td><?php echo h($admin['id']); ?></td> -->
                         <td><?php echo h($account['email']); ?></td>
+                        <td><?php echo h($account['username']); ?></td>
   	                    <td><?php echo h($account['password']); ?></td>
   	                    <td><a class="action" href="<?php echo url_for('/user_account/edit.php?email=' . h(u($account['email']))); ?>">Edit</a></td>
                         <!-- After delecting a product run this mysql code "ALTER TABLE `admins` AUTO_INCREMENT = 1" to reset the id auto increment -->

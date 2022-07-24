@@ -1,6 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
-require_login();
+admin_require_login();
 
 if (!isset($_GET['id'])) {
   redirect_to(url_for('/admin_account/index.php'));

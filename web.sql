@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 24, 2022 at 04:13 PM
+-- Generation Time: Jul 24, 2022 at 10:47 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `email` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -37,10 +38,13 @@ CREATE TABLE IF NOT EXISTS `account` (
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`email`, `password`) VALUES
-('test2@gmail.com', '123456'),
-('test@gmail.com', '123456'),
-('admin@gmail.com', '123456');
+INSERT INTO `account` (`email`, `username`, `password`) VALUES
+('user2@gmail.com', 'User', '123456'),
+('test@gmail.com', 'User', '123456'),
+('user1@gmail.com', 'User', '123456'),
+('user3@gmail.com', 'user3', '123456'),
+('user4@gmail.com', 'User 4', '123'),
+('s', 's', 's');
 
 -- --------------------------------------------------------
 
@@ -61,10 +65,10 @@ CREATE TABLE IF NOT EXISTS `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
-(1, 'admin', '123456'),
+(1, 'admin1', '123456'),
 (3, 'guest', '123456'),
 (6, 'admin2', '123456'),
-(7, 'admin3', '1234');
+(7, 'admin3', '12345');
 
 -- --------------------------------------------------------
 
@@ -98,16 +102,18 @@ INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) 
 DROP TABLE IF EXISTS `layout`;
 CREATE TABLE IF NOT EXISTS `layout` (
   `view` int(10) NOT NULL,
-  `background_color` varchar(10) NOT NULL
+  `background_color` varchar(10) NOT NULL,
+  `margin_color` varchar(10) NOT NULL,
+  `margin_text_color` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `layout`
 --
 
-INSERT INTO `layout` (`view`, `background_color`) VALUES
-(0, '#c4ffc4'),
-(1, '#c4ffc4');
+INSERT INTO `layout` (`view`, `background_color`, `margin_color`, `margin_text_color`) VALUES
+(0, '#f2ffff', '#545cfa', '#ffffff'),
+(1, '#f2ffff', '#545cfa', '#ffffff');
 
 -- --------------------------------------------------------
 
@@ -129,8 +135,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_img`, `product_description`) VALUES
-(3, 'Uploaded Product 2', 'image2.jpg', ''),
-(5, 'dfs', 'index.jpg', 'dsa'),
+(3, '12', 'image2.jpg', ' '),
 (6, 's', 'index.jpg', 'index.jpg'),
 (7, '3', 'index.jpg', 'r'),
 (8, 'r', 'index.jpg', 'i'),

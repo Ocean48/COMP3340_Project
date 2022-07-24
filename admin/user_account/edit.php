@@ -1,6 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
-require_login();
+admin_require_login();
 
 if (!isset($_GET['email'])) {
   redirect_to(url_for('/user_account/index.php'));
@@ -13,6 +13,7 @@ if (is_post_request()) {
   $account = [];
   $account_email = $email;
   $account_password = $_POST['password'];
+  $account_username = $_POST['username'];
   $confirm_password = $_POST['confirm_password'];
 
   $account = find_user_by_email($email);
@@ -24,7 +25,7 @@ if (is_post_request()) {
   }
 
 
-  $result = update_user($account_email, $new_email, $account_password);
+  $result = update_user($account_email, $new_email, $account_username, $account_password);
   if ($result === true) {
     $_SESSION['message'] = 'User account updated.';
     redirect_to(url_for('/user_account/index.php'));
@@ -59,13 +60,13 @@ if (is_post_request()) {
       <form action="<?php echo url_for('/user_account/edit.php?email=' . h(u($email))); ?>" method="post">
 
         <dl>
-          <p class="bold" style="float: left;">Old Email:</p>
-          <p style="float: left; margin-left: 10px"><?php echo ($account['email']); ?></p>
+          <dt>New Email</dt>
+          <dd><input type="text" name="email" placeholder="new email" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>New Email</dt>
-          <dd><input type="text" name="email" placeholder="new email" /><br /></dd>
+          <dt>New Username</dt>
+          <dd><input type="text" name="username" placeholder="new username" /><br /></dd>
         </dl>
 
         <dl>
