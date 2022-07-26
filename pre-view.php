@@ -54,13 +54,15 @@ $layout = get_style_by_view(0);
     <header>
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
-            <a href="index.php" class="htext htext2">HOME</a>
+            <a href="index.php" class="htext htext2">Home</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
-            <a href="cart.php" class="htext">Cart (<?php echo $count; ?>)</a>
+            <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
+                                                        echo "(".$count.")";
+                                                    }?></span></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
+            <a href="contact.html" class="htext">Contact</a>
         </div>
-
     </header>
 
 

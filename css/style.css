@@ -14,7 +14,7 @@ body {
 .topnav .logo {
     float: left;
     margin-right: 20px;
-    height: 180px;
+    height: 120px;
 }
 
 .topnav a {
@@ -128,6 +128,14 @@ body {
     }
 }
 
+@media screen and (max-width: 910px) {
+    .topnav .htext_bottom {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 25px;
+    }
+}
+
 /* Footer */
 .container_footer {
     clear: both;
@@ -155,7 +163,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: url(/images/background.jpg);
+    background: url(../images/background.jpg);
     background-size: cover;
 }
 
@@ -174,7 +182,8 @@ body {
 
 .contact .content p {
     font-weight: 300;
-    color: #fff;
+    color: #000000;
+    font-weight: bold;
 }
 
 .container {
@@ -318,6 +327,7 @@ body {
 .product_gallery {
     margin-left: 2.5%;
 }
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 300px;
