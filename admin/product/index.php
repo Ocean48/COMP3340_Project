@@ -20,16 +20,16 @@ $product_set = find_all_product();
     </header>
 
     <nav>
-            <ul>
-                <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
+        <ul>
+            <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
             <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
             <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
             <li><a href="<?php echo url_for('user_account/index.php'); ?>"> User Accounts</a> </li>
             <li><a href="<?php echo url_for('product/index.php'); ?>"> Product Menu</a> </li>
             <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Color</a> </li>
             <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
-            </ul>
-        </nav>
+        </ul>
+    </nav>
 
     <div id="content">
         <div id="productlisting">
@@ -52,7 +52,8 @@ $product_set = find_all_product();
                 <!-- Display all product -->
                 <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
                     <tr>
-                        <!-- <td><?//php echo h($product['product_id']); ?></td> -->
+                        <!-- <td><? //php echo h($product['product_id']); 
+                                    ?></td> -->
                         <td><?php echo h($product['product_name']); ?></td>
                         <td><img width="100px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
                         <td><a class="action" href="<?php echo url_for('/product/product.php?id=' . h(u($product['product_id']))); ?>">More</a></td>
@@ -62,11 +63,7 @@ $product_set = find_all_product();
                     </tr>
                 <?php } ?>
             </table>
-
-
         </div>
-
-
     </div>
 
 

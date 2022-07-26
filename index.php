@@ -41,13 +41,23 @@ $layout = get_style_by_view(1);
 
 <body>
 
-    <!-- Haader -->
+    <?php
+    $count = 0;
+    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+        foreach ($_SESSION["cart"] as $key => $value) {
+            $count++;
+        }
+    }
+    ?>
+
+    <!-- Header -->
     <header>
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="images/" alt="logo" class="logo"></a>
             <a href="index.php" class="htext htext2">HOME</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
+            <a href="cart.php" class="htext">Cart (<?php echo $count; ?>)</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
         </div>
 

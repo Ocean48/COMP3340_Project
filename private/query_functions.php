@@ -64,7 +64,7 @@
     return $errors;
   }
 
-  function insert_product($product_id, $product_name, $product_img, $product_description) {
+  function insert_product($product_id, $product_name, $product_img, $product_price, $product_description) {
     global $db;
 
     // To check does product exist
@@ -72,7 +72,7 @@
     // if(!empty($errors)) {
     //   return $errors;
     // }
-    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`, `product_description`) VALUES ('".$product_id."','".$product_name."','".$product_img."','".$product_description."')";
+    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`, `product_description`, `product_price`) VALUES ('$product_id','$product_name','$product_img','$product_description','$product_price')";
     // $sql = "INSERT INTO `cart` ";
     // $sql .= "(menu_name, position, visible) ";
     // $sql .= "VALUES (";
@@ -92,7 +92,7 @@
     }
   }
 
-  function update_product($product_id, $product_name, $product_img, $product_description) {
+  function update_product($product_id, $product_name, $product_img, $product_price, $product_description) {
     global $db;
 
     // $errors = validate_product($product);
@@ -100,7 +100,7 @@
     //   return $errors;
     // }
 
-    $sql = "UPDATE `products` SET `product_name`='".$product_name."',`product_img`='".$product_img."',`product_description`='".$product_description."' WHERE `product_id` = ".$product_id.";";
+    $sql = "UPDATE `products` SET `product_name`='$product_name',`product_price`='$product_price',`product_img`='$product_img',`product_description`='$product_description' WHERE `product_id` = $product_id;";
     // $sql = "UPDATE `cart` SET ";
     // $sql .= "menu_name='" . db_escape($db, $product['menu_name']) . "', ";
     // $sql .= "position='" . db_escape($db, $product['position']) . "', ";

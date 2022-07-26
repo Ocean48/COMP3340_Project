@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 24, 2022 at 10:47 PM
+-- Generation Time: Jul 25, 2022 at 08:19 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -125,21 +125,31 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `product_id` int(10) NOT NULL AUTO_INCREMENT,
   `product_name` text NOT NULL,
+  `product_price` float NOT NULL,
   `product_img` varchar(50) NOT NULL,
   `product_description` text NOT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_img`, `product_description`) VALUES
-(3, '12', 'image2.jpg', ' '),
-(6, 's', 'index.jpg', 'index.jpg'),
-(7, '3', 'index.jpg', 'r'),
-(8, 'r', 'index.jpg', 'i'),
-(10, 'eee', 'index.jpg', ' ');
+INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_img`, `product_description`) VALUES
+(1, 'Product 1', 4.98, 'index.jpg', ' This is product one!'),
+(2, 'Product 2', 14, 'image1.jpg', ' This is product two!'),
+(3, 'Product 3', 12.22, 'index.jpg', ' This is product three'),
+(4, 'Product 4', 4, 'image1.jpg', ' This is product four!'),
+(5, 'Product 5', 7, 'mouse17.jpg', ' This is product five!'),
+(6, 'Product 6', 78, 'keybord1.jpg', ' This is product six!'),
+(7, 'Product 7', 13, 'fan1.jpg', ' This is product seve'),
+(8, 'Product 52', 7, 'mouse17.jpg', ' This is product five!'),
+(9, 'Product 3', 12.22, 'index.jpg', ' This is product three'),
+(10, 'Product 2', 14, 'image1.jpg', ' This is product two!'),
+(11, 'Product 6', 78, 'keybord1.jpg', ' This is product six!'),
+(12, 'Product 5', 7, 'mouse17.jpg', ' This is product five!'),
+(13, 'Product 1', 4.98, 'index.jpg', ' This is product one!'),
+(14, 'Product 5SD', 7, 'mouse17.jpg', ' This is product five!');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

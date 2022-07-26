@@ -18,7 +18,7 @@ $layout = get_style_by_view(1);
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Onsale</title>
+    <title>Account</title>
 
     <!-- load style from database -->
     <style>
@@ -44,6 +44,15 @@ $layout = get_style_by_view(1);
 
 <body>
 
+    <?php
+    $count = 0;
+    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+        foreach ($_SESSION["cart"] as $key => $value) {
+            $count++;
+        }
+    }
+    ?>
+
     <!-- Haader -->
     <header>
         <div class="topnav" id="myTopnav">
@@ -51,6 +60,7 @@ $layout = get_style_by_view(1);
             <a href="../index.php" class="htext htext2">HOME</a>
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
+            <a href="../cart.php" class="htext">Cart (<?php echo $count; ?>)</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
         </div>
 
