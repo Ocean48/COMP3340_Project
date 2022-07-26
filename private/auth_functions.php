@@ -11,6 +11,7 @@
   }
   function log_in_user($user) {
       session_regenerate_id();
+      
       $_SESSION['user_email'] = $user['email'];
       $_SESSION['last_login'] = time();
       $_SESSION['username'] = $user['username'];

@@ -1,39 +1,10 @@
-<?php require_once('../private/initialize.php'); ?>
-
 <?php
 
-// Get page style from database
+require_once('../private/initialize.php');
+
+user_require_login();
+$account = find_user_by_email($_SESSION["user_email"]);
 $layout = get_style_by_view(1);
-
-$errors = [];
-
-if (is_post_request()) {
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // if there were no errors, try to login
-    if (empty($errors)) {
-        // Using one variable ensures that msg is the same
-        $login_failure_msg = "Log in was unsuccessful.";
-
-        $user = find_user_by_email($username);
-        if (!empty($user)) {
-            if (password_verify_own($password, $user['password'])) {
-                // echo password_verify_own($password, $admin['password']);
-                // password matches
-                log_in_user($user);
-                header("Location: account.php");
-            } else {
-                // username found, but password does not match
-                $errors[] = $login_failure_msg;
-            }
-        } else {
-            // no email found
-            $errors[] = $login_failure_msg;
-        }
-    }
-}
 
 ?>
 
@@ -47,12 +18,11 @@ if (is_post_request()) {
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Onsale</title>
+    <title>Checkout</title>
 
     <!-- load style from database -->
     <style>
         body {
-            background-color: <?php echo $layout["background_color"]; ?>;
             background-color: <?php echo $layout["background_color"]; ?>;
         }
 
@@ -95,22 +65,19 @@ if (is_post_request()) {
 
     </header>
 
-    <!-- login div -->
-    <div id="block">
-        <h1>Log in</h1>
+    <h1>Checkout</h1>
 
-        <?php echo display_errors($errors); ?>
+    <a href="pay.php">Pay</a>
+    <br><br>
 
-        <form action="login.php" method="post">
-
-            Email:<br />
-            <input type="text" name="username" placeholder="email" require /><br />
-            Password:<br />
-            <input type="password" name="password" placeholder="password" require /><br />
-            <input type="submit" name="submit" value="Login" />
-        </form>
-        <p>Don't have an account? <a href="register.php">Register today!</a></p>
-    </div>
+    <?php
+    $count = 0;
+    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+        foreach ($_SESSION["cart"] as $key => $value) {
+            echo $value . "<br>";
+        }
+    }
+    ?>
 
     <footer>
         <div class="container_footer">
@@ -124,8 +91,10 @@ if (is_post_request()) {
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
 </html>
+
+<?php db_disconnect($db); ?>

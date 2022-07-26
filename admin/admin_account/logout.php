@@ -1,9 +1,7 @@
 <?php
 require_once('../../private/initialize.php');
 
-unset($_SESSION['username']);
-session_start(); //to ensure you are using same session
-session_destroy(); //destroy the session
+session_destroy(); //destroy the session since it was only used for admin login info
 
 redirect_to(url_for('admin_account/login.php'));
 

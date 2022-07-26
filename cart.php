@@ -2,7 +2,7 @@
 
 require_once('private/initialize.php');
 
-$layout = get_style_by_view(0);
+$layout = get_style_by_view(1);
 
 ?>
 
@@ -16,7 +16,7 @@ $layout = get_style_by_view(0);
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="css/style.css">
-    <title>Onsale</title>
+    <title>Cart</title>
 
     <!-- load style from database -->
     <style>
@@ -63,13 +63,21 @@ $layout = get_style_by_view(0);
 
     </header>
 
-
-
-    <p>Main</p>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
+    <form action="account/checkout.php" method="POST">
+        <?php
+        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+            echo '<p>Cart:</p>';
+            foreach ($_SESSION["cart"] as $key => $value) {
+                echo '<input type="text" value="'.$value.'" readonly>';
+            }
+        ?>
+        
+        <br><br>
+        <input type="submit" value="Pay">
+        <?php
+            }
+        ?>
+    </form>
 
     <footer>
         <div class="container_footer">

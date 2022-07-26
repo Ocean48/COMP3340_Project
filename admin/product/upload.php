@@ -3,9 +3,9 @@
 admin_require_login();
 $product_id = 0;
 $product_name = $_POST['product_name'];
-$product_img= $_POST['product_img'];
-$product_description= $_POST['product_description'];
-
+$product_img = $_POST['product_img'];
+$product_description = $_POST['product_description'];
+$product_price = $_POST['product_price'];
 ?>
 
 <?php $page_title = 'Upload'; ?>
@@ -52,10 +52,7 @@ $product_description= $_POST['product_description'];
         }
 
         // Allow certain file formats
-        if (
-            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
@@ -67,10 +64,10 @@ $product_description= $_POST['product_description'];
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                insert_product($product_id, $product_name, $product_img, $product_description);
-                ?>
+                insert_product($product_id, $product_name, $product_img, $product_price, $product_description);
+        ?>
                 <a class="action" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
-                <?php
+        <?php
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }

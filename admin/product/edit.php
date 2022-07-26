@@ -11,22 +11,30 @@ $product_id = $_GET['id'];
 if (is_post_request()) {
     $product_name = $_POST['product_name'];
     $product_img = $_POST['product_img'];
+    $product_price = $_POST['product_price'];
     $product_description = $_POST['product_description'];
 
     // Get old product info is field is empty
     $product = find_product_by_id($product_id);
+    echo $product['product_name'];
+    echo $product['product_img'];
+    echo $product['product_price'];
+    echo "|".$product['product_description']."|";
     if (empty($_POST['product_name'])) {
         $product_name = $product['product_name'];
     }
     if (empty($_POST['product_img'])) {
         $product_img = $product['product_img'];
     }
-    if (empty($_POST['product_description'])) {
+    if (empty($_POST['product_price'])) {
+        $product_price = $product['product_price'];
+    }
+    if ($_POST['product_description'] == " ") {
         $product_description = $product['product_description'];
     }
 
     // update product
-    $result = update_product($product_id, $product_name, $product_img, $product_description);
+    $result = update_product($product_id, $product_name, $product_img, $product_price, $product_description);
     if ($result) {
         redirect_to(url_for('product/index.php'));
     }
@@ -61,6 +69,7 @@ if (is_post_request()) {
                         <th>product_name</th>
                         <th>Product Image</th>
                         <th>Product Description</th>
+                        <th>Product Price</th>
                     </tr>
 
                     <!-- Look for product using id -->
@@ -71,6 +80,7 @@ if (is_post_request()) {
                                 <td><?php echo h($product['product_name']); ?></td>
                                 <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
                                 <td><?php echo h($product['product_description']); ?></td>
+                                <td>$<?php echo h($product['product_price']); ?></td>
                             </tr>
                 </table>
 
@@ -91,6 +101,9 @@ if (is_post_request()) {
                         <br><br>
                         <dt>Product Description</dt>
                         <dd><textarea name="product_description"> </textarea></dd>
+                        <br><br><br><br>
+                        <dt>Product Price</dt>
+                        <dd><input type="text" name="product_price" placeholder="price"> </input></dd>
                     </dl>
 
                     <div>

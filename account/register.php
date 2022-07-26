@@ -63,6 +63,7 @@ if (is_post_request()) { //if post request process the form
                 <a href="../index.php" class="htext htext2">HOME</a>
                 <a href="../products.php" class="htext">Shop</a>
                 <a href="account.php" class="htext">Account</a>
+                <a href="../cart.php" class="htext">Cart</a>
                 <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             </div>
 

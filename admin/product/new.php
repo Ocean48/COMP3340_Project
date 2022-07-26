@@ -33,6 +33,9 @@ include(SHARED_PATH . '/header.php'); ?>
                     <br><br>
                     <dt>Product Description</dt>
                     <dd><textarea name="product_description"> </textarea></dd>
+                    <br><br><br><br>
+                    <dt>Product Price</dt>
+                    <dd><input type="text" name="product_price" placeholder="price"> </input></dd>
                 </dl>
 
                 <div>

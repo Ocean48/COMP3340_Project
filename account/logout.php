@@ -2,8 +2,10 @@
 require_once('../private/initialize.php');
 
 unset($_SESSION['user_email']);
-session_start(); //to ensure you are using same session
-session_destroy(); //destroy the session
+unset($_SESSION['last_login']);
+unset($_SESSION['username']);
+
+// session_destroy();
 
 header("Location: ../index.php");
 

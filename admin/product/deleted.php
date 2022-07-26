@@ -7,6 +7,7 @@ $id = $_GET['id'];
 // check is the form is posted
 if (is_post_request()) {
     if (delete_product($id)) {  // if is product is deleted
+        reset_product_id();  // Try to reset product id
         redirect_to(url_for('product/index.php'));
     }
 }
