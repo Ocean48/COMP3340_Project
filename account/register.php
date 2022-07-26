@@ -60,7 +60,7 @@ if (is_post_request()) { //if post request process the form
         <header>
             <div class="topnav" id="myTopnav">
                 <a href="../index.html"><img src="images/" alt="logo" class="logo"></a>
-                <a href="../index.php" class="htext htext2">HOME</a>
+                <a href="../index.php" class="htext htext2">Home</a>
                 <a href="../products.php" class="htext">Shop</a>
                 <a href="account.php" class="htext">Account</a>
                 <a href="../cart.php" class="htext">Cart</a>
