@@ -13,7 +13,7 @@ body {
 
 .topnav .logo {
     float: left;
-    margin-right: 20px;
+    margin-right: 15px;
     height: 120px;
 }
 
@@ -24,7 +24,7 @@ body {
     color: #000000;
     text-align: center;
     /* padding: 14px 20px; */
-    padding: 14px 2%;
+    padding: 14px 1.75%;
     text-decoration: none;
     font-weight: bold;
 }
@@ -35,36 +35,20 @@ body {
 
 .topnav .htext {
     margin-top: 80px;
-    font-size: 35px;
+    font-size: 33px;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1300px) {
     .topnav .htext {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .topnav a {
-        padding: 14px 2%;
+        padding: 14px 1.25%;
     }
 }
 
 @media screen and (max-width: 1212px) {
-    .topnav .htext {
-        font-size: 33px;
-    }
-
-    .topnav a {
-        padding: 14px 1.5%;
-    }
-}
-
-@media screen and (max-width: 1150px) {
-    .topnav .htext {
-        font-size: 32px;
-    }
-}
-
-@media screen and (max-width: 1052px) {
     .topnav .htext {
         font-size: 31px;
     }
@@ -74,15 +58,31 @@ body {
     }
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1150px) {
     .topnav .htext {
         font-size: 30px;
     }
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1052px) {
+    .topnav .htext {
+        font-size: 29px;
+    }
+
+    .topnav a {
+        padding: 14px 0.75%;
+    }
+}
+
+@media screen and (max-width: 1040px) {
     .topnav .htext {
         font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .topnav .htext {
+        font-size: 27px;
     }
 }
 
@@ -128,11 +128,16 @@ body {
     }
 }
 
+.topnav .htext_bottom {
+    margin-top: 90px;
+    font-size: 20px;
+    font-weight: normal;
+}
 @media screen and (max-width: 910px) {
     .topnav .htext_bottom {
         margin-top: 10px;
         margin-left: 10px;
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 

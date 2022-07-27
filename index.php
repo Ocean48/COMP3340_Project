@@ -58,14 +58,15 @@ $layout = get_style_by_view(1);
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
             <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                        echo "(".$count.")";
-                                                    }?></span></a>
+                                                                                        echo "(" . $count . ")";
+                                                                                    } ?></span></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.html" class="htext">Contact</a>
+            <a href="shipping-policy.html" class="htext_bottom">Shipping Policy</a>
+            <a href="privacy-policy.html" class="htext_bottom">Privacy Policy</a>
+            <a href="return-policy.html" class="htext_bottom">Return Policy</a>
         </div>
     </header>
-
-
 
     <p>Main</p>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
