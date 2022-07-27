@@ -3,6 +3,7 @@
 require_once('private/initialize.php');
 
 $layout = get_style_by_view(1);
+$product_set = find_all_product();
 
 ?>
 
@@ -68,8 +69,29 @@ $layout = get_style_by_view(1);
         </div>
     </header>
 
-    <p>Main</p>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
+    <div id="content">
+        <div id="productlisting">
+            <!-- Display all product -->
+            <?php 
+            $coung = 0;
+            while ($product = mysqli_fetch_assoc($product_set)) { 
+                $count++;
+                if ($count == 9){
+                    break;
+                }?>
+                <form action="#" method="POST">
+                    <div class="product_gallery">
+                        <div class="card">
+                            <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                            <h1><?php echo h($product['product_name']); ?></h1>
+                            <p class="price">$<?php echo h($product['product_price']); ?></p>
+                        </div>
+                    </div>
+                </form>
+            <?php } ?>
+        </div>
+    </div>
 
 
 
