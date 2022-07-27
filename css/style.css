@@ -2,12 +2,13 @@
 body {
     margin: 0;
     font-family: "Franklin Gothic Medium", sans-serif;
+    background-color: #f2ffff;
 }
 
 
 /* header */
 .topnav {
-    background-color: #ff8d14;
+    background-color: #545cfa;
     overflow: hidden;
 }
 
@@ -21,7 +22,7 @@ body {
     margin: 10px auto;
     float: left;
     display: block;
-    color: #000000;
+    color: #FFFFFF;
     text-align: center;
     /* padding: 14px 20px; */
     padding: 14px 1.75%;
@@ -334,6 +335,7 @@ body {
 }
 
 .card {
+    background-color: #fcfcfc;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 300px;
     margin: 10px 2%;
