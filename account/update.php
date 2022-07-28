@@ -87,7 +87,7 @@ if (is_post_request()) {
     <!-- Haader -->
     <header>
         <div class="topnav" id="myTopnav">
-            <a href="../index.html"><img src="images/" alt="logo" class="logo"></a>
+            <a href="../index.php"><img src="../images/logo.png" alt="logo" class="logo"></a>
             <a href="../index.php" class="htext htext2">Home</a>
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
@@ -95,12 +95,11 @@ if (is_post_request()) {
                                                                                         echo "(" . $count . ")";
                                                                                     } ?></span></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
-            <a href="../contact.html" class="htext">Contact</a>
-            <a href="../shipping-policy.html" class="htext_bottom">Shipping Policy</a>
-            <a href="../privacy-policy.html" class="htext_bottom">Privacy Policy</a>
-            <a href="../return-policy.html" class="htext_bottom">Return Policy</a>
+            <a href="../contact.php" class="htext">Contact</a>
+            <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
+            <a href="../privacy-policy.php" class="htext_bottom">Privacy Policy</a>
+            <a href="../return-policy.php" class="htext_bottom">Return Policy</a>
         </div>
-
     </header>
 
     <!-- Show account info -->
@@ -157,8 +156,15 @@ if (is_post_request()) {
 
     <footer>
         <div class="container_footer">
-            <p>Thw Web</p>
             <br>
+            <a href="index.php"><img src="images/logo.png" alt="logo" class="footer_logo"></a>
+            <div class="center">
+                <a href="contact.php" class="footer_text">Contact</a>
+                <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>
+                <a href="privacy-policy.php" class="footer_text">Privacy Policy</a>
+                <a href="return-policy.php" class="footer_text">Return Policy</a>
+                <a href="terms-and-conditions.php" class="footer_text">Term and Conditions</a>
+            </div>
             <p class="copyright">Copyright &copy;
                 <script>
                     document.write(new Date().getFullYear())
