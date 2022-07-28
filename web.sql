@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 25, 2022 at 08:19 AM
+-- Generation Time: Jul 28, 2022 at 05:09 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -39,12 +39,12 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`email`, `username`, `password`) VALUES
-('user2@gmail.com', 'User', '123456'),
+('user2@gmail.com', 'user 2', '123456'),
 ('test@gmail.com', 'User', '123456'),
 ('user1@gmail.com', 'User', '123456'),
 ('user3@gmail.com', 'user3', '123456'),
 ('user4@gmail.com', 'User 4', '123'),
-('s', 's', 's');
+('user10@gmail.com', 'user10', '123456');
 
 -- --------------------------------------------------------
 
@@ -58,17 +58,18 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
-(1, 'admin1', '123456'),
+(1, 'admin', '123456'),
 (3, 'guest', '123456'),
 (6, 'admin2', '123456'),
-(7, 'admin3', '12345');
+(7, 'admin3', '12345'),
+(8, 'admin4', '123456');
 
 -- --------------------------------------------------------
 
@@ -112,8 +113,8 @@ CREATE TABLE IF NOT EXISTS `layout` (
 --
 
 INSERT INTO `layout` (`view`, `background_color`, `margin_color`, `margin_text_color`) VALUES
-(0, '#f2ffff', '#545cfa', '#ffffff'),
-(1, '#f2ffff', '#545cfa', '#ffffff');
+(0, '#ffffff', '#545cfa', '#ffffff'),
+(1, '#ffffff', '#545cfa', '#ffffff');
 
 -- --------------------------------------------------------
 

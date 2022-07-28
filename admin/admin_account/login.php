@@ -21,7 +21,7 @@ if(is_post_request()) {
   // if there were no errors, try to login
   if(empty($errors)) {
     // Using one variable ensures that msg is the same
-    $login_failure_msg = "Log in was unsuccessful.";
+    $login_failure_msg = "Log in was unsuccessful. Wrong username or password";
 
     $admin = find_admin_by_username($username);
     if($admin) {
@@ -63,9 +63,11 @@ if(is_post_request()) {
     <form action="login.php" method="post">
 
     Username:<br/>
-    <input type="text" name="username" value="guest" require/><br />
+    <input type="text" name="username" require/><br />
+
     Password:<br/>
-    <input type="password" name="password" value="123456" require/><br />
+    <input type="password" name="password" require/><br />
+    <br> 
     <input type="submit" name="submit" value="Submit"  />
   </form>
 

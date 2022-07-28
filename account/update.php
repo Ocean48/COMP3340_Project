@@ -115,7 +115,7 @@ if (is_post_request()) {
     <a class="action" href="<?php echo "account.php"; ?> ">&laquo; Back to List</a>
 
     <div class="admin edit">
-        <h1>Edit User Account</h1>
+        <h1>Edit Customer Account</h1>
         <p style="color:red;">If field is left empty data will NOT be changed!</p>
 
         <!-- <?php // echo display_errors($errors); 
@@ -148,7 +148,7 @@ if (is_post_request()) {
             <br />
 
             <div id="operations">
-                <input type="submit" value="Edit User Account" />
+                <input type="submit" value="Edit Customer Account" />
             </div>
         </form>
 

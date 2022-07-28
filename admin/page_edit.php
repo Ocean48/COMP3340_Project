@@ -36,38 +36,38 @@ if (is_post_request()) {
 
 <body>
     <header>
-        <h1>Main Menu</h1>
+        <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
-            <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
-            <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
-            <li><a href="<?php echo url_for('user_account/index.php'); ?>"> User Accounts</a> </li>
-            <li><a href="<?php echo url_for('product/index.php'); ?>"> Product Menu</a> </li>
-            <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Color</a> </li>
-            <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
-        </ul>
-    </nav>
 
-    <div>
+    <div id="content">
 
-        <form action="page_edit.php" method="POST">
-            Background color:<input type="color" name="bc" value="<?php echo $layout['background_color'] ?>">
+        <form class="style_form" action="page_edit.php" method="POST">
+            Background color: <input type="color" name="bc" value="<?php echo $layout['background_color'] ?>">
             <br><br>
-            Header and Footer background color:<input type="color" name="mc" value="<?php echo $layout['margin_color'] ?>">
+            Header and Footer background color: <input type="color" name="mc" value="<?php echo $layout['margin_color'] ?>">
             <br><br>
-            Header and Footer Text background color:<input type="color" name="mtc" value="<?php echo $layout['margin_text_color'] ?>">
+            Header and Footer Text background color: <input type="color" name="mtc" value="<?php echo $layout['margin_text_color'] ?>">
+            <br><br>
             <input type="submit" name="pre-view" value="Pre View">
             <input type="submit" name="save" value="Save">
+            <br><br>
+            <p>Pre View: </p>
         </form>
 
-        <br><br>
-        <p>Pre View: </p>
-
         <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe> -->
-        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe>
+        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1100px; height:400px;" title="Iframe Example"></iframe>
     </div>
 
 

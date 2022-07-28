@@ -13,7 +13,18 @@ $product_price = $_POST['product_price'];
 
 <body>
     <header>
-        <h1>Upload</h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
+    </header>Upload</h1>
     </header>
 
 
@@ -66,7 +77,7 @@ $product_price = $_POST['product_price'];
                 echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                 insert_product($product_id, $product_name, $product_img, $product_price, $product_description);
         ?>
-                <a class="action" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
+                <a class="action" href="<?php echo url_for('product/index.php'); ?>">&laquo; Back to List</a>
         <?php
             } else {
                 echo "Sorry, there was an error uploading your file.";

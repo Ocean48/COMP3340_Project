@@ -16,27 +16,26 @@ $product_set = find_all_product();
 
 <body>
     <header>
-        <h1>Product Menu</h1>
+        <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
     </header>
-
-    <nav>
-        <ul>
-            <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
-            <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
-            <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
-            <li><a href="<?php echo url_for('user_account/index.php'); ?>"> User Accounts</a> </li>
-            <li><a href="<?php echo url_for('product/index.php'); ?>"> Product Menu</a> </li>
-            <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Color</a> </li>
-            <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
-        </ul>
-    </nav>
 
     <div id="content">
         <div id="productlisting">
-            <h1>Products</h1>
+            <h1>Products Management</h1>
 
             <div class="actions">
-                <a class="action" href="<?php echo url_for('/product/new.php'); ?>">Create New Product</a>
+                <a class="action" href="<?php echo url_for('product/new.php'); ?>">Create New Product</a>
             </div>
 
             <table class="list">
@@ -56,10 +55,10 @@ $product_set = find_all_product();
                                     ?></td> -->
                         <td><?php echo h($product['product_name']); ?></td>
                         <td><img width="100px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
-                        <td><a class="action" href="<?php echo url_for('/product/product.php?id=' . h(u($product['product_id']))); ?>">More</a></td>
-                        <td><a class="action" href="<?php echo url_for('/product/edit.php?id=' . h(u($product['product_id']))); ?>">Edit</a></td>
+                        <td><a class="action" href="<?php echo url_for('product/product.php?id=' . h(u($product['product_id']))); ?>">More</a></td>
+                        <td><a class="action" href="<?php echo url_for('product/edit.php?id=' . h(u($product['product_id']))); ?>">Edit</a></td>
                         <!-- After delecting a product run this mysql code "ALTER TABLE `products` AUTO_INCREMENT = 1" to reset the product_id auto increment -->
-                        <td><a class="action" href="<?php echo url_for('/product/deleted.php?id=' . h(u($product['product_id']))); ?>">Delete</a></td>
+                        <td><a class="action" href="<?php echo url_for('product/deleted.php?id=' . h(u($product['product_id']))); ?>">Delete</a></td>
                     </tr>
                 <?php } ?>
             </table>
