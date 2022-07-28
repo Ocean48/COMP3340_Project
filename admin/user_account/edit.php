@@ -3,7 +3,7 @@ require_once('../../private/initialize.php');
 admin_require_login();
 
 if (!isset($_GET['email'])) {
-  redirect_to(url_for('/user_account/index.php'));
+  redirect_to(url_for('user_account/index.php'));
 }
 $email = $_GET['email'];
 
@@ -28,7 +28,7 @@ if (is_post_request()) {
   $result = update_user($account_email, $new_email, $account_username, $account_password);
   if ($result === true) {
     $_SESSION['message'] = 'User account updated.';
-    redirect_to(url_for('/user_account/index.php'));
+    redirect_to(url_for('user_account/index.php'));
   } else {
     $errors = $result;
   }
@@ -38,44 +38,55 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Edit User Account'; ?>
+<?php $page_title = 'Edit Customer Account'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>
   <header>
-    <h1>Account Menu</h1>
+    <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+    <nav>
+      <ul>
+        
+        <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+        <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+        <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+        <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+        <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+        <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+      </ul>
+    </nav>
   </header>
 
   <div id="content">
 
-    <a class="action" href="<?php echo url_for('/user_account/index.php'); ?>">&laquo; Back to List</a>
+    <a class="action" href="<?php echo url_for('user_account/index.php'); ?>">&laquo; Back to List</a>
 
     <div class="admin edit">
-      <h1>Edit User Account</h1>
+      <h1>Edit Customer Account</h1>
       <p style="color:red;">If field is left empty data will NOT be changed!</p>
 
       <!-- <?php // echo display_errors($errors); 
             ?> -->
 
-      <form action="<?php echo url_for('/user_account/edit.php?email=' . h(u($email))); ?>" method="post">
+      <form action="<?php echo url_for('user_account/edit.php?email=' . h(u($email))); ?>" method="post">
 
         <dl>
-          <dt>New Email</dt>
+          <dt>New Email:</dt>
           <dd><input type="text" name="email" placeholder="new email" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>New Username</dt>
+          <dt>New Username:</dt>
           <dd><input type="text" name="username" placeholder="new username" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>New Password</dt>
+          <dt>New Password:</dt>
           <dd><input type="password" name="password" placeholder="new password" /></dd>
         </dl>
 
         <dl>
-          <dt>Confirm Password</dt>
+          <dt>Confirm Password:</dt>
           <dd><input type="password" name="confirm_password" placeholder="confirm password" /></dd>
         </dl>
         <!-- <p>
@@ -84,7 +95,7 @@ if (is_post_request()) {
         <br />
 
         <div id="operations">
-          <input type="submit" value="Edit User Account" />
+          <input type="submit" value="Save" />
         </div>
       </form>
 

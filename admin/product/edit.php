@@ -19,7 +19,7 @@ if (is_post_request()) {
     echo $product['product_name'];
     echo $product['product_img'];
     echo $product['product_price'];
-    echo "|".$product['product_description']."|";
+    echo "|" . $product['product_description'] . "|";
     if (empty($_POST['product_name'])) {
         $product_name = $product['product_name'];
     }
@@ -44,24 +44,31 @@ if (is_post_request()) {
 
 <body>
     <header>
-        <h1>Edit</h1>
+        <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
     </header>
 
 
     <div id="content">
-
-        <h1>Product editing</h1>
         <p style="color:red;">If field is left empty data will NOT be changed!</p>
 
         <div id="content">
 
-            <a class="action" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
+            <a class="action" href="<?php echo url_for('product/index.php'); ?>">&laquo; Back to List</a>
 
             <div class="subject new">
 
                 <h1>Edit Product</h1>
-
-                <br><br><br>
 
                 <!-- Display product info -->
                 <table class="list">
@@ -73,41 +80,38 @@ if (is_post_request()) {
                     </tr>
 
                     <!-- Look for product using id -->
-                    <?php 
+                    <?php
                     $product = find_product_by_id($product_id);
                     ?>
-                            <tr>
-                                <td><?php echo h($product['product_name']); ?></td>
-                                <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
-                                <td><?php echo h($product['product_description']); ?></td>
-                                <td>$<?php echo h($product['product_price']); ?></td>
-                            </tr>
+                    <tr>
+                        <td><?php echo h($product['product_name']); ?></td>
+                        <td><img width="200px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
+                        <td><?php echo h($product['product_description']); ?></td>
+                        <td>$<?php echo h($product['product_price']); ?></td>
+                    </tr>
                 </table>
 
-                <br><br><br>
-
-
                 <!-- Fields to update product -->
-                <form action="<?php echo url_for('/product/edit.php?id=' . h(u($product_id))); ?>" method="post" enctype="multipart/form-data">
-                    <dl>
-                        <dt>Product Name</dt>
-                        <dd><input type="text" name="product_name" placeholder="Product Name" /></dd>
-                        <br><br>
-                        <dt>Product Image name</dt>
-                        <dd><input type="text" name="product_img" placeholder="Enter name of image with extension image.png" /></dd>
-                        <br><br>
-                        <dt>Upload Image</dt>
-                        <dd><input type="file" id="fileToUpload" name="fileToUpload" accept="image/*"></dd>
-                        <br><br>
-                        <dt>Product Description</dt>
-                        <dd><textarea name="product_description"> </textarea></dd>
-                        <br><br><br><br>
-                        <dt>Product Price</dt>
-                        <dd><input type="text" name="product_price" placeholder="price"> </input></dd>
-                    </dl>
+                <form action="<?php echo url_for('product/edit.php?id=' . h(u($product_id))); ?>" method="post" enctype="multipart/form-data">
+                <dl>
+                    <dt>Product Name:</dt>
+                    <dd><input type="text" name="product_name" placeholder="Product Name" /></dd>
+                    <br><br><br>
+                    <dt>Product Image name:</dt>
+                    <dd><input type="text" name="product_img" placeholder="Enter name of image with extension image.png" /></dd>
+                    <br><br><br>
+                    <dt>Upload Image:</dt>
+                    <dd><input type="file" id="fileToUpload" name="fileToUpload" accept="image/*"></dd>
+                    <br><br>
+                    <dt>Product Description:</dt>
+                    <dd><textarea class="text_area" name="product_description"> </textarea></dd>
+                    <br><br><br><br><br>
+                    <dt>Product Price:</dt>
+                    <dd><input type="text" name="product_price" placeholder="price"> </input></dd>
+                </dl>
 
                     <div>
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Save" />
                     </div>
                 </form>
 

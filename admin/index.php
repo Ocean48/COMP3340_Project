@@ -11,22 +11,25 @@ admin_require_login();
 
 <body>
     <header>
-        <h1>Main Menu</h1>
+        <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li>Admin: <?php echo $_SESSION['username'] ?? ''; ?></li>
-            <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
-            <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
-            <li><a href="<?php echo url_for('user_account/index.php'); ?>"> User Accounts</a> </li>
-            <li><a href="<?php echo url_for('product/index.php'); ?>"> Product Menu</a> </li>
-            <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Color</a> </li>
-            <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
-        </ul>
-    </nav>
 
-    <div> Content </div>
+    <div> 
+        <h2>Hi, you have login as - <?php echo $_SESSION['username'] ?? ''; ?></h2>
+
+    </div>
 
 
     <?php include(SHARED_PATH . '/footer.php'); ?>

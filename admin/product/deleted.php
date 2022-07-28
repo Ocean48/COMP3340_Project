@@ -18,7 +18,18 @@ if (is_post_request()) {
 
 <body>
     <header>
-        <h1>Upload</h1>
+        <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
     </header>
 
 
@@ -47,14 +58,14 @@ if (is_post_request()) {
         </table>
 
         <!-- Confirm delete -->
-        <form style="float:left;" action="<?php echo url_for('/product/deleted.php?id=' . h(u($id))); ?>" method="post">
+        <form style="float:left;" action="<?php echo url_for('product/deleted.php?id=' . h(u($id))); ?>" method="post">
             <div id="operations">
                 <input type="submit" name="commit" value="Delete Product" />
             </div>
         </form>
 
         <!-- Cancel delete -->
-        <form style="float:left; margin-left:50px;" action="<?php echo url_for('/product/index.php'); ?>">
+        <form style="float:left; margin-left:50px;" action="<?php echo url_for('product/index.php'); ?>">
             <div id="operations">
                 <input type="submit" name="commit" value="Cancel" />
             </div>

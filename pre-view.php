@@ -2,7 +2,7 @@
 
 require_once('private/initialize.php');
 
-$layout = get_style_by_view(1);
+$layout = get_style_by_view(0);
 $product_set = find_all_product();
 
 $count = 0;

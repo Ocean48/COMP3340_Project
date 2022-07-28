@@ -4,19 +4,18 @@ require_once('../../private/initialize.php');
 
 admin_require_login();
 
-if(is_post_request()) { //if post request process the form
+if (is_post_request()) { //if post request process the form
   $account = [];
   $account['username'] = $_POST['username'] ?? '';
   $account['password'] = $_POST['password'] ?? '';
 
   $result = insert_admin($account);
-  if($result === true) {
+  if ($result === true) {
     //$_SESSION['message'] = 'Admin created.';
-    redirect_to(url_for('/admin_account/index.php'));
+    redirect_to(url_for('admin_account/index.php'));
   } else {
     $errors = $result;
   }
-
 } else {
   // display the blank form
   $account = [];
@@ -25,42 +24,53 @@ if(is_post_request()) { //if post request process the form
 }
 ?>
 
-<?php $page_title = 'Register User Account'; ?>
+<?php $page_title = 'Register Customer Account'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>
-        <header>
-        <h1>Account Menu</h1>
-        </header>
+  <header>
+    <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+    <nav>
+      <ul>
+        
+        <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+        <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+        <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+        <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+        <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+        <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+      </ul>
+    </nav>
+  </header>
 
 
-        <div id="content">
+  <div id="content">
 
-            <a class="action" href="<?php echo url_for('/admin_account/index.php'); ?>">&laquo; Back to List</a>
+    <a class="action" href="<?php echo url_for('admin_account/index.php'); ?>">&laquo; Back to List</a>
 
-            <div class="admin new">
-                <h1>Register User Account</h1>
+    <div class="admin new">
+      <h1>Add New Admin User</h1>
 
-                <form action="<?php echo url_for('/admin_account/new.php'); ?>" method="post">
-    
-                <dl>
-                    <dt>Username</dt>
-                    <dd><input type="text" name="username" placeholder="username" /></dd>
-                </dl>
+      <form action="<?php echo url_for('admin_account/new.php'); ?>" method="post">
 
-                <dl>
-                    <dt>Password</dt>
-                    <dd><input type="password" name="password" placeholder="password" /></dd>
-                </dl>
-            <br/>
+        <dl>
+          <dt>Username:</dt>
+          <dd><input type="text" name="username" placeholder="username" /></dd>
+        </dl>
 
-            <div id="operations">
-            <input type="submit" value="Create Admin" />
-            </div>
-        </form>
+        <dl>
+          <dt>Password:</dt>
+          <dd><input type="password" name="password" placeholder="password" /></dd>
+        </dl>
+        <br />
 
+        <div id="operations">
+          <input type="submit" value="Create Admin" />
         </div>
+      </form>
 
     </div>
 
-<?php include(SHARED_PATH . '/footer.php'); ?>
+  </div>
+
+  <?php include(SHARED_PATH . '/footer.php'); ?>

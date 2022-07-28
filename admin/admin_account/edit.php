@@ -3,7 +3,7 @@ require_once('../../private/initialize.php');
 admin_require_login();
 
 if (!isset($_GET['id'])) {
-  redirect_to(url_for('/admin_account/index.php'));
+  redirect_to(url_for('admin_account/index.php'));
 }
 $id = $_GET['id'];
 
@@ -30,7 +30,7 @@ if (is_post_request()) {
   $result = update_admin($account_id, $new_usrname, $account_password);
   if ($result === true) {
     $_SESSION['message'] = 'User account updated.';
-    redirect_to(url_for('/admin_account/index.php'));
+    redirect_to(url_for('admin_account/index.php'));
   } else {
     $errors = $result;
   }
@@ -45,12 +45,23 @@ if (is_post_request()) {
 
 <body>
   <header>
-    <h1>Edit Admin</h1>
+    <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
+    <nav>
+      <ul>
+        
+        <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+        <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+        <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+        <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+        <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+        <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+      </ul>
+    </nav>
   </header>
 
   <div id="content">
 
-    <a class="action" href="<?php echo url_for('/admin_account/index.php'); ?>">&laquo; Back to List</a>
+    <a class="action" href="<?php echo url_for('admin_account/index.php'); ?>">&laquo; Back to List</a>
 
     <div class="admin edit">
       <h1>Edit Admin</h1>
@@ -60,25 +71,25 @@ if (is_post_request()) {
             ?> -->
 
       <!-- new info field -->
-      <form action="<?php echo url_for('/admin_account/edit.php?id=' . h(u($id))); ?>" method="post">
+      <form action="<?php echo url_for('admin_account/edit.php?id=' . h(u($id))); ?>" method="post">
 
         <dl>
-          <p class="bold" style="float: left;">Old Username:</p>
-          <p style="float: left; margin-left: 10px"><?php echo ($account['username']); ?></p>
+          <p class="bold" style="float: left; font-size:20px;">Old Username:</p>
+          <p style="float: left; margin-left: 10px; font-size:20px;"><?php echo ($account['username']); ?></p>
         </dl>
 
         <dl>
-          <dt>New Username</dt>
+          <dt>New Username:</dt>
           <dd><input type="text" name="username" placeholder="new username" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>New Password</dt>
+          <dt>New Password:</dt>
           <dd><input type="password" name="password" placeholder="new password" /></dd>
         </dl>
 
         <dl>
-          <dt>Confirm Password</dt>
+          <dt>Confirm Password:</dt>
           <dd><input type="password" name="confirm_password" placeholder="confirm password" /></dd>
         </dl>
         <!-- <p>
@@ -87,7 +98,7 @@ if (is_post_request()) {
         <br />
 
         <div id="operations">
-          <input type="submit" value="Edit User Account" />
+          <input type="submit" value="Edit Customer Account" />
         </div>
       </form>
 
