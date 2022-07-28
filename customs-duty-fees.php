@@ -3,20 +3,28 @@
 require_once('private/initialize.php');
 
 $layout = get_style_by_view(1);
+$product_set = find_all_product();
 
+$count = 0;
+if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+    foreach ($_SESSION["cart"] as $key => $value) {
+        $count++;
+    }
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="css/style.css">
-    <title>Cart</title>
+    <title>Privacy Policy</title>
 
     <!-- load style from database -->
     <style>
@@ -37,18 +45,10 @@ $layout = get_style_by_view(1);
             color: <?php echo $layout["margin_text_color"]; ?>;
         }
     </style>
+
 </head>
 
 <body>
-
-    <?php
-    $count = 0;
-    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $count++;
-        }
-    }
-    ?>
 
     <!-- Header -->
     <header>
@@ -68,45 +68,18 @@ $layout = get_style_by_view(1);
         </div>
     </header>
 
-    <form action="account/checkout.php" method="POST">
-        <?php
-        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-            echo '<p>Cart:</p>';
-            foreach ($_SESSION["cart"] as $key => $value) {
-                echo '<input type="text" value="'.$value.'" readonly>';
-            }
-        ?>
-        
-        <br><br>
-        <input type="submit" value="Pay">
-        <?php
-            }
-        ?>
-    </form>
-
-    <footer>
-        <div class="container_footer">
-            <br>
-            <a href="index.php"><img src="images/logo.png" alt="logo" class="footer_logo"></a>
-            <div class="center">
-                <a href="contact.php" class="footer_text">Contact</a>
-                <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>
-                <a href="privacy-policy.php" class="footer_text">Privacy Policy</a>
-                <a href="return-policy.php" class="footer_text">Return Policy</a>
-                <a href="terms-and-conditions.php" class="footer_text">Term and Conditions</a>
-            </div>
-            <p class="copyright">Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script> WEB | All Rights Reserved
-            </p>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <blockquote cite="https://www.lttstore.com/pages/customs-duty-fees">
+        <h1>Customs & Duty Fess </h1>
+        <br>
+        <br>
+        <p>Customers are responsible for any customs and duty fees, which may be assessed to your order once it arrives
+            in the destination country. <b>We does not include any coverage for customs or duty fees in quoted
+                shipping costs, or at any point in our checkout or billing process.</b></p>
+        <br>
+        <p>If you have any questions related to customs, duty, and import charges, please contact your local customs
+            office prior to ordering.</p>
+    </blockquote>
 
 </body>
 
 </html>
-
-<?php db_disconnect($db); ?>
