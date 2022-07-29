@@ -6,6 +6,12 @@ $product_name = $_POST['product_name'];
 $product_img = $_POST['product_img'];
 $product_description = $_POST['product_description'];
 $product_price = $_POST['product_price'];
+$product_quantity = $_POST['product_quantity'];
+
+// if cancel button was click on new.php page
+if (isset($_POST["cancel"])) {
+    header("Location: index.php");
+}
 ?>
 
 <?php $page_title = 'Upload'; ?>
@@ -20,7 +26,7 @@ $product_price = $_POST['product_price'];
                 <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
                 <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
                 <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
-                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
                 <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
             </ul>
         </nav>
@@ -75,7 +81,10 @@ $product_price = $_POST['product_price'];
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                insert_product($product_id, $product_name, $product_img, $product_price, $product_description);
+                $result = insert_product($product_id, $product_name, $product_img, $product_price, $product_description, $product_quantity);
+                if ($result) {
+                    redirect_to(url_for('product/index.php'));
+                }
         ?>
                 <a class="action" href="<?php echo url_for('product/index.php'); ?>">&laquo; Back to List</a>
         <?php

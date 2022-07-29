@@ -24,7 +24,7 @@ $product_set = find_all_product();
                 <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
                 <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
                 <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
-                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
                 <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
             </ul>
         </nav>
@@ -43,6 +43,7 @@ $product_set = find_all_product();
                     <!-- <th>product_id</th> -->
                     <th>product_name</th>
                     <th>Product Image</th>
+                    <th>Inventory</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
@@ -55,6 +56,14 @@ $product_set = find_all_product();
                                     ?></td> -->
                         <td><?php echo h($product['product_name']); ?></td>
                         <td><img width="100px" src="images/<?php echo h($product['product_img']); ?>" alt="Image of Product"></td>
+                        <td>
+                            <?php 
+                            echo h($product['product_quantity']);
+                            if ($product['product_quantity'] <= 0) {
+                                echo '<h4 style="color: red;">Need restock!</h4>';
+                            }
+                            ?>
+                        </td>
                         <td><a class="action" href="<?php echo url_for('product/product.php?id=' . h(u($product['product_id']))); ?>">More</a></td>
                         <td><a class="action" href="<?php echo url_for('product/edit.php?id=' . h(u($product['product_id']))); ?>">Edit</a></td>
                         <!-- After delecting a product run this mysql code "ALTER TABLE `products` AUTO_INCREMENT = 1" to reset the product_id auto increment -->

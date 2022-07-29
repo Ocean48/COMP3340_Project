@@ -1,4 +1,4 @@
-<?php require_once('../private/initialize.php');
+<?php require_once('../../private/initialize.php');
 
 admin_require_login();
 
@@ -44,16 +44,23 @@ if (is_post_request()) {
                 <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
                 <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
                 <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
-                <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+                <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
                 <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
             </ul>
         </nav>
     </header>
 
+    <nav>
+        <ul>
+            <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>"> Page Style</a> </li>
+            <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>"> Change logo</a> </li>
+        </ul>
+    </nav>
+
 
     <div id="content">
 
-        <form class="style_form" action="page_edit.php" method="POST">
+        <form class="style_form" action="page_style.php" method="POST">
             Background color: <input type="color" name="bc" value="<?php echo $layout['background_color'] ?>">
             <br><br>
             Header and Footer background color: <input type="color" name="mc" value="<?php echo $layout['margin_color'] ?>">
@@ -66,9 +73,10 @@ if (is_post_request()) {
             <p>Pre View: </p>
         </form>
 
-        <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:400px;" title="Iframe Example"></iframe> -->
-        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1100px; height:400px;" title="Iframe Example"></iframe>
+        <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1100px; height:600px;" title="Iframe Example"></iframe> -->
+        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1100px; height:600px;" title="Iframe Example"></iframe>
     </div>
 
+    <p><br><br><br></p>
 
     <?php include(SHARED_PATH . '/footer.php'); ?>
