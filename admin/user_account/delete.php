@@ -30,7 +30,7 @@ if (is_post_request()) {
         <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
         <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
         <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
-        <li><a href="<?php echo url_for('page_edit.php'); ?>"> Edit Page Style</a> </li>
+        <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
         <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
       </ul>
     </nav>

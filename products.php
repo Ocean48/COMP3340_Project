@@ -10,8 +10,17 @@ $count = 0;
 // Check has seesion been started
 if (isset($_SESSION) && isset($_SESSION["cart"])) {
     if (is_post_request()) {  // if add to cart is clicked
-        $count = 0;
-        array_push($_SESSION["cart"], $_POST["product_id"]);  //  add product if to session array
+
+        $product = find_product_by_id($_POST["product_id"]);
+        $product_name = $product['product_name'];
+        // if the product's inventory is 0
+        if ($product['product_quantity'] == 0) {
+            echo "<script type='text/javascript'>alert('$product_name is sold out!');</script>";
+        } else {
+            $count = 0;
+            array_push($_SESSION["cart"], $_POST["product_id"]);  //  add product if to session array
+            header("Location: products.php");
+        }
         // count product in cart
         foreach ($_SESSION["cart"] as $key => $value) {
             $count++;
@@ -91,14 +100,23 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
 
             <!-- Display all product -->
             <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
-                <form action="#" method="POST">
+                <form action="" method="POST">
                     <div class="product_gallery">
                         <div class="card">
                             <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
                             <h1><?php echo h($product['product_name']); ?></h1>
                             <p class="price">$<?php echo h($product['product_price']); ?></p>
                             <p><?php echo h($product['product_description']); ?></p>
-                            <p><input type="submit" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input></p>
+                            <input type="hidden" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
+                            <?php
+                            if ($product['product_quantity'] > 0) {
+                                echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
+                            } else {
+                                echo '<h2 style="color: red;">Out of stock!</h2>';
+                            }
+                            ?>
+
+
                         </div>
                     </div>
                 </form>

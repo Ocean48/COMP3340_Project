@@ -111,7 +111,10 @@ if (is_post_request()) {
             Email:<br />
             <input type="text" name="username" placeholder="email" require /><br />
             Password:<br />
-            <input type="password" name="password" placeholder="password" require /><br />
+            <input type="password" name="password" placeholder="password" id="mypassword" require />
+            <input type="checkbox" onclick="show_password()">Show Password
+            <script src="js/script.js"></script>
+            <br><br>
             <input type="submit" name="submit" value="Login" />
         </form>
         <p>Don't have an account? <a href="register.php">Register today!</a></p>
@@ -120,7 +123,7 @@ if (is_post_request()) {
     <footer>
         <div class="container_footer">
             <br>
-            <a href="index.php"><img src="images/logo.png" alt="logo" class="footer_logo"></a>
+            <a href="index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
             <div class="center">
                 <a href="contact.php" class="footer_text">Contact</a>
                 <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>

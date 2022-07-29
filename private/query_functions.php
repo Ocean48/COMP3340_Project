@@ -64,7 +64,7 @@
     return $errors;
   }
 
-  function insert_product($product_id, $product_name, $product_img, $product_price, $product_description) {
+  function insert_product($product_id, $product_name, $product_img, $product_price, $product_description, $product_quantity) {
     global $db;
 
     // To check does product exist
@@ -72,7 +72,7 @@
     // if(!empty($errors)) {
     //   return $errors;
     // }
-    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`, `product_description`, `product_price`) VALUES ('$product_id','$product_name','$product_img','$product_description','$product_price')";
+    $sql = "INSERT INTO `products`(`product_id`, `product_name`, `product_img`, `product_description`, `product_price` ,`product_quantity`) VALUES ('$product_id','$product_name','$product_img','$product_description','$product_price','$product_quantity')";
     // $sql = "INSERT INTO `cart` ";
     // $sql .= "(menu_name, position, visible) ";
     // $sql .= "VALUES (";
@@ -541,8 +541,6 @@
     //   return $errors;
     // }
 
-    $password = ($account['password']);
-
     $sql = "INSERT INTO `account` ";
     $sql .= "(email,username, password) ";
     $sql .= "VALUES (";
@@ -551,7 +549,7 @@
     // $sql .= "'" . db_escape($db, $admin['email']) . "',";
     $sql .= "'" . db_escape($db, $account['email']) . "',";
     $sql .= "'" . db_escape($db, $account['username']) . "',";
-    $sql .= "'" . db_escape($db, $password) . "'";
+    $sql .= "'" . db_escape($db, $account['password']) . "'";
     $sql .= ")";
     $result = mysqli_query($db, $sql);
 
@@ -636,6 +634,23 @@
 
     $sql = "UPDATE `layout` SET `background_color`='$bc',`margin_color`='$mc',`margin_text_color`='$mtc' WHERE `view` = $n";
   
+    $result = mysqli_query($db, $sql);
+
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function update_inventory($product_id) {
+    global $db;
+
+    $sql = "UPDATE `products` SET `product_quantity`=`product_quantity`-1 WHERE `product_id` = $product_id";
     $result = mysqli_query($db, $sql);
 
     // For UPDATE statements, $result is true/false

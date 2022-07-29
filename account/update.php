@@ -148,7 +148,7 @@ if (is_post_request()) {
             <br />
 
             <div id="operations">
-                <input type="submit" value="Edit Customer Account" />
+                <input type="submit" value="Save" />
             </div>
         </form>
 
@@ -157,7 +157,7 @@ if (is_post_request()) {
     <footer>
         <div class="container_footer">
             <br>
-            <a href="index.php"><img src="images/logo.png" alt="logo" class="footer_logo"></a>
+            <a href="index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
             <div class="center">
                 <a href="contact.php" class="footer_text">Contact</a>
                 <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>

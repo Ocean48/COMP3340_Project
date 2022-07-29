@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2022 at 05:09 AM
+-- Generation Time: Jul 29, 2022 at 05:29 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -40,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 INSERT INTO `account` (`email`, `username`, `password`) VALUES
 ('user2@gmail.com', 'user 2', '123456'),
-('test@gmail.com', 'User', '123456'),
+('test@gmail.com', 'test', '123456'),
 ('user1@gmail.com', 'User', '123456'),
 ('user3@gmail.com', 'user3', '123456'),
 ('user4@gmail.com', 'User 4', '123'),
-('user10@gmail.com', 'user10', '123456');
+('user10@gmail.com', 'user 10', '123456');
 
 -- --------------------------------------------------------
 
@@ -113,8 +113,8 @@ CREATE TABLE IF NOT EXISTS `layout` (
 --
 
 INSERT INTO `layout` (`view`, `background_color`, `margin_color`, `margin_text_color`) VALUES
-(0, '#ffffff', '#545cfa', '#ffffff'),
-(1, '#ffffff', '#545cfa', '#ffffff');
+(0, '#ffffff', '#3f86f1', '#ffffff'),
+(1, '#ffffff', '#3f86f1', '#ffffff');
 
 -- --------------------------------------------------------
 
@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_price` float NOT NULL,
   `product_img` varchar(50) NOT NULL,
   `product_description` text NOT NULL,
+  `product_quantity` int(11) NOT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
@@ -136,21 +137,21 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_img`, `product_description`) VALUES
-(1, 'Product 1', 4.98, 'index.jpg', ' This is product one!'),
-(2, 'Product 2', 14, 'image1.jpg', ' This is product two!'),
-(3, 'Product 3', 12.22, 'index.jpg', ' This is product three'),
-(4, 'Product 4', 4, 'image1.jpg', ' This is product four!'),
-(5, 'Product 5', 7, 'mouse17.jpg', ' This is product five!'),
-(6, 'Product 6', 78, 'keybord1.jpg', ' This is product six!'),
-(7, 'Product 7', 13, 'fan1.jpg', ' This is product seve'),
-(8, 'Product 52', 7, 'mouse17.jpg', ' This is product five!'),
-(9, 'Product 3', 12.22, 'index.jpg', ' This is product three'),
-(10, 'Product 2', 14, 'image1.jpg', ' This is product two!'),
-(11, 'Product 6', 78, 'keybord1.jpg', ' This is product six!'),
-(12, 'Product 5', 7, 'mouse17.jpg', ' This is product five!'),
-(13, 'Product 1', 4.98, 'index.jpg', ' This is product one!'),
-(14, 'Product 5SD', 7, 'mouse17.jpg', ' This is product five!');
+INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_img`, `product_description`, `product_quantity`) VALUES
+(1, 'Product 1', 5, 'index.jpg', ' This is product one!', -3),
+(2, 'Product 2', 14, 'image1.jpg', ' This is product two!', 0),
+(3, 'Product 3', 12.22, 'index.jpg', ' This is product three', 0),
+(4, 'Product 4', 4, 'image1.jpg', ' This is product four!', -1),
+(5, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 0),
+(6, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 1),
+(7, 'Product 7', 13, 'fan1.jpg', ' This is product seve', 1),
+(8, 'Product 52', 7, 'mouse17.jpg', ' This is product five!', 1),
+(9, 'Product 3', 12.22, 'index.jpg', ' This is product three', 1),
+(10, 'Product 2', 14, 'image1.jpg', ' This is product two!', 1),
+(11, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 1),
+(12, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 1),
+(13, 'Product 1', 4.98, 'index.jpg', ' This is product one!', 1),
+(14, 'Product 5SD', 7, 'mouse17.jpg', ' This is product five!', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

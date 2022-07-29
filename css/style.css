@@ -14,7 +14,7 @@ body {
 
 .topnav .logo {
     float: left;
-    height: 100px;
+    width: 100px;
 }
 
 .topnav a {
@@ -402,14 +402,29 @@ body {
     border: none;
     outline: 0;
     padding: 12px;
-    color: white;
-    background-color: #000;
+    color: #ffffff;
+    background-color: #000000;
     text-align: center;
     cursor: pointer;
     width: 100%;
     font-size: 18px;
 }
 
-.card button:hover {
-    opacity: 0.7;
+.card .button:hover {
+    background-color: #898989;
+    color: #000000;
+}
+
+/* input field for text, password */
+input[type=text] {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+input[type=password] {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
 }
