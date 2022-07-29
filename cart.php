@@ -2,6 +2,10 @@
 
 require_once('private/initialize.php');
 
+if (user_is_logged_in()) {
+    header("Location: account/cart.php");
+}
+
 $layout = get_style_by_view(1);
 
 ?>

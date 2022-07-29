@@ -27,7 +27,7 @@ include(SHARED_PATH . '/header.php'); ?>
     </header>
 
     <div id="content">
-        <div id="productlisting">
+        <div>
 
             <div class="actions">
                 <a class="action" href="<?php echo url_for('product/index.php'); ?>">&laquo; Back to List</a>

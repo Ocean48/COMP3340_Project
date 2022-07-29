@@ -70,7 +70,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <blockquote cite="https://www.lttstore.com/pages/return-policy">
-        <h1>Return Policy</h1>
+        <h1 class="page_title">Return Policy</h1>
         <br>
         <br>
         <p>We aims to provide a happy shopping experience for all of our customers, but we do understand that

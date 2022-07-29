@@ -93,33 +93,22 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
         </div>
     </header>
 
-    <div id="content">
-        <div id="productlisting">
-            <h1>Products</h1>
+    <div>
+        <div>
+            <h1 class="page_title">Products</h1>
 
 
             <!-- Display all product -->
             <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
-                <form action="" method="POST">
+                <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
                     <div class="product_gallery">
                         <div class="card">
                             <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
                             <h1><?php echo h($product['product_name']); ?></h1>
-                            <p class="price">$<?php echo h($product['product_price']); ?></p>
-                            <p><?php echo h($product['product_description']); ?></p>
-                            <input type="hidden" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
-                            <?php
-                            if ($product['product_quantity'] > 0) {
-                                echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
-                            } else {
-                                echo '<h2 style="color: red;">Out of stock!</h2>';
-                            }
-                            ?>
-
 
                         </div>
                     </div>
-                </form>
+                </a>
             <?php } ?>
 
 

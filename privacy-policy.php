@@ -69,7 +69,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <blockquote cite="https://www.lttstore.com/pages/privacy-policy">
-        <h1>privacy policy</h1>
+        <h1 class="page_title">privacy policy</h1>
         <br>
         <h4>Creator Warehouse, Inc. Privacy Policy</h4>
         <br>

@@ -1,19 +1,38 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../private/initialize.php');
 
-<?php
+if (user_is_logged_in()) {
+    echo "delete this msg later";
+}
 
-user_require_login();
-$account = find_user_by_email($_SESSION["user_email"]);
+echo $_SESSION["user_email"];
 
-// Get page style from database
-$layout = get_style_by_view(1);
-
-$count = 0;
-if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+// if shopping is in session, move cart from session to database
+if (isset($_SESSION["cart"])) {
+    $cart_array = array(); 
+    $item_count = [];
     foreach ($_SESSION["cart"] as $key => $value) {
-        $count++;
+        // if product id is not in cart array, add that product id to array, set value to 1
+        if (!in_array($value, $cart_array)) {
+            array_push($cart_array, $value);
+            $cart_array["$value"] = 1;
+        }
+        else {
+            $cart_array["$value"] += 1;
+        }
+    }
+
+    echo print_r($cart_array);
+    echo "||<br>";
+    foreach ($_SESSION["cart"] as $key => $value) {
+        echo "item ".$value."  q: ";
+        echo $cart_array["$value"];
+        echo "<br>";
+        
     }
 }
+$cart = get_cart_by_email($_SESSION["user_email"]);
+$layout = get_style_by_view(1);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +45,11 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Account</title>
+    <title>Cart</title>
 
     <!-- load style from database -->
     <style>
         body {
-            background-color: <?php echo $layout["background_color"]; ?>;
             background-color: <?php echo $layout["background_color"]; ?>;
         }
 
@@ -52,6 +70,14 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
 
 <body>
 
+    <?php
+    $count = 0;
+    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+        foreach ($_SESSION["cart"] as $key => $value) {
+            $count++;
+        }
+    }
+    ?>
 
     <!-- Haader -->
     <header>
@@ -71,33 +97,21 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
         </div>
     </header>
 
-    <!-- Show account info -->
-    <p><a href="logout.php"> Logout</a></p>
+    <form action="account/checkout.php" method="POST">
+        <?php
+        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
+            echo '<p>Cart:</p>';
+            foreach ($_SESSION["cart"] as $key => $value) {
+                echo '<input type="text" value="' . $value . '" readonly>';
+            }
+        ?>
 
-    <div id="content">
-        <div>
-            <h1>Hi <?php echo h($account['username']); ?>!</h1>
-
-
-            <table class="list">
-                <tr>
-                    <th>email</th>
-                    <th>username</th>
-                    <th>password</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                </tr>
-
-                <tr>
-                    <td><?php echo h($account['email']); ?></td>
-                    <td><?php echo h($account['username']); ?></td>
-                    <td><?php echo h($account['password']); ?></td>
-                    <td><a class="action" href="<?php echo "update.php?email=". h(u($account['email'])); ?>">Update Account</a></td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
+            <br><br>
+            <input type="submit" value="Pay">
+        <?php
+        }
+        ?>
+    </form>
 
     <footer>
         <div class="container_footer">
@@ -118,8 +132,10 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
 </html>
+
+<?php db_disconnect($db); ?>

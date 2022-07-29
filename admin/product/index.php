@@ -31,7 +31,7 @@ $product_set = find_all_product();
     </header>
 
     <div id="content">
-        <div id="productlisting">
+        <div>
             <h1>Products Management</h1>
 
             <div class="actions">

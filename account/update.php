@@ -106,7 +106,7 @@ if (is_post_request()) {
     <p><a href="logout.php"> Logout</a></p>
 
     <div id="content">
-        <div id="productlisting">
+        <div>
             <h1>Hi <?php echo h($account['username']); ?>!</h1>
         </div>
 

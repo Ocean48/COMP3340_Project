@@ -74,7 +74,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
 
     <h1>Hot</h1>
     <div id="content">
-        <div id="productlisting">
+        <div>
             <!-- Display all product -->
             <?php
             $coung = 0;

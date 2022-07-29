@@ -31,7 +31,7 @@ $account_set = find_all_users();
 
 
     <div id="content">
-        <div id="productlisting">
+        <div>
             <h1>Customer Management</h1>
 
             <div class="actions">

@@ -70,7 +70,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
 
     <blockquote cite="https://www.lttstore.com/pages/shipping-policy">
 
-        <h1>Shipping Policy</h1>
+        <h1 class="page_title">Shipping Policy</h1>
         <hr>
         <br>
         <br>

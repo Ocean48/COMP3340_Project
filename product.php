@@ -2,7 +2,7 @@
 
 require_once('private/initialize.php');
 
-$product_set = find_all_product();
+$product = find_product_by_id($_GET['id']);
 $layout = get_style_by_view(1);
 
 $count = 0;
@@ -84,39 +84,31 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
         </div>
     </header>
 
-    <div id="content">
-        <div id="productlisting">
-            <h1>Products</h1>
+    <br>
 
+    <a class="back_button" href="products.php">&laquo; Back</a>
 
-            <!-- Display all product -->
-            <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
-                <form action="" method="POST">
-                    <div class="product_gallery">
-                        <div class="card">
-                            <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
-                            <h1><?php echo h($product['product_name']); ?></h1>
-                            <p class="price">$<?php echo h($product['product_price']); ?></p>
-                            <p><?php echo h($product['product_description']); ?></p>
-                            <input type="hidden" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
-                            <?php
-                            if ($product['product_quantity'] != 0) {
-                                echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
-                            } else {
-                                echo '<h2 style="color: red;">Out of stock!</h2>';
-                            }
-                            ?>
-
-
-                        </div>
-                    </div>
-                </form>
-            <?php } ?>
-
-
+    <!-- Display product -->
+    <div class="center_block">
+        <div style="float: left;">
+            <h1><?php echo h($product['product_name']); ?></h1>
+            <img width="400px" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
         </div>
-
-
+        <div style="float: left;">
+            <br><br>
+            <form action="" method="POST">
+                <p><?php echo h($product['product_description']); ?></p>
+                <input type="hidden" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
+                <p class="price">$<?php echo h($product['product_price']); ?></p>
+                <?php
+                if ($product['product_quantity'] > 0) {
+                    echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
+                } else {
+                    echo '<h2 style="color: red;">Out of stock!</h2>';
+                }
+                ?>
+            </form>
+        </div>
     </div>
 
 
