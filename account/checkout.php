@@ -4,6 +4,7 @@ require_once('../private/initialize.php');
 
 user_require_login();
 $account = find_user_by_email($_SESSION["user_email"]);
+$cart = get_cart_by_email($_SESSION["user_email"]);
 $layout = get_style_by_view(1);
 
 ?>
@@ -44,11 +45,10 @@ $layout = get_style_by_view(1);
 <body>
 
     <?php
+    // count item is shopping cart
     $count = 0;
-    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $count++;
-        }
+    foreach ($cart as $key => $value) {
+        $count++;
     }
     ?>
 
@@ -59,9 +59,11 @@ $layout = get_style_by_view(1);
             <a href="../index.php" class="htext htext2">Home</a>
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
-            <a href="../cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="../cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="../contact.php" class="htext">Contact</a>
             <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -72,15 +74,23 @@ $layout = get_style_by_view(1);
 
     <h1>Checkout</h1>
 
+    <?php
+    echo '<p>Cart:</p>';
+    foreach ($cart as $key => $value) {
+        echo '<input type="text" value="Item id ' . $value[1] . '" readonly>';
+        echo '<input type="text" value="Quantity ' . $value[2] . '" readonly>';
+        echo "<br>";
+    }
+    ?>
+
     <a href="pay.php">Pay</a>
     <br><br>
 
     <?php
+    // count item is shopping cart
     $count = 0;
-    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-        foreach ($_SESSION["cart"] as $key => $value) {
-            echo $value . "<br>";
-        }
+    foreach ($cart as $key => $value) {
+        $count++;
     }
     ?>
 

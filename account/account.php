@@ -1,8 +1,10 @@
 <?php require_once('../private/initialize.php'); ?>
 
 <?php
+
 user_require_login();
 $account = find_user_by_email($_SESSION["user_email"]);
+$cart = get_cart_by_email($_SESSION["user_email"]);
 
 // Get page style from database
 $layout = get_style_by_view(1);
@@ -51,6 +53,13 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
 
 <body>
 
+    <?php
+    // count item is shopping cart
+    $count = 0;
+    foreach ($cart as $key => $value) {
+        $count++;
+    }
+    ?>
 
     <!-- Haader -->
     <header>
@@ -59,9 +68,11 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
             <a href="../index.php" class="htext htext2">Home</a>
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
-            <a href="../cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="../contact.php" class="htext">Contact</a>
             <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -74,7 +85,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     <p><a href="logout.php"> Logout</a></p>
 
     <div id="content">
-        <div id="productlisting">
+        <div>
             <h1>Hi <?php echo h($account['username']); ?>!</h1>
 
 
@@ -91,7 +102,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
                     <td><?php echo h($account['email']); ?></td>
                     <td><?php echo h($account['username']); ?></td>
                     <td><?php echo h($account['password']); ?></td>
-                    <td><a class="action" href="<?php echo "update.php?email=". h(u($account['email'])); ?>">Update Account</a></td>
+                    <td><a class="action" href="<?php echo "update.php?email=" . h(u($account['email'])); ?>">Update Account</a></td>
                 </tr>
             </table>
         </div>

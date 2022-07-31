@@ -6,12 +6,13 @@ $layout = get_style_by_view(1);
 $product_set = find_all_product();
 
 $count = 0;
-if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-    foreach ($_SESSION["cart"] as $key => $value) {
+if (user_is_logged_in()) {  // if user is logged in
+    $cart = get_cart_by_email($_SESSION["user_email"]);
+    // count item is shopping cart
+    foreach ($cart as $key => $value) {
         $count++;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -58,9 +59,11 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
             <a href="index.php" class="htext htext2">Home</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
-            <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="account/cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -70,7 +73,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <blockquote cite="https://www.lttstore.com/pages/return-policy">
-        <h1>Return Policy</h1>
+        <h1 class="page_title">Return Policy</h1>
         <br>
         <br>
         <p>We aims to provide a happy shopping experience for all of our customers, but we do understand that
