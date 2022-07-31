@@ -28,7 +28,7 @@
     </header>
 
         <div id="content">
-            <div id="productlisting">
+            <div>
                 <h1>Admin Management</h1>
 
                 <div class="actions">
