@@ -1,35 +1,7 @@
 <?php require_once('../private/initialize.php');
 
-if (user_is_logged_in()) {
-    echo "delete this msg later";
-}
+user_require_login();
 
-echo $_SESSION["user_email"];
-
-// if shopping is in session, move cart from session to database
-if (isset($_SESSION["cart"])) {
-    $cart_array = array(); 
-    $item_count = [];
-    foreach ($_SESSION["cart"] as $key => $value) {
-        // if product id is not in cart array, add that product id to array, set value to 1
-        if (!in_array($value, $cart_array)) {
-            array_push($cart_array, $value);
-            $cart_array["$value"] = 1;
-        }
-        else {
-            $cart_array["$value"] += 1;
-        }
-    }
-
-    echo print_r($cart_array);
-    echo "||<br>";
-    foreach ($_SESSION["cart"] as $key => $value) {
-        echo "item ".$value."  q: ";
-        echo $cart_array["$value"];
-        echo "<br>";
-        
-    }
-}
 $cart = get_cart_by_email($_SESSION["user_email"]);
 $layout = get_style_by_view(1);
 
@@ -71,11 +43,10 @@ $layout = get_style_by_view(1);
 <body>
 
     <?php
+    // count item is shopping cart
     $count = 0;
-    if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $count++;
-        }
+    foreach ($cart as $key => $value) {
+        $count++;
     }
     ?>
 
@@ -86,9 +57,11 @@ $layout = get_style_by_view(1);
             <a href="../index.php" class="htext htext2">Home</a>
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
-            <a href="../cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="../contact.php" class="htext">Contact</a>
             <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -97,26 +70,26 @@ $layout = get_style_by_view(1);
         </div>
     </header>
 
-    <form action="account/checkout.php" method="POST">
-        <?php
-        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-            echo '<p>Cart:</p>';
-            foreach ($_SESSION["cart"] as $key => $value) {
-                echo '<input type="text" value="' . $value . '" readonly>';
-            }
-        ?>
+    <form action="checkout.php" method="POST">
 
-            <br><br>
-            <input type="submit" value="Pay">
         <?php
+        echo '<p>Cart:</p>';
+        foreach ($cart as $key => $value) {
+            echo '<input type="text" value="Item id ' . $value[1] . '" readonly>';
+            echo '<input type="text" value="Quantity ' . $value[2] . '" readonly>';
+            echo "<br>";
         }
         ?>
+
+        <br><br>
+        <input type="submit" value="Pay">
+
     </form>
 
     <footer>
         <div class="container_footer">
             <br>
-            <a href="index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
+            <a href="../index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
             <div class="center">
                 <a href="contact.php" class="footer_text">Contact</a>
                 <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>

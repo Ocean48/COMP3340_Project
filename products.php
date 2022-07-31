@@ -6,39 +6,13 @@ $product_set = find_all_product();
 $layout = get_style_by_view(1);
 
 $count = 0;
-
-// Check has seesion been started
-if (isset($_SESSION) && isset($_SESSION["cart"])) {
-    if (is_post_request()) {  // if add to cart is clicked
-
-        $product = find_product_by_id($_POST["product_id"]);
-        $product_name = $product['product_name'];
-        // if the product's inventory is 0
-        if ($product['product_quantity'] == 0) {
-            echo "<script type='text/javascript'>alert('$product_name is sold out!');</script>";
-        } else {
-            $count = 0;
-            array_push($_SESSION["cart"], $_POST["product_id"]);  //  add product if to session array
-            header("Location: products.php");
-        }
-        // count product in cart
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $count++;
-        }
-    } else {  // if add to cart was never clicked
-        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-            foreach ($_SESSION["cart"] as $key => $value) {
-                $count++;
-            }
-        }
+if (user_is_logged_in()) {  // if user is logged in
+    $cart = get_cart_by_email($_SESSION["user_email"]);
+    // count item is shopping cart
+    foreach ($cart as $key => $value) {
+        $count++;
     }
-} else {  // creat cart session
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    $_SESSION["cart"] = array();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +56,11 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
             <a href="index.php" class="htext htext2">Home</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
-            <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="account/cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>

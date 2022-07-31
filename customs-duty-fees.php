@@ -57,9 +57,11 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
             <a href="index.php" class="htext htext2">Home</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
-            <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="account/cart.php" class="htext"><?php if ($count != 0) {
+                                                    echo "Cart•";
+                                                } else {
+                                                    echo "Cart";
+                                                } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>

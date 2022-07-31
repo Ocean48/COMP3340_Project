@@ -6,28 +6,22 @@ $product = find_product_by_id($_GET['id']);
 $layout = get_style_by_view(1);
 
 $count = 0;
+if (user_is_logged_in()) {  // if user is logged in
+    $cart = get_cart_by_email($_SESSION["user_email"]);
+    // count item is shopping cart
+    foreach ($cart as $key => $value) {
+        $count++;
+    }
+}
 
-// Check has seesion been started
-if (isset($_SESSION) && isset($_SESSION["cart"])) {
-    if (is_post_request()) {  // if add to cart is clicked
-        $count = 0;
-        array_push($_SESSION["cart"], $_POST["product_id"]);  //  add product if to session array
-        // count product in cart
-        foreach ($_SESSION["cart"] as $key => $value) {
-            $count++;
-        }
-    } else {  // if add to cart was never clicked
-        if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of product inside
-            foreach ($_SESSION["cart"] as $key => $value) {
-                $count++;
-            }
-        }
+// Check is user login
+if (is_post_request()) {
+    if (!user_is_logged_in()) {
+        echo "<script type='text/javascript'>alert('You must login to add this item to your shopping cart!');
+        document.location='account/account.php'</script>";
     }
-} else {  // creat cart session
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    $_SESSION["cart"] = array();
+    add_to_cart($_SESSION["user_email"], $_POST["product_id"], $_POST["quantity"]);
+    header("Refresh:0");
 }
 
 ?>
@@ -73,9 +67,11 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
             <a href="index.php" class="htext htext2">Home</a>
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
-            <a href="cart.php" class="htext">Cart <span style="font-size: 25px;"><?php if ($count != 0) {
-                                                                                        echo "(" . $count . ")";
-                                                                                    } ?></span></a>
+            <a href="account/cart.php" class="htext"><?php if ($count != 0) {
+                                                            echo "Cart•";
+                                                        } else {
+                                                            echo "Cart";
+                                                        } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -98,7 +94,8 @@ if (isset($_SESSION) && isset($_SESSION["cart"])) {
             <br><br>
             <form action="" method="POST">
                 <p><?php echo h($product['product_description']); ?></p>
-                <input type="hidden" class="button" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
+                <input type="hidden" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
+                Quantity: <input style="width:40px; height:20px;" type="number" min=0 name="quantity" value="1"></input>
                 <p class="price">$<?php echo h($product['product_price']); ?></p>
                 <?php
                 if ($product['product_quantity'] > 0) {

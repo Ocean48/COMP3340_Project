@@ -669,11 +669,11 @@ function update_style($bc, $mc, $mtc, $n)
 }
 
 // Used to reduce product's inventory after customer made a purchase
-function update_inventory($product_id)
+function update_inventory($product_id, $n)
 {
   global $db;
 
-  $sql = "UPDATE `products` SET `product_quantity`=`product_quantity`-1 WHERE `product_id` = $product_id";
+  $sql = "UPDATE `products` SET `product_quantity`=`product_quantity`-$n WHERE `product_id` = $product_id";
   $result = mysqli_query($db, $sql);
 
   // For UPDATE statements, $result is true/false
@@ -692,11 +692,11 @@ function get_cart_by_email($email)
 {
   global $db;
 
-  $sql = "SELECT `email`, `product_id`, `quantity` FROM `cart` WHERE `email` = '$email'";
+  $sql = "SELECT * FROM `cart` WHERE `email` = '$email'";
   $result = mysqli_query($db, $sql);
   // For UPDATE statements, $result is true/false
   confirm_result_set($result);
-  $cart = mysqli_fetch_assoc($result);
+  $cart = mysqli_fetch_all($result);
   mysqli_free_result($result);
   return $cart; // returns an assoc. array
 }
@@ -712,6 +712,25 @@ function add_to_cart($email, $pid, $q)
     return true;
   } else {
     // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+// crear user's shopping cart
+function clear_user_cart($email) {
+  
+  global $db;
+
+  $sql = "DELETE FROM `cart` WHERE `email` = '$email'";
+  $result = mysqli_query($db, $sql);
+
+  // For DELETE statements, $result is true/false
+  if ($result) {
+    return true;
+  } else {
+    // DELETE failed
     echo mysqli_error($db);
     db_disconnect($db);
     exit;
