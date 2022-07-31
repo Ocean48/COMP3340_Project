@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 29, 2022 at 05:29 AM
+-- Generation Time: Jul 31, 2022 at 04:40 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -81,8 +81,6 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE IF NOT EXISTS `cart` (
   `email` varchar(40) NOT NULL,
   `product_id` int(10) NOT NULL,
-  `product_name` varchar(200) NOT NULL,
-  `price` double NOT NULL,
   `quantity` int(10) NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -90,9 +88,9 @@ CREATE TABLE IF NOT EXISTS `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`email`, `product_id`, `product_name`, `price`, `quantity`) VALUES
-('sirayno2@gmail.com', 0, 'Test Product 3', 880, 0),
-('sirayno2@gmail.com', 0, 'Test Product 2', 680, 0);
+INSERT INTO `cart` (`email`, `product_id`, `quantity`) VALUES
+('', 2, 1),
+('', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -138,20 +136,20 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_img`, `product_description`, `product_quantity`) VALUES
-(1, 'Product 1', 5, 'index.jpg', ' This is product one!', -3),
-(2, 'Product 2', 14, 'image1.jpg', ' This is product two!', 0),
-(3, 'Product 3', 12.22, 'index.jpg', ' This is product three', 0),
-(4, 'Product 4', 4, 'image1.jpg', ' This is product four!', -1),
-(5, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 0),
-(6, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 1),
-(7, 'Product 7', 13, 'fan1.jpg', ' This is product seve', 1),
-(8, 'Product 52', 7, 'mouse17.jpg', ' This is product five!', 1),
-(9, 'Product 3', 12.22, 'index.jpg', ' This is product three', 1),
-(10, 'Product 2', 14, 'image1.jpg', ' This is product two!', 1),
-(11, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 1),
-(12, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 1),
-(13, 'Product 1', 4.98, 'index.jpg', ' This is product one!', 1),
-(14, 'Product 5SD', 7, 'mouse17.jpg', ' This is product five!', 1);
+(1, 'Product 1', 5, 'index.jpg', ' This is product one!', 17),
+(2, 'Product 2', 14, 'image1.jpg', ' This is product two!', 14),
+(3, 'Product 3', 12.22, 'index.jpg', ' This is product three', 19),
+(4, 'Product 4', 4, 'image1.jpg', ' This is product four!', 20),
+(5, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 20),
+(6, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 20),
+(7, 'Product 7', 13, 'fan1.jpg', ' This is product seve', 20),
+(8, 'Product 52', 7, 'mouse17.jpg', ' This is product five!', 20),
+(9, 'Product 3', 12.22, 'index.jpg', ' This is product three', 20),
+(10, 'Product 2', 14, 'image1.jpg', ' This is product two!', 20),
+(11, 'Product 6', 78, 'keybord1.jpg', ' This is product six!', 20),
+(12, 'Product 5', 7, 'mouse17.jpg', ' This is product five!', 20),
+(13, 'Product 1', 4.98, 'index.jpg', ' This is product one!', 20),
+(14, 'Product 5SD', 7, 'mouse17.jpg', ' This is product five!', 20);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
