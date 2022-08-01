@@ -426,11 +426,17 @@ hr {
 }
 
 /* Center div block */
-.center_block {
+.center_block80 {
     margin: auto;
     width: 80%;
     padding: 10px;
 }
+.center_block40 {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+}
+
 
 /* make text color red used for "alert" message */
 .red_alert {

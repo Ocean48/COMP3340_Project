@@ -38,7 +38,8 @@ if (is_post_request()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Logo</title>
+    <title>Document</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 <body>
     <header>
@@ -64,27 +65,28 @@ if (is_post_request()) {
         </ul>
     </nav>
 
+    <textarea name="content" id="editor">
+        &lt;p&gt;This is some sample content.&lt;/p&gt;
+        <nav>
+        <ul>
+            <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>"> Page Style</a> </li>
+            <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>"> Change logo</a> </li>
+        </ul>
+    </nav>
+    </textarea>
 
-    <div id="content">
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
 
-        <form class="style_form" action="change_logo.php" method="POST" enctype="multipart/form-data">
-            Logo:
-            <div style="background-color: #5b6162; width:100px">
-                <img src="<?php echo "../../images/"; ?>logo.png" width="100px" alt="logo">
-            </div>
-            <br>
-            <h4 class="red_alert">Make sure file name is logo.png!<br>The recommended logo size is 400x400 pixels with a transparent background</h4>
-            Upload Image:
-            <input type="file" id="fileToUpload" name="fileToUpload" accept="image/*">
-            <br><br>
-            <input type="submit" value="Save">
-            <br><br>
-            <p>Pre View: </p>
-        </form>
-
-        <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:600px;" title="Iframe Example"></iframe> -->
-        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1100px; height:600px;" title="Iframe Example"></iframe>
-    </div>
+</script>
+   
 
     <p><br><br><br></p>
 

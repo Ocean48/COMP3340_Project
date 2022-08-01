@@ -80,7 +80,7 @@ if (is_post_request()) { //if post request process the form
         </header>
 
         <!-- bolck -->
-        <div class="center_block text_center">
+        <div class="center_block80 text_center">
             <h1>REGISTER</h1>
             <p>Please fill in the information below:</p>
 

@@ -69,7 +69,7 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
     </header>
 
-    <div calss="center_block">
+    <div calss="center_block80">
         <br>
         <h1 class="page_title">Products</h1>
         <hr>

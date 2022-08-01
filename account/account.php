@@ -82,19 +82,18 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <!-- Show account info -->
-
-
-    <div class="center_block">
+    <div class="center_block80">
         <p class="account_page_title"><a class="normal_link" href="logout.php"> Logout</a></p>
         <h1 class="account_page_title">My Account</h1>
         <p class="account_page_title">Welcome back, <?php echo h($account['username']); ?>!</p>
+        <p class="account_page_title"><a class="normal_link" href="<?php echo "update.php?email=" . h(u($account['email'])); ?>">Update Account</a></p>
 
         <br><br>
         <div class="account_info">
             <p>My Shopping Cart</p>
             <hr>
             <div class="cart_list_div">
-                <?php 
+                <?php
                 // if cart is not empty
                 if ($count != 0) {
                     echo "<table>";
@@ -109,7 +108,7 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
                     }
                     echo "</table>";
                     echo "<a href='cart.php' class='normal_link' >Goto Cart&#8599;</a>";
-                } 
+                }
                 // if cat is empty
                 else {
                     echo "You don't have any items in your shopping cart";
@@ -129,31 +128,13 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
                     <li><?php echo $account['country'] ?></li>
                     <li><?php echo $account['postcodes'] ?></li>
                 </ul>
+                <a href="address.php"><input class="submit_save" type="submit" value="Edit Address"></a>
             </div>
         </div>
+    </div>
 
-
-        <div style="clear:both;">
-            <br><br><br><br>
-            <hr>
-            <table class="list">
-                <tr>
-                    <th>email</th>
-                    <th>username</th>
-                    <th>password</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
-                </tr>
-
-                <tr>
-                    <td><?php echo h($account['email']); ?></td>
-                    <td><?php echo h($account['username']); ?></td>
-                    <td><?php echo h($account['password']); ?></td>
-                    <td><a class="action" href="<?php echo "update.php?email=" . h(u($account['email'])); ?>">Update Account</a></td>
-                </tr>
-            </table>
-        </div>
-
+    <div style="clear: both;">
+        <p><br> <br></p>
     </div>
 
     <footer>
