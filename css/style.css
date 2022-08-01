@@ -383,11 +383,16 @@ p {
 }
 
 /* Other */
+.normal_link {
+    text-decoration: none;
+    color: #222222;
+}
+
 /* hr style */
 hr {
     background-color: #e3e2e2;
     border: #e3e2e2 1.5px solid;
-    width: 99.6%;
+    width: 99%;
 }
 
 /* Use to center title */
@@ -402,8 +407,10 @@ hr {
 
 /* Page title */
 .page_title {
+    color: #1a1a1a;
     margin-bottom: 0;
     margin-left: 50px;
+    font-size: 40px;
 }
 
 /* Back "button" */
@@ -423,6 +430,11 @@ hr {
     margin: auto;
     width: 80%;
     padding: 10px;
+}
+
+/* make text color red used for "alert" message */
+.red_alert {
+    color: #ff0000;
 }
 
 
@@ -578,12 +590,29 @@ input[type=password] {
 }
 
 .submit_save:hover {
+    background-color: #3f3f3f;
+    color: #ededed;
     cursor: pointer;
 }
 
 /* Account page */
+.account_page_title {
+    color: #1a1a1a;
+    margin-bottom: 0;
+    margin-left: 50px;
+}
+
 .account_info {
     color: #8d8d8d;
+    float: left;
+    width: 65%;
+}
+
+.address_info {
+    color: #8d8d8d;
+    float: left;
+    margin-left: 50px;
+    width: 25%;
 }
 
 .cart_list_div {
@@ -594,4 +623,37 @@ input[type=password] {
 .address_list_div {
     color: #5b5b5b;
     font-size: 20px;
+}
+
+.address_list_div li {
+    list-style: none;
+    margin-left: -15%;
+}
+
+/* Shopping cart page */
+.cart_display {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+.cart_display table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cart_display td,
+th {
+    border: 1px solid #c6c6c6;
+    text-align: center;
+    padding: 8px;
+}
+
+.cart_display tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.cart_display tr:nth-child(even) {
+    background-color: #dddddd;
 }

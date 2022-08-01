@@ -65,7 +65,7 @@ if (is_post_request()) {
                 <img src="<?php echo "../../images/"; ?>logo.png" width="100px" alt="logo">
             </div>
             <br>
-            <h4 style="color: red;">Make sure file name is logo.png!<br>The recommended logo size is 400x400 pixels with a transparent background</h4>
+            <h4 class="red_alert">Make sure file name is logo.png!<br>The recommended logo size is 400x400 pixels with a transparent background</h4>
             Upload Image:
             <input type="file" id="fileToUpload" name="fileToUpload" accept="image/*">
             <br><br>

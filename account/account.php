@@ -82,25 +82,41 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <!-- Show account info -->
-    <p><a href="logout.php"> Logout</a></p>
+
 
     <div class="center_block">
-        <h1 class="page_title">My Account</h1>
-        <p class="page_title">Welcome back, <?php echo h($account['username']); ?>!</p>
+        <p class="account_page_title"><a class="normal_link" href="logout.php"> Logout</a></p>
+        <h1 class="account_page_title">My Account</h1>
+        <p class="account_page_title">Welcome back, <?php echo h($account['username']); ?>!</p>
 
         <br><br>
-        <div class="account_info" style="float: left; width: 65%;">
+        <div class="account_info">
             <p>My Shopping Cart</p>
             <hr>
             <div class="cart_list_div">
-                <?php if ($count != 0) {
-                    echo "Cart•";
-                } else {
+                <?php 
+                // if cart is not empty
+                if ($count != 0) {
+                    echo "<table>";
+                    foreach ($cart as $key => $value) {
+                        $product = find_product_by_id($value[1]);
+                        echo '
+                                <tr>
+                                    <td><img width="100px" src="../admin/product/images/' . $product['product_img'] . '" alt="Image of Product"></td>
+                                    <td>' . $product['product_name'] . '</td>
+                                </tr>
+                        ';
+                    }
+                    echo "</table>";
+                    echo "<a href='cart.php' class='normal_link' >Goto Cart&#8599;</a>";
+                } 
+                // if cat is empty
+                else {
                     echo "You don't have any items in your shopping cart";
                 } ?>
             </div>
         </div>
-        <div class="account_info" style="float: left; margin-left:50px; width: 25%;">
+        <div class="address_info">
             <p>Address</p>
             <hr>
             <div class="address_list_div">

@@ -117,7 +117,7 @@ if (is_post_request()) {
 
     <div class="admin edit">
         <h1>Edit Customer Account</h1>
-        <p style="color:red;">If field is left empty data will NOT be changed!</p>
+        <p class="red_alert">If field is left empty data will NOT be changed!</p>
 
         <!-- <?php // echo display_errors($errors); 
                 ?> -->

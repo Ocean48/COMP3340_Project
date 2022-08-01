@@ -21,7 +21,7 @@ if (is_post_request()) {
         document.location='account/account.php'</script>";
     }
     add_to_cart($_SESSION["user_email"], $_POST["product_id"], $_POST["quantity"]);
-    header("Refresh:0");
+    header("Location: index.php");
 }
 
 ?>
@@ -101,7 +101,7 @@ if (is_post_request()) {
                 if ($product['product_quantity'] > 0) {
                     echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
                 } else {
-                    echo '<h2 style="color: red;">Out of stock!</h2>';
+                    echo '<h2 class="red_alert">Out of stock!</h2>';
                 }
                 ?>
             </form>

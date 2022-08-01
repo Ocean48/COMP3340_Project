@@ -60,7 +60,7 @@ $product_set = find_all_product();
                             <?php 
                             echo h($product['product_quantity']);
                             if ($product['product_quantity'] <= 0) {
-                                echo '<h4 style="color: red;">Need restock!</h4>';
+                                echo '<h4 class="red_alert">Need restock!</h4>';
                             }
                             ?>
                         </td>

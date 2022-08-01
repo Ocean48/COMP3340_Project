@@ -705,6 +705,58 @@ function add_to_cart($email, $pid, $q)
   }
 }
 
+// decrease the quantity of the item in user's shopping cart by 1
+function decrease_cart_item_quantity($email, $pid, $time)
+{
+  global $db;
+
+  $sql = "UPDATE `cart` SET `quantity`=`quantity`-1 WHERE `email`='$email' and `product_id`=$pid and `added_time` = '$time'";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+// increase the quantity of the item in user's shopping cart by 1
+function increase_cart_item_quantity($email, $pid, $time)
+{
+  global $db;
+
+  $sql = "UPDATE `cart` SET `quantity`=`quantity`+1 WHERE `email`='$email' and `product_id`=$pid and `added_time` = '$time'";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+// remove item from shopping cart when quantity is 0
+function remove_item_zero_quantity($email, $pid, $time) {
+  global $db;
+
+  $sql = "DELETE FROM `cart` WHERE `email` = '$email' and `product_id` = $pid and `quantity` = 0 and `added_time` = '$time'";
+  $result = mysqli_query($db, $sql);
+
+  // For DELETE statements, $result is true/false
+  if ($result) {
+    return true;
+  } else {
+    // DELETE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
 // crear user's shopping cart
 function clear_user_cart($email) {
   
