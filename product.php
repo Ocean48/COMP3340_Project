@@ -21,7 +21,7 @@ if (is_post_request()) {
         document.location='account/account.php'</script>";
     }
     add_to_cart($_SESSION["user_email"], $_POST["product_id"], $_POST["quantity"]);
-    header("Refresh:0");
+    header("Location: index.php");
 }
 
 ?>
@@ -87,21 +87,21 @@ if (is_post_request()) {
     <!-- Display product -->
     <div class="center_block">
         <div style="float: left;">
-            <h1><?php echo h($product['product_name']); ?></h1>
-            <img width="400px" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+            <img width="500px" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
         </div>
-        <div style="float: left;">
+        <div style="float: left; margin-left:50px;">
             <br><br>
             <form action="" method="POST">
+                <h1><?php echo h($product['product_name']); ?></h1>
                 <p><?php echo h($product['product_description']); ?></p>
                 <input type="hidden" name="product_id" value="<?php echo h($product['product_id']); ?>"></input>
-                Quantity: <input style="width:40px; height:20px;" type="number" min=0 name="quantity" value="1"></input>
                 <p class="price">$<?php echo h($product['product_price']); ?></p>
+                Quantity: <input style="width:40px; height:20px;" type="number" min=0 name="quantity" value="1"></input>
                 <?php
                 if ($product['product_quantity'] > 0) {
                     echo '<p><input type="submit" class="button" name="add" value="Add to Cart"></input></p>';
                 } else {
-                    echo '<h2 style="color: red;">Out of stock!</h2>';
+                    echo '<h2 class="red_alert">Out of stock!</h2>';
                 }
                 ?>
             </form>

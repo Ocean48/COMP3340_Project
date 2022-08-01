@@ -82,13 +82,60 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     </header>
 
     <!-- Show account info -->
-    <p><a href="logout.php"> Logout</a></p>
-
-    <div id="content">
-        <div>
-            <h1>Hi <?php echo h($account['username']); ?>!</h1>
 
 
+    <div class="center_block">
+        <p class="account_page_title"><a class="normal_link" href="logout.php"> Logout</a></p>
+        <h1 class="account_page_title">My Account</h1>
+        <p class="account_page_title">Welcome back, <?php echo h($account['username']); ?>!</p>
+
+        <br><br>
+        <div class="account_info">
+            <p>My Shopping Cart</p>
+            <hr>
+            <div class="cart_list_div">
+                <?php 
+                // if cart is not empty
+                if ($count != 0) {
+                    echo "<table>";
+                    foreach ($cart as $key => $value) {
+                        $product = find_product_by_id($value[1]);
+                        echo '
+                                <tr>
+                                    <td><img width="100px" src="../admin/product/images/' . $product['product_img'] . '" alt="Image of Product"></td>
+                                    <td>' . $product['product_name'] . '</td>
+                                </tr>
+                        ';
+                    }
+                    echo "</table>";
+                    echo "<a href='cart.php' class='normal_link' >Goto Cart&#8599;</a>";
+                } 
+                // if cat is empty
+                else {
+                    echo "You don't have any items in your shopping cart";
+                } ?>
+            </div>
+        </div>
+        <div class="address_info">
+            <p>Address</p>
+            <hr>
+            <div class="address_list_div">
+                <ul>
+                    <li><?php echo $account['first_name'] ?> <?php echo $account['last_name'] ?></li>
+                    <li><?php echo $account['phone'] ?></li>
+                    <li><?php echo $account['address'] ?></li>
+                    <li><?php echo $account['city'] ?></li>
+                    <li><?php echo $account['province'] ?></li>
+                    <li><?php echo $account['country'] ?></li>
+                    <li><?php echo $account['postcodes'] ?></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div style="clear:both;">
+            <br><br><br><br>
+            <hr>
             <table class="list">
                 <tr>
                     <th>email</th>

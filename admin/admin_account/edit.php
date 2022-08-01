@@ -58,7 +58,7 @@ if (isset($_POST["cancel"])) {
 
 		<div class="admin edit">
 			<h1>Edit Admin</h1>
-			<p style="color:red;">If field is left empty data will NOT be changed!</p>
+			<p class="red_alert">If field is left empty data will NOT be changed!</p>
 
 			<!-- <?php // echo display_errors($errors); 
 					?> -->

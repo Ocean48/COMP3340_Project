@@ -92,24 +92,26 @@ if (is_post_request()) {
     </header>
 
     <!-- login div -->
-    <div id="block">
-        <h1>Log in</h1>
+    <div class="center_block text_center">
+            <h1>LOGIN</h1>
 
-        <?php echo display_errors($errors); ?>
+            <?php echo display_errors($errors); ?>
 
-        <form action="login.php" method="post">
-
-            Email:<br />
-            <input type="text" name="username" placeholder="email" require /><br />
-            Password:<br />
-            <input type="password" name="password" placeholder="password" id="mypassword" require />
-            <input type="checkbox" onclick="show_password()">Show Password
-            <script src="js/script.js"></script>
-            <br><br>
-            <input type="submit" name="submit" value="Login" />
-        </form>
-        <p>Don't have an account? <a href="register.php">Register today!</a></p>
+            <form action="login.php" method="post">
+                <input type="text" name="username" placeholder="Email" require />
+                <br><br>
+                <input type="password" name="password" placeholder="Password" id="mypassword" require />
+                <br>
+                <input type="checkbox" onclick="show_password()">Show Password
+                <script src="js/script.js"></script>
+                <br><br>
+                <input class="submit_save" type="submit" name="submit" value="Login" />
+            </form>
+            <p>Don't have an account? <a href="register.php">Register today!</a></p>
+        </div>
     </div>
+
+    <p><br><br></p>
 
     <footer>
         <div class="container_footer">

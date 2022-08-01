@@ -49,7 +49,7 @@ if (is_post_request()) {
 
 
     <div id="content">
-        <p style="color:red;">If field is left empty data will NOT be changed!</p>
+        <p class="red_alert">If field is left empty data will NOT be changed!</p>
 
         <div id="content">
 

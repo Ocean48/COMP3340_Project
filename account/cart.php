@@ -5,6 +5,28 @@ user_require_login();
 $cart = get_cart_by_email($_SESSION["user_email"]);
 $layout = get_style_by_view(1);
 
+// if the form is submitted
+if (is_post_request()) {
+    // if checkout was clicked
+    if (isset($_POST['checkout'])) {
+        header("Location:checkout.php");
+    }
+    // if minus for decrase item quantity was clicked
+    elseif (isset($_POST['decrease'])) {
+        decrease_cart_item_quantity($_SESSION["user_email"], $_POST["pid"], $_POST["time"]);
+        // Check if item quantity is 0 remove it from shopping cart
+        if ($_POST["q"]-1 == 0) {
+            remove_item_zero_quantity($_SESSION["user_email"], $_POST["pid"], $_POST["time"]);
+        }
+        header("Refresh:0");
+    }
+    // if plus for incrase item quantity was clicked
+    elseif (isset($_POST['increase'])) {
+        increase_cart_item_quantity($_SESSION["user_email"], $_POST["pid"], $_POST["time"]);
+        header("Refresh:0");
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,21 +92,55 @@ $layout = get_style_by_view(1);
         </div>
     </header>
 
-    <form action="checkout.php" method="POST">
+    <br>
+    <h1 class="page_title">Shopping Cart</h1>
+    <hr>
+    <br><br>
+
+    <div class="cart_display">
 
         <?php
-        echo '<p>Cart:</p>';
-        foreach ($cart as $key => $value) {
-            echo '<input type="text" value="Item id ' . $value[1] . '" readonly>';
-            echo '<input type="text" value="Quantity ' . $value[2] . '" readonly>';
-            echo "<br>";
+        if ($count != 0) {
+        ?>
+            <table>
+                <?php
+                $total_price = 0;
+                foreach ($cart as $key => $value) {
+                    $product = find_product_by_id($value[1]);
+                    $price = ($product['product_price'] * $value[2]);
+                    $total_price += $price;
+                    echo '
+                        <tr>
+                            <form action="" method="POST">
+                                <td><img width="100px" src="../admin/product/images/' . $product['product_img'] . '" alt="Image of Product"></td>
+                                <td>' . $product['product_name'] . '</td>
+                                <input type="hidden" name="pid" value="' . $product['product_id'] . '">
+                                <td>Quantity: &nbsp;&nbsp;&nbsp;<input type="submit" name="decrease" value="&#8722;"/> ' . $value[2] . ' <input type="submit" name="increase" value="&#43;"/></td>
+                                <input type="hidden" name="q" value="' . $value[2] . '">
+                                <input type="hidden" name="time" value="' . $value[3] . '">
+                                <td>Price: $' . $price . '</td>
+                            </form>
+                        </tr>
+                    ';
+                }
+                ?>
+            </table>
+            <?php echo '<h1>Total: $' . $total_price . '</h1>'; ?>
+
+            <br><br>
+            <p style="font-size: 16px;">Shipping & taxes calculated at checkout</p>
+
+            <input class="submit_save" type="submit" name="checkout" value="Checkout">
+        <?php
+        } else {
+            echo "<br><br><br><br><br><br><br><br><br>";
+            echo "<p class='text_center' style='color: #4e4e4e;'>You don't have any items in your shopping cart yet</p>";
+            echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
         }
         ?>
 
-        <br><br>
-        <input type="submit" value="Pay">
+    </div>
 
-    </form>
 
     <footer>
         <div class="container_footer">

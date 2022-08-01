@@ -184,3 +184,8 @@ input[type=password] {
 .delete {
     font-size: 18px;
 }
+
+/* other */
+.red_alert {
+    color: #ff0000;
+}

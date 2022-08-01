@@ -79,18 +79,22 @@ if (is_post_request()) { //if post request process the form
             </div>
         </header>
 
-        <!-- Input bolck -->
-        <div id="block">
-            <h1>Register</h1>
+        <!-- bolck -->
+        <div class="center_block text_center">
+            <h1>REGISTER</h1>
+            <p>Please fill in the information below:</p>
 
             <form action="register.php" method="post">
-                Email:<br />
-                <input type="text" name="email" placeholder="email" require /><br />
-                Username:<br />
-                <input type="text" name="username" placeholder="username" require /><br />
-                Password:<br />
-                <input type="password" name="password" placeholder="password" require /><br />
-                <input type="submit" name="submit" value="Register" />
+                <input type="text" name="email" placeholder="Email" require />
+                <br><br>
+                <input type="text" name="username" placeholder="Username" require />
+                <br><br>
+                <input type="password" name="password" placeholder="Password" id="mypassword" require />
+                <br>
+                <input type="checkbox" onclick="show_password()">Show Password
+                <script src="../js/script.js"></script>
+                <br><br>
+                <input class="submit_save" type="submit" name="submit" value="Create My Account" />
             </form>
         </div>
 

@@ -75,12 +75,13 @@ $layout = get_style_by_view(1);
     <h1>Checkout</h1>
 
     <?php
-    echo '<p>Cart:</p>';
+    $total_price = 0;
     foreach ($cart as $key => $value) {
-        echo '<input type="text" value="Item id ' . $value[1] . '" readonly>';
-        echo '<input type="text" value="Quantity ' . $value[2] . '" readonly>';
-        echo "<br>";
+        $product = find_product_by_id($value[1]);
+        $price = ($product['product_price'] * $value[2]);
+        $total_price += $price;
     }
+    echo '<h1>Total: $' . $total_price . '</h1>';
     ?>
 
     <a href="pay.php">Pay</a>

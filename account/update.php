@@ -10,15 +10,14 @@ $layout = get_style_by_view(1);
 $email = $_GET['email'];
 
 if (is_post_request()) {
-    $new_email = $_POST['email'];
 
-    $account = [];
-    $account_email = $email;
-    $account_password = $_POST['password'];
-    $account_username = $_POST['username'];
-    $confirm_password = $_POST['confirm_password'];
+    $account_array = array();
+    $account_array["id"] = $account['user_id'];
+    $account_array["email"] = $_POST['email'];
+    $account_array["password"] = $_POST['password'];
+    $account_array["username"] = $_POST['username'];
 
-    $account = find_user_by_email($email);
+
     if (empty($_POST['email'])) {
         $new_email = $email;
     }
@@ -27,7 +26,7 @@ if (is_post_request()) {
     }
 
 
-    $result = update_user($account_email, $new_email, $account_username, $account_password);
+    $result = update_user_by_id($account_array);
     if ($result === true) {
         $_SESSION['message'] = 'User account updated.';
         redirect_to('account.php');
@@ -118,7 +117,7 @@ if (is_post_request()) {
 
     <div class="admin edit">
         <h1>Edit Customer Account</h1>
-        <p style="color:red;">If field is left empty data will NOT be changed!</p>
+        <p class="red_alert">If field is left empty data will NOT be changed!</p>
 
         <!-- <?php // echo display_errors($errors); 
                 ?> -->
@@ -126,23 +125,22 @@ if (is_post_request()) {
         <form action="<?php echo "update.php?email=" . h(u($account['email'])); ?> " method="post">
 
             <dl>
-                <dt>New Email</dt>
-                <dd><input type="text" name="email" placeholder="new email" /><br /></dd>
+                <dt>Email:</dt>
+                <dd><input type="text" name="email" value="<?php echo $account['email']; ?>" /><br /></dd>
             </dl>
 
             <dl>
-                <dt>New Username</dt>
-                <dd><input type="text" name="username" placeholder="new username" /><br /></dd>
+                <dt>Username:</dt>
+                <dd><input type="text" name="username" placeholder="new username" value="<?php echo $account['username'] ?>" /><br /></dd>
             </dl>
 
             <dl>
-                <dt>New Password</dt>
-                <dd><input type="password" name="password" placeholder="new password" /></dd>
-            </dl>
-
-            <dl>
-                <dt>Confirm Password</dt>
-                <dd><input type="password" name="confirm_password" placeholder="confirm password" /></dd>
+                <dt>Password:</dt>
+                <dd>
+                    <input type="password" name="password" value="<?php echo $account['password']; ?>" id="mypassword" />
+                    <input type="checkbox" onclick="show_password()">Show Password
+                    <script src="../js/script.js"></script>
+                </dd>
             </dl>
             <!-- <p>
                 Passwords should be at least 12 characters and include at least one uppercase letter, lowercase letter, number, and symbol.
