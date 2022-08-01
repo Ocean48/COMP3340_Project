@@ -72,28 +72,26 @@ $layout = get_style_by_view(1);
         </div>
     </header>
 
-    <h1>Checkout</h1>
+    <!-- login div -->
+    <div class="center_block80 text_center">
+        <h1>Checkout</h1>
 
-    <?php
-    $total_price = 0;
-    foreach ($cart as $key => $value) {
-        $product = find_product_by_id($value[1]);
-        $price = ($product['product_price'] * $value[2]);
-        $total_price += $price;
-    }
-    echo '<h1>Total: $' . $total_price . '</h1>';
-    ?>
+        <?php
+        $total_price = 0;
+        foreach ($cart as $key => $value) {
+            $product = find_product_by_id($value[1]);
+            $price = ($product['product_price'] * $value[2]);
+            $total_price += $price;
+        }
+        echo '<h2>Total: $' . $total_price . '</h2>';
+        ?>
 
-    <a href="pay.php">Pay</a>
-    <br><br>
+        <form action="pay.php" method="POST">
+            <input class="submit_save" type="submit" name="checkout" value="Pay">
+        </form>
+        <br><br>
 
-    <?php
-    // count item is shopping cart
-    $count = 0;
-    foreach ($cart as $key => $value) {
-        $count++;
-    }
-    ?>
+    </div>
 
     <footer>
         <div class="container_footer">

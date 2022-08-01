@@ -15,7 +15,7 @@ if (is_post_request()) {
     elseif (isset($_POST['decrease'])) {
         decrease_cart_item_quantity($_SESSION["user_email"], $_POST["pid"], $_POST["time"]);
         // Check if item quantity is 0 remove it from shopping cart
-        if ($_POST["q"]-1 == 0) {
+        if ($_POST["q"] - 1 == 0) {
             remove_item_zero_quantity($_SESSION["user_email"], $_POST["pid"], $_POST["time"]);
         }
         header("Refresh:0");
@@ -129,8 +129,9 @@ if (is_post_request()) {
 
             <br><br>
             <p style="font-size: 16px;">Shipping & taxes calculated at checkout</p>
-
-            <input class="submit_save" type="submit" name="checkout" value="Checkout">
+            <form action="" method="POST">
+                <input class="submit_save" type="submit" name="checkout" value="Checkout">
+            </form>
         <?php
         } else {
             echo "<br><br><br><br><br><br><br><br><br>";

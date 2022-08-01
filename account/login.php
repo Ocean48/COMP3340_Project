@@ -92,7 +92,7 @@ if (is_post_request()) {
     </header>
 
     <!-- login div -->
-    <div class="center_block text_center">
+    <div class="center_block80 text_center">
             <h1>LOGIN</h1>
 
             <?php echo display_errors($errors); ?>

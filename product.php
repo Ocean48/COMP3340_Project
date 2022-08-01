@@ -85,7 +85,7 @@ if (is_post_request()) {
     <a class="back_button" href="products.php">&laquo; Back</a>
 
     <!-- Display product -->
-    <div class="center_block">
+    <div class="center_block80">
         <div style="float: left;">
             <img width="500px" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
         </div>

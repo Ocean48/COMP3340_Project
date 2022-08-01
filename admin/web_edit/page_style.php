@@ -54,6 +54,7 @@ if (is_post_request()) {
         <ul>
             <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>"> Page Style</a> </li>
             <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>"> Change logo</a> </li>
+            <li><a href="<?php echo url_for('web_edit/policy.php'); ?>"> Change Policy</a> </li>
         </ul>
     </nav>
 
