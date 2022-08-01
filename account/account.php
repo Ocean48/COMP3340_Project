@@ -84,11 +84,42 @@ if (!empty($_SESSION["cart"])) {  // if cart is not empty count number of produc
     <!-- Show account info -->
     <p><a href="logout.php"> Logout</a></p>
 
-    <div id="content">
-        <div>
-            <h1>Hi <?php echo h($account['username']); ?>!</h1>
+    <div class="center_block">
+        <h1 class="page_title">My Account</h1>
+        <p class="page_title">Welcome back, <?php echo h($account['username']); ?>!</p>
+
+        <br><br>
+        <div class="account_info" style="float: left; width: 65%;">
+            <p>My Shopping Cart</p>
+            <hr>
+            <div class="cart_list_div">
+                <?php if ($count != 0) {
+                    echo "Cart•";
+                } else {
+                    echo "You don't have any items in your shopping cart";
+                } ?>
+            </div>
+        </div>
+        <div class="account_info" style="float: left; margin-left:50px; width: 25%;">
+            <p>Address</p>
+            <hr>
+            <div class="address_list_div">
+                <ul>
+                    <li><?php echo $account['first_name'] ?> <?php echo $account['last_name'] ?></li>
+                    <li><?php echo $account['phone'] ?></li>
+                    <li><?php echo $account['address'] ?></li>
+                    <li><?php echo $account['city'] ?></li>
+                    <li><?php echo $account['province'] ?></li>
+                    <li><?php echo $account['country'] ?></li>
+                    <li><?php echo $account['postcodes'] ?></li>
+                </ul>
+            </div>
+        </div>
 
 
+        <div style="clear:both;">
+            <br><br><br><br>
+            <hr>
             <table class="list">
                 <tr>
                     <th>email</th>

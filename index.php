@@ -87,7 +87,7 @@ if (user_is_logged_in()) {  // if user is logged in
                 <form action="#" method="POST">
                     <div class="product_gallery">
                         <div class="card">
-                            <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                            <img width="100%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
                             <h1><?php echo h($product['product_name']); ?></h1>
                             <p class="price">$<?php echo h($product['product_price']); ?></p>
                         </div>

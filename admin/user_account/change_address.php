@@ -12,18 +12,23 @@ $account = find_user_by_email($email);
 if (isset($_POST["cancel"])) {
   header("Location: index.php");
 } else {
-
+  // update user address
   if (is_post_request()) {
 
     $account_array = array();
     $account_array["id"] = $account['user_id'];
-    $account_array["email"] = $_POST['email'];
-    $account_array["password"] = $_POST['password'];
-    $account_array["username"] = $_POST['username'];
-
-    $result = update_user_by_id($account_array);
+    $account_array["fname"] = $_POST['fname'];
+    $account_array["lname"] = $_POST['lname'];
+    $account_array["phone"] = $_POST['phone'];
+    $account_array["address"] = $_POST['address'];
+    $account_array["city"] = $_POST['city'];
+    $account_array["province"] = $_POST['province'];
+    $account_array["country"] = $_POST['country'];
+    $account_array["postcodes"] = $_POST['postcodes'];
+    
+    $result = update_user_address_by_id($account_array);
     if ($result === true) {
-      $_SESSION['message'] = 'User account updated.';
+      $_SESSION['message'] = 'User address updated.';
       redirect_to(url_for('user_account/index.php'));
     } else {
       $errors = $result;
@@ -59,27 +64,48 @@ if (isset($_POST["cancel"])) {
     <a class="action" href="<?php echo url_for('user_account/index.php'); ?>">&laquo; Back to List</a>
 
     <div class="admin edit">
-      <h1>Edit Customer Account</h1>
+      <h1>Edit Customer Address</h1>
 
-      <form action="<?php echo url_for('user_account/edit.php?email=' . h(u($email))); ?>" method="post">
+      <form action="<?php echo url_for('user_account/change_address.php?email=' . h(u($email))); ?>" method="post">
 
         <dl>
-          <dt>Email:</dt>
-          <dd><input type="text" name="email" value="<?php echo $account['email']; ?>" /><br /></dd>
+          <dt>First Name:</dt>
+          <dd><input type="text" name="fname" value="<?php echo $account['first_name']; ?>" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>Username:</dt>
-          <dd><input type="text" name="username" placeholder="new username" value="<?php echo $account['username'] ?>" /><br /></dd>
+          <dt>Last Name:</dt>
+          <dd><input type="text" name="lname" value="<?php echo $account['last_name']; ?>" /><br /></dd>
         </dl>
 
         <dl>
-          <dt>Password:</dt>
-          <dd>
-            <input type="password" name="password" value="<?php echo $account['password']; ?>" id="mypassword"/>
-            <input type="checkbox" onclick="show_password()">Show Password
-            <script src="../js/script.js"></script>
-          </dd>
+          <dt>Phone:</dt>
+          <dd><input type="text" name="phone" value="<?php echo $account['phone']; ?>" /><br /></dd>
+        </dl>
+
+        <dl>
+          <dt>Address:</dt>
+          <dd><input type="text" name="address" value="<?php echo $account['address']; ?>" /><br /></dd>
+        </dl>
+
+        <dl>
+          <dt>City:</dt>
+          <dd><input type="text" name="city" value="<?php echo $account['city']; ?>" /><br /></dd>
+        </dl>
+
+        <dl>
+          <dt>Province:</dt>
+          <dd><input type="text" name="province" value="<?php echo $account['province']; ?>" /><br /></dd>
+        </dl>
+
+        <dl>
+          <dt>Country:</dt>
+          <dd><input type="text" name="country" value="<?php echo $account['country']; ?>" /><br /></dd>
+        </dl>
+
+        <dl>
+          <dt>Postcodes:</dt>
+          <dd><input type="text" name="postcodes" value="<?php echo $account['postcodes']; ?>" /><br /></dd>
         </dl>
 
         <!-- <p>

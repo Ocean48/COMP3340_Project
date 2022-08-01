@@ -346,7 +346,7 @@ function find_all_users()
   global $db;
 
   $sql = "SELECT * FROM `account` ";
-  $sql .= "ORDER BY email ASC";
+  $sql .= "ORDER BY user_id ASC";
   $result = mysqli_query($db, $sql);
   confirm_result_set($result);
   return $result;
@@ -516,37 +516,6 @@ function find_user_by_email($email)
   mysqli_free_result($result);
   return $account; // returns an assoc. array
 }
-// function validate_admin($admin) {
-
-//   $errors = [];
-
-//   if(is_blank($admin['username'])) {
-//     $errors[] = "Username cannot be blank.";
-//   } elseif (!has_length($admin['username'], array('min' => 8, 'max' => 255))) {
-//     $errors[] = "Username must be between 8 and 255 characters.";
-//   } elseif (!has_unique_username($admin['username'], $admin['id'] ?? 0)) {
-//     $errors[] = "Username not allowed. Try another.";
-//   }
-
-//   if(is_blank($admin['password'])) {
-//     $errors[] = "Password cannot be blank.";
-//   }
-//   // }  elseif (!preg_match('/[a-z]/', $admin['password'])) {
-//   //   $errors[] = "Password must contain at least 1 lowercase letter";
-//   // } elseif (!preg_match('/[0-9]/', $admin['password'])) {
-//   //   $errors[] = "Password must contain at least 1 number";
-//   // } elseif (!preg_match('/[^A-Za-z0-9\s]/', $admin['password'])) {
-//   //   $errors[] = "Password must contain at least 1 symbol";
-//   // }
-
-//   if(is_blank($admin['confirm_password'])) {
-//     $errors[] = "Confirm password cannot be blank.";
-//   } elseif ($admin['password'] !== $admin['confirm_password']) {
-//     $errors[] = "Password and confirm password must match.";
-//   }
-
-//   return $errors;
-// }
 
 // Add a new user
 function insert_user($account)
@@ -581,8 +550,8 @@ function insert_user($account)
   }
 }
 
-// Update an user's info. i.e email, username, password
-function update_user($account_email, $new_email, $account_username, $account_password)
+// Update an user's account info. i.e email, username, password
+function update_user_by_id($account)
 {
   global $db;
 
@@ -596,11 +565,29 @@ function update_user($account_email, $new_email, $account_username, $account_pas
   // $sql .= "last_name='" . db_escape($db, $admin['last_name']) . "', ";
   // $sql .= "email='" . db_escape($db, $admin['email']) . "', ";
   //$sql .= "WHERE id='" . db_escape($db, $account['id']) . "' ";
-  $sql .= "email='" . db_escape($db, $new_email) . "', ";
-  $sql .= "username='" . db_escape($db, $account_username) . "', ";
-  $sql .= "password='" . db_escape($db, $account_password) . "' ";
-  $sql .= "WHERE email='" . db_escape($db, $account_email) . "' ";
+  $sql .= "email='" . db_escape($db, $account['email']) . "', ";
+  $sql .= "username='" . db_escape($db, $account['username']) . "', ";
+  $sql .= "password='" . db_escape($db, $account['password']) . "' ";
+  $sql .= "WHERE user_id='" . db_escape($db, $account['id']) . "' ";
   $sql .= "LIMIT 1";
+  $result = mysqli_query($db, $sql);
+
+  // For UPDATE statements, $result is true/false
+  if ($result) {
+    return true;
+  } else {
+    // UPDATE failed
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
+}
+
+// Update an user's address info.
+function update_user_address_by_id($account)
+{
+  global $db;
+  $sql = "UPDATE `account` SET `first_name`='".$account['fname']."',`last_name`='".$account['lname']."',`phone`='".$account['phone']."',`address`='".$account['address']."',`city`='".$account['city']."',`province`='".$account['province']."',`country`='".$account['country']."',`postcodes`='".$account['postcodes']."' WHERE `user_id` = ".$account['id']."";
   $result = mysqli_query($db, $sql);
 
   // For UPDATE statements, $result is true/false

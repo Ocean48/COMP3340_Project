@@ -57,10 +57,10 @@ if (user_is_logged_in()) {  // if user is logged in
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
             <a href="account/cart.php" class="htext"><?php if ($count != 0) {
-                                                    echo "Cart•";
-                                                } else {
-                                                    echo "Cart";
-                                                } ?></a>
+                                                            echo "Cart•";
+                                                        } else {
+                                                            echo "Cart";
+                                                        } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -69,28 +69,24 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
     </header>
 
-    <div>
-        <div>
-            <h1 class="page_title">Products</h1>
+    <div calss="center_block">
+        <br>
+        <h1 class="page_title">PRODUCTS</h1>
+        <hr>
+        <br><br><br>
 
-
-            <!-- Display all product -->
-            <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
-                <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
-                    <div class="product_gallery">
-                        <div class="card">
-                            <img width="50%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
-                            <h1><?php echo h($product['product_name']); ?></h1>
-
-                        </div>
+        <!-- Display all product -->
+        <?php while ($product = mysqli_fetch_assoc($product_set)) { ?>
+            <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
+                <div class="product_gallery">
+                    <div class="card">
+                        <img width="100%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                        <h1><?php echo h($product['product_name']); ?></h1>
+                        <p class="price">$<?php echo h($product['product_price']); ?></p>
                     </div>
-                </a>
-            <?php } ?>
-
-
-        </div>
-
-
+                </div>
+            </a>
+        <?php } ?>
     </div>
 
 

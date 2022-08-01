@@ -67,7 +67,7 @@ if (isset($_POST["cancel"])) {
 
         <dl>
           <dt>Username:</dt>
-          <dd><input type="password" name="username" placeholder="username" /></dd>
+          <dd><input type="text" name="username" placeholder="username" /></dd>
         </dl>
 
         <dl>
