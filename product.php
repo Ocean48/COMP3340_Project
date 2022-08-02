@@ -108,7 +108,7 @@ if (is_post_request()) {
         </div>
     </div>
 
-    <p><br><br><br></p>
+    <p style="clear: both;"><br><br><br></p>
 
 
     <footer>
