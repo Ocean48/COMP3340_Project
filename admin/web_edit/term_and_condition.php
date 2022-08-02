@@ -6,40 +6,35 @@ $layout = get_style_by_view(1);
 // Check is form posted
 if (is_post_request()) {
 
-    $target_dir = "../../images/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $content = $_POST['content'];
+    $result = update_tandc_policy($content);
 
-    // if upload file is not named logo.png or logo.PNG
-    if (strtolower(htmlspecialchars(basename($_FILES["fileToUpload"]["name"]))) != 'logo.png') {
-        echo "<script type='text/javascript'>alert('The file submitted is not a png image or file name is not logo.png');
-        document.location='change_logo.php'</script>";
-    } else {
-        // if file is moved to the right location, refresh page
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            header("Location:change_logo.php");
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
+    if ($result) {
+        header("Location:index.php");
+    }
+    else {
+        echo '<script>alert("Remember to use Special Characters to inserct things like single and double quotes and more!");</script>';
     }
 }
 
 
 ?>
 
-<?php $page_title = 'Main Menu'; //used in header.php
+<?php $page_title = 'Edit Term & Conditions';
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Logo</title>
+    <title>Edit Term & Conditions</title>
+
 </head>
+
 <body>
     <header>
         <h1>Admin: <?php echo $_SESSION['username'] ?? ''; ?></h1>
@@ -67,27 +62,37 @@ if (is_post_request()) {
         </ul>
     </nav>
 
+    <p class="red_alert">Remember to use Special Characters &Omega; to inserct things like single and double quotes and more!</p>
 
-    <div id="content">
-
-        <form class="style_form" action="change_logo.php" method="POST" enctype="multipart/form-data">
-            Logo:
-            <div style="background-color: #5b6162; width:100px">
-                <img src="<?php echo "../../images/"; ?>logo.png" width="100px" alt="logo">
+    <form action="" method="POST">
+        <div id="content">
+            <div class="row row-editor">
+                <div class="editor-container">
+                    <textarea name="content" class="editor">
+                        <?php
+                        echo $layout['tandc'];
+                        ?>
+                    </textarea>
+                </div>
             </div>
-            <br>
-            <h4 class="red_alert">Make sure file name is logo.png!<br>The recommended logo size is 400x400 pixels with a transparent background</h4>
-            Upload Image:
-            <input type="file" id="fileToUpload" name="fileToUpload" accept="image/*">
-            <br><br>
-            <input type="submit" value="Save">
-            <br><br>
-            <p>Pre View: </p>
-        </form>
+        </div>
 
-        <!-- <iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1000px; height:600px;" title="Iframe Example"></iframe> -->
-        <iframe src="http://localhost/COMP3340_Project/pre-view.php" style="width:1100px; height:600px;" title="Iframe Example"></iframe>
-    </div>
+        <script src="build/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('.editor'), {})
+                .then(editor => {
+                    window.editor = editor;
+                })
+                .catch(error => {
+                    console.error('Oops, something went wrong!');
+                    console.error(error);
+                });
+        </script>
+
+        <input type="submit" value="save">
+    </form>
+
 
     <p><br><br><br></p>
 

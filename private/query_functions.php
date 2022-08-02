@@ -587,7 +587,7 @@ function update_user_by_id($account)
 function update_user_address_by_id($account)
 {
   global $db;
-  $sql = "UPDATE `account` SET `first_name`='".$account['fname']."',`last_name`='".$account['lname']."',`phone`='".$account['phone']."',`address`='".$account['address']."',`city`='".$account['city']."',`province`='".$account['province']."',`country`='".$account['country']."',`postcodes`='".$account['postcodes']."' WHERE `user_id` = ".$account['id']."";
+  $sql = "UPDATE `account` SET `first_name`='" . $account['fname'] . "',`last_name`='" . $account['lname'] . "',`phone`='" . $account['phone'] . "',`address`='" . $account['address'] . "',`city`='" . $account['city'] . "',`province`='" . $account['province'] . "',`country`='" . $account['country'] . "',`postcodes`='" . $account['postcodes'] . "' WHERE `user_id` = " . $account['id'] . "";
   $result = mysqli_query($db, $sql);
 
   // For UPDATE statements, $result is true/false
@@ -740,7 +740,8 @@ function increase_cart_item_quantity($email, $pid, $time)
 }
 
 // remove item from shopping cart when quantity is 0
-function remove_item_zero_quantity($email, $pid, $time) {
+function remove_item_zero_quantity($email, $pid, $time)
+{
   global $db;
 
   $sql = "DELETE FROM `cart` WHERE `email` = '$email' and `product_id` = $pid and `quantity` = 0 and `added_time` = '$time'";
@@ -758,8 +759,9 @@ function remove_item_zero_quantity($email, $pid, $time) {
 }
 
 // crear user's shopping cart
-function clear_user_cart($email) {
-  
+function clear_user_cart($email)
+{
+
   global $db;
 
   $sql = "DELETE FROM `cart` WHERE `email` = '$email'";
@@ -773,5 +775,59 @@ function clear_user_cart($email) {
     echo mysqli_error($db);
     db_disconnect($db);
     exit;
+  }
+}
+
+// Edit policy pages
+// update shipping policy
+function update_shipping_policy($content)
+{
+  global $db;
+
+  $sql = "UPDATE `layout` SET `shipping_policy`= '$content' WHERE `view`=1";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// update privacy policy
+function update_privacy_policy($content)
+{
+  global $db;
+
+  $sql = "UPDATE `layout` SET `privacy_policy`= '$content' WHERE `view`=1";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// update return policy
+function update_return_policy($content)
+{
+  global $db;
+
+  $sql = "UPDATE `layout` SET `return_policy`= '$content' WHERE `view`=1";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// update term and coditions
+function update_tandc_policy($content)
+{
+  global $db;
+
+  $sql = "UPDATE `layout` SET `tandc`= '$content' WHERE `view`=1";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    return false;
   }
 }

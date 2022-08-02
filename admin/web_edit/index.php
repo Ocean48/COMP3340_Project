@@ -54,7 +54,10 @@ if (is_post_request()) {
         <ul>
             <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>"> Page Style</a> </li>
             <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>"> Change logo</a> </li>
-            <li><a href="<?php echo url_for('web_edit/policy.php'); ?>"> Change Policy</a> </li>
+            <li><a href="<?php echo url_for('web_edit/shipping_policy.php'); ?>"> Shipping Policy</a> </li>
+            <li><a href="<?php echo url_for('web_edit/privacy_policy.php'); ?>"> Privacy Policy</a> </li>
+            <li><a href="<?php echo url_for('web_edit/return_policy.php'); ?>"> Return Policy</a> </li>
+            <li><a href="<?php echo url_for('web_edit/term_and_condition.php'); ?>"> Term&Conditons</a> </li>
         </ul>
     </nav>
 
