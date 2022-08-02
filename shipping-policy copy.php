@@ -5,7 +5,6 @@ require_once('private/initialize.php');
 $layout = get_style_by_view(1);
 $product_set = find_all_product();
 
-
 $count = 0;
 if (user_is_logged_in()) {  // if user is logged in
     $cart = get_cart_by_email($_SESSION["user_email"]);
@@ -14,20 +13,20 @@ if (user_is_logged_in()) {  // if user is logged in
         $count++;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="X">
     <link rel="stylesheet" href="css/style.css">
-    <title>Term and Conditions</title>
+    <title>Shipping Policy</title>
 
     <!-- load style from database -->
     <style>
@@ -52,7 +51,6 @@ if (user_is_logged_in()) {  // if user is logged in
 
 <body>
 
-
     <!-- Header -->
     <header>
         <div class="topnav" id="myTopnav">
@@ -61,10 +59,10 @@ if (user_is_logged_in()) {  // if user is logged in
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
             <a href="account/cart.php" class="htext"><?php if ($count != 0) {
-                                                    echo "Cart•";
-                                                } else {
-                                                    echo "Cart";
-                                                } ?></a>
+                                                            echo "Cart•";
+                                                        } else {
+                                                            echo "Cart";
+                                                        } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>
@@ -75,9 +73,10 @@ if (user_is_logged_in()) {  // if user is logged in
 
     <div class="center_block_p">
         <?php
-        echo $layout['tandc'];
+        echo $layout['shipping_policy'];
         ?>
     </div>
+
 
     <footer>
         <div class="container_footer">
@@ -97,8 +96,6 @@ if (user_is_logged_in()) {  // if user is logged in
             </p>
         </div>
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
 
 </html>

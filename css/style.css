@@ -437,6 +437,18 @@ hr {
     padding: 10px;
 }
 
+/* Center div block for policy pages */
+.center_block_p {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+/* Page title but without left margin */
+.center_block_p h2 {
+    margin-bottom: 0;
+    font-size: 40px;
+}
+
 
 /* make text color red used for "alert" message */
 .red_alert {

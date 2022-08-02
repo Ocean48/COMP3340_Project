@@ -71,57 +71,11 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
     </header>
 
-    <blockquote cite="https://www.lttstore.com/pages/shipping-policy">
-
-        <h1 class="page_title">Shipping Policy</h1>
-        <hr>
-        <br>
-        <br>
-        <p>We offers worldwide shipping where service is available through the shipping companies.</p>
-        <br>
-        <h4>USA & Canada Orders</h4>
-        <p>Most deliveries within the US & Canada should arrive within 7 days after your shipping confirmation email is
-            received.</p>
-        <br>
-        <br>
-        <h4>Worldwide Orders</h4>
-        <p>Deliveries outside of the US & Canada may take anywhere from 7-40 days to arrive, depending on the
-            destination
-            country.</p>
-        <br>
-        <p>These times may be delayed by a number of factors, including delays in customs processing within your
-            destination
-            country.</p>
-        <br>
-        <P>If your tracking number shows your package has been delivered, but you have not yet received it, please call
-            your
-            local post office for more information. If there is an issue with the listed address on your package, they
-            may
-            need to get in touch with you before delivery can be completed.</P>
-        <br>
-        <br>
-        <h4>Pre-orders & back-orders</h4>
-        <p>We aims to provide accurate shipping & delivery estimates for pre-order and back-order products, but may be
-            limited by production delays, shipping delays, and other factors outside of our control.</p>
-        <br>
-        <p>More information may be available on pre-orders and back-orders, on a case-by-case basis. Please contact
-            support
-            at the email listed in our site's footer for more details.</p>
-        <br>
-        <br>
-        <h1>Customs & Duty Fess </h1>
-        <hr>
-        <br>
-        <br>
-        <p>Customers are responsible for any customs and duty fees, which may be assessed to your order once it arrives
-            in the destination country. <b>We does not include any coverage for customs or duty fees in quoted
-                shipping costs, or at any point in our checkout or billing process.</b></p>
-        <br>
-        <p>If you have any questions related to customs, duty, and import charges, please contact your local customs
-            office prior to ordering.</p>
-        <br><br>
-
-    </blockquote>
+    <div class="center_block_p">
+        <?php
+        echo $layout['shipping_policy'];
+        ?>
+    </div>
 
     <footer>
         <div class="container_footer">
