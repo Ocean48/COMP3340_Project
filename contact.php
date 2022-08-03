@@ -74,66 +74,36 @@ if (user_is_logged_in()) {  // if user is logged in
 
     <section class="contact">
         <div class="content">
-            <h2>Contact Us</h2>
-            <p>Later for replace Later for replace Later for replace Later for replace Later for replace Later for
-                replace Later for replace
-                Later for replace Later for replace Later for replace Later for replace Later for replace Later for
-                replace Later for replace</p>
-        </div>
-        <div class="container">
-            <div class="contactInfo">
+            <h1 class="page_title">Contact Us</h1>
+            <hr>
+            <div class="container">
+                <div class="contactInfo">
 
-                <div class="box">
-                    <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                    <div class="text">
-                        <h3>Address</h3>
-                        <p>001 StayAtHome Ave, Home, Online, S1H O0A (later for replace)</p>
+                    <div class="box">
+                        <div class="text">
+                            <h3>Our Address</h3>
+                            <p><?php echo $layout['contact_address'] ?></p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="text">
+                            <h3>Call Us</h3>
+                            <p><?php echo $layout['contact_phone'] ?></p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="text">
+                            <h3>Email Us</h3>
+                            <p><?php echo $layout['contact_email'] ?></p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="box">
-                    <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                    <div class="text">
-                        <h3>Phone</h3>
-                        <p>100-000-1000 </p>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-                    <div class="text">
-                        <h3>Email</h3>
-                        <p>laterforeplace@fakemail.com</p>
-                    </div>
-                </div>
-                <div class="contactForm">
-                    <form>
-                        <h2>
-                            Send Message
-                        </h2>
-                        <div class="inputBox">
-                            <input type="text" name="" required="required">
-                            <span>Full Name</span>
-                        </div>
-                        <div class="inputBox">
-                            <input type="text" name="" required="required">
-                            <span>Email</span>
-                        </div>
-                        <div class="inputBox">
-                            <textarea required="required"></textarea>
-                            <span>Type your message...</span>
-                        </div>
-
-                        <div class="inputBox">
-                            <input type="submit" name="" value="send">
-                        </div>
-
-                    </form>
-                </div>
-
             </div>
         </div>
-    </section>
+
+        <p><?php echo $layout['contact_map'] ?></p>
+       </section>
 
     <footer>
         <div class="container_footer">

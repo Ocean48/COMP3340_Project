@@ -6,21 +6,21 @@ $layout = get_style_by_view(1);
 // Check is form posted
 if (is_post_request()) {
 
-    $content = $_POST['content'];
-    $result = update_tandc_policy($content);
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $map = $_POST['map'];
+    $result = update_contact($address, $phone, $email, $map);
 
     if ($result) {
         header("Location:index.php");
-    }
-    else {
-        echo '<script>alert("Remember to use Special Characters to inserct things like single and double quotes and more!");</script>';
     }
 }
 
 
 ?>
 
-<?php $page_title = 'Edit Term & Conditions';
+<?php $page_title = 'Edit Contact Page';
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -31,7 +31,7 @@ if (is_post_request()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Term & Conditions</title>
+    <title>Edit Contact Page</title>
 
 </head>
 
@@ -63,36 +63,24 @@ if (is_post_request()) {
         </ul>
     </nav>
 
-    <p class="red_alert">Remember to use Special Characters &Omega; to inserct things like single and double quotes and more!</p>
+    <div><br><br><br></div>
 
-    <form action="" method="POST">
-        <div id="content">
-            <div class="row row-editor">
-                <div class="editor-container">
-                    <textarea name="content" class="editor">
-                        <?php
-                        echo $layout['tandc'];
-                        ?>
-                    </textarea>
-                </div>
-            </div>
-        </div>
+    <div id="content">
 
-        <script src="build/ckeditor.js"></script>
-        <script>
-            ClassicEditor
-                .create(document.querySelector('.editor'), {})
-                .then(editor => {
-                    window.editor = editor;
-                })
-                .catch(error => {
-                    console.error('Oops, something went wrong!');
-                    console.error(error);
-                });
-        </script>
+        <form action="" method="POST">
+            Address: <input type="text" name="address" value="<?php echo $layout['contact_address'] ?>">
+            <br><br>
+            Phone: <input type="text" name="phone" value="<?php echo $layout['contact_phone'] ?>">
+            <br><br>
+            Email: <input type="text" name="email" value="<?php echo $layout['contact_email'] ?>">
+            <br><br>
+            Embed Google Map: <br><textarea style="width: 300px; height:100px" name="map" value="<?php echo $layout['contact_map'] ?>"> </textarea>
+            <br><br>
+            <input type="submit" name="save" value="Save">
+            <br><br>
+        </form>
 
-        <input type="submit" value="save">
-    </form>
+    </div>
 
 
     <p><br><br><br></p>

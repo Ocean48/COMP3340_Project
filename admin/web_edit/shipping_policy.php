@@ -53,12 +53,13 @@ if (is_post_request()) {
 
     <nav>
         <ul>
-            <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>"> Page Style</a> </li>
-            <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>"> Change logo</a> </li>
-            <li><a href="<?php echo url_for('web_edit/shipping_policy.php'); ?>"> Shipping Policy</a> </li>
-            <li><a href="<?php echo url_for('web_edit/privacy_policy.php'); ?>"> Privacy Policy</a> </li>
-            <li><a href="<?php echo url_for('web_edit/return_policy.php'); ?>"> Return Policy</a> </li>
-            <li><a href="<?php echo url_for('web_edit/term_and_condition.php'); ?>"> Term&Conditons</a> </li>
+            <li><a href="<?php echo url_for('web_edit/page_style.php'); ?>">Page Style</a></li>
+            <li><a href="<?php echo url_for('web_edit/change_logo.php'); ?>">Change logo</a></li>
+            <li><a href="<?php echo url_for('web_edit/edit_contact.php'); ?>">Edit Contact</a></li>
+            <li><a href="<?php echo url_for('web_edit/shipping_policy.php'); ?>">Shipping Policy</a></li>
+            <li><a href="<?php echo url_for('web_edit/privacy_policy.php'); ?>">Privacy Policy</a></li>
+            <li><a href="<?php echo url_for('web_edit/return_policy.php'); ?>">Return Policy</a></li>
+            <li><a href="<?php echo url_for('web_edit/term_and_condition.php'); ?>">Term&Conditons</a></li>
         </ul>
     </nav>
 

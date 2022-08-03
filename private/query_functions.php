@@ -778,6 +778,20 @@ function clear_user_cart($email)
   }
 }
 
+// update contact page
+function update_contact($a, $p, $e, $m)
+{
+  global $db;
+
+  $sql = "UPDATE `layout` SET `contact_address`= '$a', `contact_phone`= '$p', `contact_email`= '$e', `contact_map`= '$m' WHERE `view`=1";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // Edit policy pages
 // update shipping policy
 function update_shipping_policy($content)
