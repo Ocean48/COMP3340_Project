@@ -63,8 +63,8 @@ if (isset($_POST["cancel"])) {
         }
 
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo "Sorry, your file is too large. Must be under 500kB";
+        if ($_FILES["fileToUpload"]["size"] > 5000000) {
+            echo "Sorry, your file is too large. Must be under 5MB";
             $uploadOk = 0;
         }
 
