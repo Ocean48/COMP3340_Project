@@ -1,12 +1,17 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php');
 
-<?php
-
+admin_require_login();
 $product_id = 0;
 $product_name = $_POST['product_name'];
-$product_img= $_POST['product_img'];
-$product_description= $_POST['product_description'];
+$product_img = $_POST['product_img'];
+$product_description = $_POST['product_description'];
+$product_price = $_POST['product_price'];
+$product_quantity = $_POST['product_quantity'];
 
+// if cancel button was click on new.php page
+if (isset($_POST["cancel"])) {
+    header("Location: index.php");
+}
 ?>
 
 <?php $page_title = 'Upload'; ?>
@@ -14,7 +19,18 @@ $product_description= $_POST['product_description'];
 
 <body>
     <header>
-        <h1>Upload</h1>
+        <nav>
+            <ul>
+                
+                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
+                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
+                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
+                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
+                <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
+                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
+            </ul>
+        </nav>
+    </header>Upload</h1>
     </header>
 
 
@@ -47,16 +63,13 @@ $product_description= $_POST['product_description'];
         }
 
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo "Sorry, your file is too large. Must be under 500kB";
+        if ($_FILES["fileToUpload"]["size"] > 5000000) {
+            echo "Sorry, your file is too large. Must be under 5MB";
             $uploadOk = 0;
         }
 
         // Allow certain file formats
-        if (
-            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
@@ -68,10 +81,13 @@ $product_description= $_POST['product_description'];
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                insert_product($product_id, $product_name, $product_img, $product_description);
-                ?>
-                <a class="back-link" href="<?php echo url_for('/product/index.php'); ?>">&laquo; Back to List</a>
-                <?php
+                $result = insert_product($product_id, $product_name, $product_img, $product_price, $product_description, $product_quantity);
+                if ($result) {
+                    redirect_to(url_for('product/index.php'));
+                }
+        ?>
+                <a class="action" href="<?php echo url_for('product/index.php'); ?>">&laquo; Back to List</a>
+        <?php
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }

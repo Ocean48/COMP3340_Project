@@ -1,30 +1,35 @@
 /* Body - full page*/
 body {
+    color: #222222;
     margin: 0;
     font-family: "Franklin Gothic Medium", sans-serif;
+    background-color: #f2ffff;
+}
+
+p {
+    font-size: 18px;
 }
 
 
 /* header */
 .topnav {
-    background-color: #1c232f;
+    background-color: #545cfa;
     overflow: hidden;
 }
 
 .topnav .logo {
     float: left;
-    margin-right: 20px;
-    height: 180px;
+    width: 100px;
 }
 
 .topnav a {
     margin: 10px auto;
     float: left;
     display: block;
-    color: #000000;
+    color: #FFFFFF;
     text-align: center;
     /* padding: 14px 20px; */
-    padding: 14px 2%;
+    padding: 14px 1.75%;
     text-decoration: none;
     font-weight: bold;
 }
@@ -34,60 +39,58 @@ body {
 }
 
 .topnav .htext {
-    text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF;
     margin-top: 80px;
-    font-size: 35px;
+    font-size: 33px;
 }
 
-@media screen and (max-width: 1250px) {
+/* Page view for phones or different size of window */
+@media screen and (max-width: 1350px) {
     .topnav .htext {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .topnav a {
-        padding: 14px 2%;
+        padding: 14px 1.20%;
     }
 }
 
 @media screen and (max-width: 1212px) {
     .topnav .htext {
-        font-size: 33px;
+        font-size: 31px;
     }
 
     .topnav a {
-        padding: 14px 1.5%;
+        padding: 14px 0.8%;
     }
 }
 
 @media screen and (max-width: 1150px) {
     .topnav .htext {
-        font-size: 32px;
+        font-size: 30px;
     }
 }
 
 @media screen and (max-width: 1052px) {
     .topnav .htext {
-        font-size: 31px;
+        font-size: 29px;
     }
 
     .topnav a {
-        padding: 14px 1%;
+        padding: 14px 0.75%;
     }
 }
 
 @media screen and (max-width: 1040px) {
     .topnav .htext {
-        font-size: 30px;
+        font-size: 27px;
+    }
+
+    .topnav a {
+        padding: 14px 0.6%;
     }
 }
 
-@media screen and (max-width: 920px) {
-    .topnav .htext {
-        font-size: 28px;
-    }
-}
-
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 950px) {
     .topnav a:not(:first-child) {
         display: none;
     }
@@ -129,14 +132,35 @@ body {
     }
 }
 
+.topnav .htext_bottom {
+    margin-top: 90px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 910px) {
+    .topnav .htext_bottom {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+}
+
 /* Footer */
 .container_footer {
     clear: both;
     position: relative;
     width: 100%;
-    height: 100px;
     background-color: #444755;
+    background-size: cover;
     color: #ffffff;
+}
+
+.container_footer .footer_logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
 }
 
 .copyright {
@@ -147,21 +171,64 @@ body {
     padding-bottom: 0.25%;
 }
 
+.container_footer .footer_text {
+    padding: 0 2%;
+    text-decoration: none;
+    display: inline-block;
+    color: #FFFFFF;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.container_footer .center {
+    margin: auto;
+    width: 55%;
+    padding: 10px;
+}
+
+/* Page view for phones or different size of window */
+@media screen and (max-width: 1100px) {
+    .container_footer .footer_text {
+        padding: 0 2%;
+    }
+
+    .container_footer .center {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .container_footer .footer_text {
+        padding: 0 1.75%;
+    }
+
+    .container_footer .center {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 815px) {
+    .container_footer .footer_text {
+        padding: 0 1.75%;
+    }
+
+    .container_footer .center {
+        width: 94%;
+    }
+}
+
+
 /* contact page */
 .contact {
     position: relative;
-    min-height: 100vh;
     padding: 50px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: url(/images/background.jpg);
-    background-size: cover;
 }
 
 .contact .content {
-
     max-width: 800px;
     text-align: center;
 
@@ -175,7 +242,8 @@ body {
 
 .contact .content p {
     font-weight: 300;
-    color: #fff;
+    color: #000000;
+    font-weight: bold;
 }
 
 .container {
@@ -186,38 +254,15 @@ body {
     margin-top: 30px;
 }
 
-.container .contactInfo {
-
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-}
-
 .container .contactInfo .box {
-
-    position: relative;
-    padding: 20px 0;
-    display: flex;
-}
-
-.container .contactInfo .box .icon {
-
-    min-width: 60px;
-    height: 60px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 22px;
-
+    margin: 50px 0;
 }
 
 .container .contactInfo .box .text {
     display: flex;
     margin-left: 20px;
     font-size: 16px;
-    color: #fff;
+    color: #000000;
     flex-direction: column;
     font-weight: 300;
 }
@@ -227,69 +272,8 @@ body {
     color: #00bcd4;
 }
 
-.contactForm {
-    width: 40%;
-    padding: 40px;
-    background: #fff;
-}
-
-.contactForm h2 {
-    font-size: 30px;
-    color: #333;
-    font-weight: 500;
-}
-
-.contactForm .inputBox {
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
-
-}
-
-.contactForm .inputBox input,
-.contactForm .inputBox textarea {
-    width: 100%;
-    padding: 5px 0;
-    font-size: 16px;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 2px solid #333;
-    outline: none;
-    resize: none;
-}
-
-.contactForm .inputBox span {
-    position: absolute;
-    left: 0;
-    padding: 5px 0;
-    font-size: 16px;
-    margin: 10px 0;
-    pointer-events: none;
-    transition: 0.5s;
-    color: #666;
-}
-
-.contactForm .inputBox input:focus~span,
-.contactForm .inputBox input:valid~span,
-.contactForm .inputBox textarea:focus~span,
-.contactForm .inputBox textarea:valid~span {
-
-    color: #e91e63;
-    font-size: 12px;
-    transform: translateY(-20px);
-}
-
-.contactForm .inputBox input[type="submit"] {
-    width: 100px;
-    background: #00bcd4;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-}
-
-@media (max-width:991px) {
+/* Page view for phones or different size of window */
+@media screen and (max-width:991px) {
     .contact {
         padding: 50px;
     }
@@ -307,4 +291,298 @@ body {
         width: 100%;
     }
 
+}
+
+/* Other */
+.normal_link {
+    text-decoration: none;
+    color: #222222;
+}
+
+/* hr style */
+hr {
+    background-color: #e3e2e2;
+    border: #e3e2e2 1.5px solid;
+    width: 99%;
+}
+
+/* Use to center title */
+.text_center {
+    text-align: center;
+}
+
+/* Class to bold text */
+.bold {
+    font-weight: bold;
+}
+
+/* Page title */
+.page_title {
+    color: #1a1a1a;
+    margin-bottom: 0;
+    margin-left: 50px;
+    font-size: 40px;
+}
+
+/* Back "button" */
+.back_button {
+    font-size: 18px;
+    text-decoration: none;
+    color: #111815;
+}
+
+.back_button:hover {
+    text-decoration: none;
+    color: #686868;
+}
+
+/* Center div block */
+.center_block80 {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+.center_block40 {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+}
+
+/* Center div block for policy pages */
+.center_block_p {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+/* Page title but without left margin */
+.center_block_p h2 {
+    margin-bottom: 0;
+    font-size: 40px;
+}
+
+
+/* make text color red used for "alert" message */
+.red_alert {
+    color: #ff0000;
+}
+
+
+/* Product page or Shop page*/
+.card {
+    background-color: #fcfcfc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 21%;
+    height: 28.5vw;
+    margin: 10px 2%;
+    text-align: center;
+    float: left;
+}
+
+.card:hover {
+    background-color: #cdcdcd;
+}
+
+/* Page view for phones or different size of window */
+@media screen and (max-width:1450px) {
+    .card {
+        height: 30vw;
+    }
+}
+
+@media screen and (max-width:1380px) {
+    .card {
+        height: 31.5vw;
+    }
+}
+
+@media screen and (max-width:1201px) {
+    .card {
+        height: 32.5vw;
+    }
+}
+
+@media screen and (max-width:1150px) {
+    .card {
+        width: 29%;
+        height: 40vw;
+    }
+}
+
+@media screen and (max-width:1015px) {
+    .card {
+        height: 42vw;
+    }
+}
+
+@media screen and (max-width:841px) {
+    .card {
+        height: 44vw;
+    }
+}
+
+@media screen and (max-width:741px) {
+    .card {
+        width: 46%;
+        height: 64vw;
+    }
+}
+
+@media screen and (max-width:625px) {
+    .card {
+        height: 67vw;
+    }
+}
+
+@media screen and (max-width:525px) {
+    .card {
+        height: 69vw;
+    }
+}
+
+@media screen and (max-width:475px) {
+    .product_gallery {
+        margin-left: 10%;
+    }
+
+    .card {
+        width: 84%;
+        height: 100vw;
+    }
+}
+
+@media screen and (max-width:455px) {
+    .card {
+        height: 105vw;
+    }
+}
+
+@media screen and (max-width:371px) {
+    .product_gallery {
+        margin-left: 6%;
+    }
+
+    .card {
+        width: 90%;
+        height: 120vw;
+    }
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.button {
+    height: 30px;
+    border: none;
+    outline: 0;
+    color: #ffffff;
+    background-color: #000000;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #a6a6a6;
+    color: #000000;
+}
+
+/* input field for text, password */
+input[type=text] {
+    border: #000000 2px solid;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+input[type=password] {
+    border: #000000 2px solid;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+/* Submit/save button */
+.submit_save {
+    background-color: #dedede;
+    border: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.submit_save:hover {
+    background-color: #3f3f3f;
+    color: #ededed;
+    cursor: pointer;
+}
+
+/* Account page */
+.account_page_title {
+    color: #1a1a1a;
+    margin-bottom: 0;
+    margin-left: 50px;
+}
+
+.account_info {
+    color: #8d8d8d;
+    float: left;
+    width: 65%;
+}
+
+.address_info {
+    color: #8d8d8d;
+    float: left;
+    margin-left: 50px;
+    width: 25%;
+}
+
+.cart_list_div {
+    color: #5b5b5b;
+    font-size: 20px;
+}
+
+.address_list_div {
+    color: #5b5b5b;
+    font-size: 20px;
+}
+
+.address_list_div li {
+    list-style: none;
+    margin-left: -15%;
+}
+
+/* Shopping cart page */
+.cart_display {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+.cart_display table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cart_display td,
+th {
+    border: 1px solid #c6c6c6;
+    text-align: center;
+    padding: 8px;
+}
+
+.cart_display tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.cart_display tr:nth-child(even) {
+    background-color: #dddddd;
 }

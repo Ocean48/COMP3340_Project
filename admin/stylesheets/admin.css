@@ -1,0 +1,191 @@
+body {
+    font-family: "Franklin Gothic Medium", sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    background-color: #f8fff7;
+}
+
+header {
+    width: 100%;
+    margin: 0 0 50px 0;
+    padding: 0;
+    background: #ff8121;
+    background-size: cover;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    padding-top: 25px;
+    font-size: 25px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 20px 0px 0px 0;
+    text-align: center;
+    background: #ff8121;
+    color: rgb(248, 247, 247);
+}
+
+/* Header links*/
+nav {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 2em;
+    font-size: 20px;
+    color: #380051;
+}
+
+nav a {
+    color: #380051;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: #5e7581;
+}
+
+/* Table for display list of accounts and products */
+table {
+    border-collapse: collapse;
+    margin-bottom: 100px;
+}
+
+table.list {
+    font-size: 18px;
+    width: 100%;
+}
+
+table.list tr td {
+    border: 1px solid #999999;
+    text-align: center;
+    height: 40px;
+}
+
+table.list tr th {
+    border: 1px solid #999999;
+    background: #D7650C;
+    color: #f5f5f5;
+    height: 30px;
+}
+
+table.list td a {
+    text-decoration: none;
+    color: #101010;
+}
+
+table.list td a:hover {
+    color: #007ca5;
+}
+
+#content {
+    width: 1000px;
+}
+
+/* Forms */
+dl {
+    clear: both;
+    overflow: hidden;
+}
+
+dt {
+    float: left;
+    width: 130px;
+    font-size: 18px;
+}
+
+dd {
+    float: left;
+    margin-left: 1em;
+}
+
+#operations {
+    clear: both;
+    margin: 1em 0 1em 0;
+}
+
+/* actions links on top of table/form like create, back */
+.actions {
+    margin-bottom: 5px;
+}
+
+.action {
+    font-size: 18px;
+    text-decoration: none;
+    color: #111815;
+}
+
+.action:hover {
+    text-decoration: none;
+    color: #122a1f;
+}
+
+/* form on edit style page */
+.style_form {
+    font-size: 18px;
+}
+
+/* input submit buttons */
+input[type=submit] {
+    background-color: #757575;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #cecece;
+    color: #101010;
+}
+
+/* input field for text, password */
+input[type=text] {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+input[type=password] {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.text_area {
+    font-size: 15px;
+    width: 200px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+/* delete page */
+.delete {
+    font-size: 18px;
+}
+
+/* other */
+.red_alert {
+    color: #ff0000;
+}
