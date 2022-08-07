@@ -31,7 +31,7 @@
                 <?php
                 if(isset($db)){
                     echo "On";
-                    echo "
+                    echo "<br>
                     <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
                     Sorry, your browser does not support inline SVG.  
@@ -39,7 +39,8 @@
                     ";
                 }else{
                     echo "Off";
-                    echo "<svg height=\"100\" width=\"100\">
+                    echo "<br>
+                    <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
                     Sorry, your browser does not support inline SVG.  
                     </svg>
@@ -52,7 +53,7 @@
                 $u = u();
                 if(isset($u)){
                     echo "On";
-                    echo "
+                    echo "<br>
                     <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
                     Sorry, your browser does not support inline SVG.  
@@ -60,7 +61,7 @@
                     ";
                 }else{
                     echo "Off";
-                    echo "<svg height=\"100\" width=\"100\">
+                    echo "<br><svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
                     Sorry, your browser does not support inline SVG.  
                     </svg>
