@@ -46,6 +46,22 @@ if (user_is_logged_in()) {  // if user is logged in
             background-color: <?php echo $layout["margin_color"]; ?>;
             color: <?php echo $layout["margin_text_color"]; ?>;
         }
+
+        .container_footer .footer_text {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .copyright {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .container_footer .footer_text {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .copyright {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
     </style>
 </head>
 
@@ -59,10 +75,10 @@ if (user_is_logged_in()) {  // if user is logged in
             <a href="products.php" class="htext">Shop</a>
             <a href="account/account.php" class="htext">Account</a>
             <a href="account/cart.php" class="htext"><?php if ($count != 0) {
-                                                    echo "Cart•";
-                                                } else {
-                                                    echo "Cart";
-                                                } ?></a>
+                                                            echo "Cart•";
+                                                        } else {
+                                                            echo "Cart";
+                                                        } ?></a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="contact.php" class="htext">Contact</a>
             <a href="shipping-policy.php" class="htext_bottom">Shipping Policy</a>

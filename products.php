@@ -45,6 +45,14 @@ if (user_is_logged_in()) {  // if user is logged in
             background-color: <?php echo $layout["margin_color"]; ?>;
             color: <?php echo $layout["margin_text_color"]; ?>;
         }
+
+        .container_footer .footer_text {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .copyright {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
     </style>
 </head>
 

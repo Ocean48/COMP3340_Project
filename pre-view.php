@@ -45,6 +45,14 @@ if (user_is_logged_in()) {  // if user is logged in
             background-color: <?php echo $layout["margin_color"]; ?>;
             color: <?php echo $layout["margin_text_color"]; ?>;
         }
+
+        .container_footer .footer_text {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
+
+        .copyright {
+            color: <?php echo $layout["margin_text_color"]; ?>;
+        }
     </style>
 </head>
 
@@ -102,7 +110,7 @@ if (user_is_logged_in()) {  // if user is logged in
         <div class="container_footer">
             <br>
             <a href="index.php"><img src="images/logo.png" alt="logo" class="footer_logo"></a>
-            <div class="center">
+            <div class="center container_footer">
                 <a href="contact.php" class="footer_text">Contact</a>
                 <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>
                 <a href="privacy-policy.php" class="footer_text">Privacy Policy</a>
