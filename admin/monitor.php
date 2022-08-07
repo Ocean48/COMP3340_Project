@@ -25,8 +25,10 @@
 
     
     
-    <div id="temp1"><p> SQL database connection is 
-            <?php
+    <div id="temp1">The status of website:
+        <ul>
+            <li>SQL database connection is 
+                <?php
                 if(isset($db)){
                     echo "On";
                     echo "
@@ -34,18 +36,54 @@
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
                     Sorry, your browser does not support inline SVG.  
                     </svg>
-                    </p>";
+                    ";
                 }else{
                     echo "Off";
                     echo "<svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
                     Sorry, your browser does not support inline SVG.  
                     </svg>
-                    </p>";
+                    ";
                 }
-            ?>
+                ?>
+            </li>
+            <li>Webserver connection is
+                <?php
+                $u = u();
+                if(isset($u)){
+                    echo "On";
+                    echo "
+                    <svg height=\"100\" width=\"100\">
+                    <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
+                    Sorry, your browser does not support inline SVG.  
+                    </svg>
+                    ";
+                }else{
+                    echo "Off";
+                    echo "<svg height=\"100\" width=\"100\">
+                    <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
+                    Sorry, your browser does not support inline SVG.  
+                    </svg>
+                    ";
+                }
+                ?>
+            </li>
+            
+        </ul>
     </div>
-
+    <!-- $output = '';
+    SQL database connection is 
+    if(!empty($errors)) {
+      $output .= "<div class=\"errors\">";
+      $output .= "Please fix the following errors:";
+      $output .= "<ul>";
+      foreach($errors as $error) {
+        $output .= "<li>" . h($error) . "</li>";
+      }
+      $output .= "</ul>";
+      $output .= "</div>";
+    }
+    return $output; -->
 
 
 
