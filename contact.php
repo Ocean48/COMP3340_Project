@@ -59,7 +59,7 @@ if (user_is_logged_in()) {  // if user is logged in
 
 </head>
 
-<body">
+<body>
 
     <!-- Header -->
     <header>
@@ -112,7 +112,7 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
 
         <p><?php echo $layout['contact_map'] ?></p>
-       </section>
+    </section>
 
     <footer>
         <div class="container_footer">
@@ -134,6 +134,6 @@ if (user_is_logged_in()) {  // if user is logged in
     </footer>
 
     <script src="js/script.js"></script>
-    </body>
+</body>
 
 </html>

@@ -80,7 +80,6 @@ if (is_post_request()) { //if post request process the form
                 <a href="../products.php" class="htext">Shop</a>
                 <a href="account.php" class="htext">Account</a>
                 <a href="cart.php" class="htext">Cart</a>
-                <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
                 <a href="../contact.php" class="htext">Contact</a>
                 <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
                 <a href="../privacy-policy.php" class="htext_bottom">Privacy Policy</a>
@@ -94,11 +93,11 @@ if (is_post_request()) { //if post request process the form
             <p>Please fill in the information below:</p>
 
             <form action="register.php" method="post">
-                <input type="text" name="email" placeholder="Email" require />
+                <input type="text" name="email" placeholder="Email" required/>
                 <br><br>
-                <input type="text" name="username" placeholder="Username" require />
+                <input type="text" name="username" placeholder="Username" required/>
                 <br><br>
-                <input type="password" name="password" placeholder="Password" id="mypassword" require />
+                <input type="password" name="password" placeholder="Password" id="mypassword" required/>
                 <br>
                 <input type="checkbox" onclick="show_password()">Show Password
                 <script src="../js/script.js"></script>
@@ -112,13 +111,13 @@ if (is_post_request()) { //if post request process the form
         <footer>
             <div class="container_footer">
                 <br>
-                <a href="index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
+                <a href="../index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
                 <div class="center">
-                    <a href="contact.php" class="footer_text">Contact</a>
-                    <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>
-                    <a href="privacy-policy.php" class="footer_text">Privacy Policy</a>
-                    <a href="return-policy.php" class="footer_text">Return Policy</a>
-                    <a href="terms-and-conditions.php" class="footer_text">Term and Conditions</a>
+                    <a href="../contact.php" class="footer_text">Contact</a>
+                    <a href="../shipping-policy.php" class="footer_text">Shipping Policy</a>
+                    <a href="../privacy-policy.php" class="footer_text">Privacy Policy</a>
+                    <a href="../return-policy.php" class="footer_text">Return Policy</a>
+                    <a href="../terms-and-conditions.php" class="footer_text">Term and Conditions</a>
                 </div>
                 <p class="copyright">Copyright &copy;
                     <script>
