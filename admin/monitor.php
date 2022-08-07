@@ -30,7 +30,7 @@
             <li>SQL database connection is 
                 <?php
                 if(isset($db)){
-                    echo "On";
+                    echo "<span style='color: green;'>On</span>";
                     echo "<br>
                     <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
@@ -38,7 +38,7 @@
                     </svg>
                     ";
                 }else{
-                    echo "Off";
+                    echo "<span style='color: red;'>Off</span>";
                     echo "<br>
                     <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
@@ -52,7 +52,7 @@
                 <?php
                 $u = u();
                 if(isset($u)){
-                    echo "On";
+                    echo "<span style='color: green;'>On</span>";
                     echo "<br>
                     <svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"green\"/>
@@ -60,7 +60,7 @@
                     </svg>
                     ";
                 }else{
-                    echo "Off";
+                    echo "<span style='color: red;'>Off</span>";
                     echo "<br><svg height=\"100\" width=\"100\">
                     <circle cx=\"50\" cy=\"50\" r=\"15\" fill=\"red\"/>
                     Sorry, your browser does not support inline SVG.  
