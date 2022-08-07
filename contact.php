@@ -17,14 +17,15 @@ if (user_is_logged_in()) {  // if user is logged in
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="X">
+    <meta name="keywords" content="Indoor plants, windsor, personal garden, zen garden, home decoration - plants">
+    <meta name="description" content="Windosr local indoor plants">
+    <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
     <title>Contact</title>
 
