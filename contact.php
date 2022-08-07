@@ -103,7 +103,7 @@ if (user_is_logged_in()) {  // if user is logged in
                     </div>
                     <div class="box">
                         <div class="text">
-                            <h3>Email Us</h3>
+                            <h3>Support/Email Us</h3>
                             <p><?php echo $layout['contact_email'] ?></p>
                         </div>
                     </div>
