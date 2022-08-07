@@ -1,1 +1,10 @@
+To connect to the right Databasem go to db_credentials.php located in private.
+Change this to your Database's info:
+define("DB_SERVER", "localhost");
+define("DB_USER", "username");
+define("DB_PASS", "password");
+define("DB_NAME", "Database name");
 
+Also the iframe tag in page_style.php need to be chagned.
+<iframe src="https://chen2d.myweb.cs.uwindsor.ca/COMP3340/project/pre-view.php" style="width:1100px; height:600px;" title="Iframe Example"></iframe>
+src url need to be changed to where your pre-view.php is located on your server
