@@ -17,14 +17,15 @@ if (user_is_logged_in()) {  // if user is logged in
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="X">
+    <meta name="keywords" content="Indoor plants, windsor, personal garden, zen garden, home decoration - plants">
+    <meta name="description" content="Windosr local indoor plants">
+    <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
     <title>Contact</title>
 
@@ -58,7 +59,7 @@ if (user_is_logged_in()) {  // if user is logged in
 
 </head>
 
-<body">
+<body>
 
     <!-- Header -->
     <header>
@@ -102,7 +103,7 @@ if (user_is_logged_in()) {  // if user is logged in
                     </div>
                     <div class="box">
                         <div class="text">
-                            <h3>Email Us</h3>
+                            <h3>Support/Email Us</h3>
                             <p><?php echo $layout['contact_email'] ?></p>
                         </div>
                     </div>
@@ -111,7 +112,7 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
 
         <p><?php echo $layout['contact_map'] ?></p>
-       </section>
+    </section>
 
     <footer>
         <div class="container_footer">
@@ -133,6 +134,6 @@ if (user_is_logged_in()) {  // if user is logged in
     </footer>
 
     <script src="js/script.js"></script>
-    </body>
+</body>
 
 </html>

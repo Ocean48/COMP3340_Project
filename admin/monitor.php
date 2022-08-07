@@ -11,17 +11,9 @@
 
 <body>
 <header>
-        <nav>
-            <ul>       
-                <li><a href="<?php echo url_for('index.php'); ?>"> Main Menu</a> </li>
-                <li><a href="<?php echo url_for('admin_account/index.php'); ?>"> Admin Accounts</a> </li>
-                <li><a href="<?php echo url_for('user_account/index.php'); ?>"> Customer Accounts</a> </li>
-                <li><a href="<?php echo url_for('product/index.php'); ?>"> Products</a> </li>
-                <li><a href="<?php echo url_for('web_edit/index.php'); ?>"> Page Editor</a> </li>
-                <li><a href="<?php echo url_for('admin_account/logout.php'); ?>"> Logout</a> </li>
-            </ul>
-        </nav>
-    </header>
+    <h1 style="text-align: center;">Monitor Page</h1>   
+    <br> 
+</header>
 
     
     

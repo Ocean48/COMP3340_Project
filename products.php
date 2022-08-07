@@ -22,8 +22,9 @@ if (user_is_logged_in()) {  // if user is logged in
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="X">
+    <meta name="keywords" content="Indoor plants, windsor, personal garden, zen garden, home decoration - plants">
+    <meta name="description" content="Windosr local indoor plants">
+    <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
     <title>Shop</title>
 
@@ -77,7 +78,7 @@ if (user_is_logged_in()) {  // if user is logged in
         </div>
     </header>
 
-    <div calss="center_block80">
+    <div class="center_block80">
         <br>
         <h1 class="page_title">Products</h1>
         <hr>
@@ -88,8 +89,8 @@ if (user_is_logged_in()) {  // if user is logged in
             <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
                 <div class="product_gallery">
                     <div class="card">
-                        <img width="100%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
-                        <h1><?php echo h($product['product_name']); ?></h1>
+                        <img style="width:100%;" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                        <h1 style="margin-bottom: 0;"><?php echo h($product['product_name']); ?></h1>
                         <p class="price">$<?php echo h($product['product_price']); ?></p>
                     </div>
                 </div>

@@ -36,7 +36,7 @@ $email = $_GET['email'];
 
         <a class="action" href="<?php echo url_for('user_account/index.php'); ?>">&laquo; Back to List</a>
 
-        <div calss="cart_display">
+        <div class="cart_display">
             <h1>Customer Shopping Cart</h1>
             <p class="red_alert">As a admin you can only remove all item form customer's shopping cart!</p>
             <table class="list">

@@ -60,10 +60,10 @@ if (is_post_request()) {
     <form action="login.php" method="post">
 
       Username:<br />
-      <input type="text" name="username" require /><br />
+      <input type="text" name="username" required/><br />
 
       Password:<br />
-      <input type="password" name="password" id="mypassword" require />
+      <input type="password" name="password" id="mypassword" required/>
       <input type="checkbox" onclick="show_password()">Show Password
       <script src="../js/script.js"></script>
       <br><br>

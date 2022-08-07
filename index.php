@@ -23,10 +23,11 @@ if (user_is_logged_in()) {  // if user is logged in
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="X">
+    <meta name="keywords" content="Indoor plants, windsor, personal garden, zen garden, home decoration - plants">
+    <meta name="description" content="Windosr local indoor plants">
+    <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
-    <title>Onsale</title>
+    <title>Home</title>
 
     <!-- load style from database -->
     <style>
@@ -89,30 +90,66 @@ if (user_is_logged_in()) {  // if user is logged in
 
     <br><br><br>
 
-    <h1>Hot</h1>
-    <div id="content">
-        <div>
-            <!-- Display all product -->
-            <?php
-            $coung = 0;
-            while ($product = mysqli_fetch_assoc($product_set)) {
-                $count++;
-                if ($count == 9) {
-                    break;
-                } ?>
-                <form action="#" method="POST">
-                    <div class="product_gallery">
-                        <div class="card">
-                            <img width="100%" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
-                            <h1><?php echo h($product['product_name']); ?></h1>
-                            <p class="price">$<?php echo h($product['product_price']); ?></p>
+
+    <div class="center_block80">
+        <h1>New</h1>
+        <hr>
+        <div id="content">
+            <div>
+                <!-- Display all product -->
+                <?php
+                $count = 0;
+                while ($product = mysqli_fetch_assoc($product_set)) {
+                    $count++;
+                    if ($count == 9) {
+                        break;
+                    } ?>
+                    <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
+                        <div class="product_gallery">
+                            <div class="card">
+                                <img style="width:100%;" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                                <h1 style="margin-bottom: 0;"><?php echo h($product['product_name']); ?></h1>
+                                <p class="price">$<?php echo h($product['product_price']); ?></p>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            <?php } ?>
+                    </a>
+                <?php } ?>
+            </div>
+        </div>
+
+        <div style="clear: both;"><br><br><br></div>
+
+        <h1>Top Seller</h1>
+        <hr>
+        <div id="content">
+            <div>
+                <!-- Display all product -->
+                <?php
+                $count = 0;
+                while ($product = mysqli_fetch_assoc($product_set)) {
+                    $count++;
+                    if ($count >= 10) {
+                        break;
+                    }
+                    if ($count % 2 == 0) {
+
+                ?>
+                        <a style="color: #000000;" href="product.php<?php echo ('?id=' . h(u($product['product_id']))); ?>">
+                            <div class="product_gallery">
+                                <div class="card">
+                                    <img style="width:100%;" src="admin/product/images/<?php echo h($product['product_img']); ?>" alt="Image of Product">
+                                    <h1 style="margin-bottom: 0;"><?php echo h($product['product_name']); ?></h1>
+                                    <p class="price">$<?php echo h($product['product_price']); ?></p>
+                                </div>
+                            </div>
+                        </a>
+                <?php }
+                } ?>
+            </div>
         </div>
     </div>
 
+    <div style="clear: both;"><br><br><br><br><br><br><br></div>
 
     <footer>
         <div class="container_footer">

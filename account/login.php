@@ -46,8 +46,9 @@ if (is_post_request()) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="X">
+    <meta name="keywords" content="Indoor plants, windsor, personal garden, zen garden, home decoration - plants">
+    <meta name="description" content="Windosr local indoor plants">
+    <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="../css/style.css">
     <title>Onsale</title>
 
@@ -91,7 +92,6 @@ if (is_post_request()) {
             <a href="../products.php" class="htext">Shop</a>
             <a href="account.php" class="htext">Account</a>
             <a href="cart.php" class="htext">Cart</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="header_menu()">&#9776;</a>
             <a href="../contact.php" class="htext">Contact</a>
             <a href="../shipping-policy.php" class="htext_bottom">Shipping Policy</a>
             <a href="../privacy-policy.php" class="htext_bottom">Privacy Policy</a>
@@ -101,22 +101,21 @@ if (is_post_request()) {
 
     <!-- login div -->
     <div class="center_block80 text_center">
-            <h1>LOGIN</h1>
+        <h1>LOGIN</h1>
 
-            <?php echo display_errors($errors); ?>
+        <?php echo display_errors($errors); ?>
 
-            <form action="login.php" method="post">
-                <input type="text" name="username" placeholder="Email" require />
-                <br><br>
-                <input type="password" name="password" placeholder="Password" id="mypassword" require />
-                <br>
-                <input type="checkbox" onclick="show_password()">Show Password
-                <script src="js/script.js"></script>
-                <br><br>
-                <input class="submit_save" type="submit" name="submit" value="Login" />
-            </form>
-            <p>Don't have an account? <a href="register.php">Register today!</a></p>
-        </div>
+        <form action="login.php" method="post">
+            <input type="text" name="username" placeholder="Email" required />
+            <br><br>
+            <input type="password" name="password" placeholder="Password" id="mypassword" required />
+            <br>
+            <input type="checkbox" onclick="show_password()">Show Password
+            <script src="../js/script.js"></script>
+            <br><br>
+            <input class="submit_save" type="submit" name="submit" value="Login" />
+        </form>
+        <p>Don't have an account? <a href="register.php">Register today!</a></p>
     </div>
 
     <p><br><br></p>
@@ -124,13 +123,13 @@ if (is_post_request()) {
     <footer>
         <div class="container_footer">
             <br>
-            <a href="index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
+            <a href="../index.php"><img src="../images/logo.png" alt="logo" class="footer_logo"></a>
             <div class="center">
-                <a href="contact.php" class="footer_text">Contact</a>
-                <a href="shipping-policy.php" class="footer_text">Shipping Policy</a>
-                <a href="privacy-policy.php" class="footer_text">Privacy Policy</a>
-                <a href="return-policy.php" class="footer_text">Return Policy</a>
-                <a href="terms-and-conditions.php" class="footer_text">Term and Conditions</a>
+                <a href="../contact.php" class="footer_text">Contact</a>
+                <a href="../shipping-policy.php" class="footer_text">Shipping Policy</a>
+                <a href="../privacy-policy.php" class="footer_text">Privacy Policy</a>
+                <a href="../return-policy.php" class="footer_text">Return Policy</a>
+                <a href="../terms-and-conditions.php" class="footer_text">Term and Conditions</a>
             </div>
             <p class="copyright">Copyright &copy;
                 <script>
