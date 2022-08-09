@@ -16,12 +16,16 @@ if (user_is_logged_in()) {  // if user is logged in
 
 // Check is user login
 if (is_post_request()) {
+    // If user didn't log in
     if (!user_is_logged_in()) {
         echo "<script type='text/javascript'>alert('You must login to add this item to your shopping cart!');
         document.location='account/account.php'</script>";
+    } 
+    // Add item to cart for login user
+    else {
+        add_to_cart($_SESSION["user_email"], $_POST["product_id"], $_POST["quantity"]);
+        header("Location: index.php");
     }
-    add_to_cart($_SESSION["user_email"], $_POST["product_id"], $_POST["quantity"]);
-    header("Location: index.php");
 }
 
 ?>
