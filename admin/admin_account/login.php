@@ -44,7 +44,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Log in'; ?>
+<?php $page_title = 'Admin'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

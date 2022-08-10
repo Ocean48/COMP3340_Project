@@ -18,7 +18,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Delete Admin'; ?>
+<?php $page_title = 'Admin Management - Delete Admin User'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

@@ -3,9 +3,9 @@
 admin_require_login();
 
 $id = $_GET['id'];
-
-$page_title = 'Product Menu'; //used in header.php
 $product = find_product_by_id($id);
+
+$page_title = 'Product Management - '.$product['product_name'].''; //used in header.php
 
 include(SHARED_PATH . '/header.php'); ?>
 

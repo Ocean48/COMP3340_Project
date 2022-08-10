@@ -7,7 +7,7 @@ $account_set = find_all_users();
 ?>
 
 
-<?php $page_title = 'Account Menu'; //used in header.php
+<?php $page_title = 'Customer Management'; //used in header.php
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 

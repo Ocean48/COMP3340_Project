@@ -57,7 +57,7 @@ if (isset($_POST["cancel"])) {
 	<meta name="description" content="">
 	<meta name="author" content="X">
 	<link rel="stylesheet" href="../css/style.css">
-	<title>Account</title>
+	<title>Account - Address</title>
 
 	<!-- load style from database -->
 	<style>

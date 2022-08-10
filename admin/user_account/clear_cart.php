@@ -19,7 +19,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Clear Customer\' Shopping Cart'; ?>
+<?php $page_title = 'Customer Management - Clear Shopping Cart'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

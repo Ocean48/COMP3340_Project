@@ -26,7 +26,7 @@ if (user_is_logged_in()) {  // if user is logged in
     <meta name="description" content="Windosr local indoor plants">
     <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
-    <title>Onsale</title>
+    <title>Pre-view</title>
 
     <!-- load style from database -->
     <style>

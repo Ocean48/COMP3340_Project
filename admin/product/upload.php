@@ -14,7 +14,7 @@ if (isset($_POST["cancel"])) {
 }
 ?>
 
-<?php $page_title = 'Upload'; ?>
+<?php $page_title = 'Product Management - Upload Product'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

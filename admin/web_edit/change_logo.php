@@ -28,7 +28,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Main Menu'; //used in header.php
+<?php $page_title = 'Edit Logo'; //used in header.php
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 

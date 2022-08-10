@@ -41,7 +41,7 @@ if (is_post_request()) {
     <meta name="description" content="Windosr local indoor plants">
     <meta name="author" content="SiChao Chen, Arthur Wei, Zaiqing Zhang, Zixun Wang">
     <link rel="stylesheet" href="css/style.css">
-    <title>Shop</title>
+    <title>Shop - <?php echo h($product['product_name']); ?></title>
 
     <!-- load style from database -->
     <style>

@@ -7,7 +7,7 @@
 ?>
 
 
-<?php $page_title = 'Account Menu'; //used in header.php?> 
+<?php $page_title = 'Admin Management'; //used in header.php?> 
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 

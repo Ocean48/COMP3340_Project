@@ -2,7 +2,7 @@
 admin_require_login();
 
 
-$page_title = 'Create Product';
+$page_title = 'Product Management - Add New Product';
 include(SHARED_PATH . '/header.php'); ?>
 
 <body>

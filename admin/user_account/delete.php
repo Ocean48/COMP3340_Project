@@ -17,7 +17,7 @@ if (is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Delete Customer Account'; ?>
+<?php $page_title = 'Customer Management - Delete Customer Account'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

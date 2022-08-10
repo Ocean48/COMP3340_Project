@@ -13,7 +13,7 @@ if (is_post_request()) {
 }
 ?>
 
-<?php $page_title = 'Delete'; ?>
+<?php $page_title = 'Product Management - Delete Product'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

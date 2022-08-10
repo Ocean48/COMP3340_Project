@@ -35,7 +35,7 @@ if (isset($_POST["cancel"])) {
 
 ?>
 
-<?php $page_title = 'Edit Customer Account'; ?>
+<?php $page_title = 'Customer Management - Edit Customer Account'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

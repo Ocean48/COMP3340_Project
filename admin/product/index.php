@@ -9,7 +9,7 @@ $product_set = find_all_product();
 
 
 
-<?php $page_title = 'Product Menu'; //used in header.php
+<?php $page_title = 'Product Management'; //used in header.php
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 

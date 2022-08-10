@@ -33,7 +33,7 @@ if (isset($_POST["cancel"])) {
 
 ?>
 
-<?php $page_title = 'Edit Admin'; ?>
+<?php $page_title = 'Admin Management - Edit Admin User'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <body>

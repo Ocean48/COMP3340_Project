@@ -2,7 +2,7 @@
 admin_require_login();
 
 
-$page_title = 'Edit';
+$page_title = 'Product Management - Edit Product';
 include(SHARED_PATH . '/header.php');
 
 $product_id = $_GET['id'];

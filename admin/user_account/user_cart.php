@@ -9,7 +9,7 @@ $email = $_GET['email'];
 ?>
 
 
-<?php $page_title = 'Account Menu'; //used in header.php
+<?php $page_title = 'Customer Shopping Cart'; //used in header.php
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
