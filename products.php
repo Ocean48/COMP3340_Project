@@ -98,6 +98,7 @@ if (user_is_logged_in()) {  // if user is logged in
         <?php } ?>
     </div>
 
+    <div style="clear: both;"></div>
 
     <footer>
         <div class="container_footer">

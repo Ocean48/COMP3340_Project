@@ -149,7 +149,7 @@ p {
 /* Footer */
 .container_footer {
     clear: both;
-    position: relative;
+    position: absolute;
     width: 100%;
     background-color: #444755;
     background-size: cover;
